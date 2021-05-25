@@ -14,6 +14,7 @@ Emma Buller:
 5/25/2021: Created needed variables and methods for Pacman class
 5/25/2021: Created needed methods for pellet and wall
 5/25/2021: Created needed methods for ghost class
+5/25/2021: Edited game and maze methods
 
 
 Tina Nguyen:
