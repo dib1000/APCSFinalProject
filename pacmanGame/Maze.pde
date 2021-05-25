@@ -2,7 +2,7 @@ public class Maze {
   int pelletCount;
   int time; //for fruit
   int level;
-  Object[] game;
+  Object[][] game;
 
   Maze() {
   }
