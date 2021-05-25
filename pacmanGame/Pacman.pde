@@ -28,4 +28,7 @@ public class Pacman {
   
   void loseLives(){
   }
+  
+  void display() {
+  }
 }
