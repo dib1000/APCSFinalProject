@@ -13,6 +13,7 @@ Emma Buller:
 5/25/2021: Created the files in processing
 5/25/2021: Created needed variables and methods for Pacman class
 5/25/2021: Created needed methods for pellet and wall
+5/25/2021: Created needed methods for ghost class
 
 
 Tina Nguyen:
