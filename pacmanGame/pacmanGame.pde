@@ -13,9 +13,10 @@ void setup() {
     for(int j = 0; j < 18; j++) {
       if((i > 0 && i < 13) && (j > 0 && j < 17)) {
         game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
+        pelletCount++;
       }
       else {
-        game[i][j] = new Wall();
+        game[i][j] = new Wall(w/2 +(i * w), h/2 + ((j + 1) * h));
       }
     }
   }

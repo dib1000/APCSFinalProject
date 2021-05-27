@@ -16,6 +16,14 @@ Emma Buller:
 5/25/2021: Created needed methods for ghost class
 5/25/2021: Edited game and maze methods
 
+5/26/2021: Realized that we didn't need maze class to do
+what it was supposed to do (store objects in an array) and
+moved those variables to the main file. I found another
+purpose for the Maze class. I had all of the classes
+extend the maze class so that we could use universal methods
+such as display for all of the objects in the game array.
+I also worked on displaying the pellets and walls.
+
 
 Tina Nguyen:
 5/25/2021: Added needed variables and methods for Maze
