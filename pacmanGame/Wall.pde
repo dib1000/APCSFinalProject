@@ -12,14 +12,20 @@ public class Wall extends Maze {
   }
   void display(Maze[][] m, int row, int col) {
     fill(#1818BF);
+    rectMode(CENTER);
     if((row > 0 && m[row-1][col].getSubclass().equals("Wall")) &&
       (row < m.length - 1 && m[row+1][col].getSubclass().equals("Wall"))) {
-      rectMode(CENTER);
       rect(r,c,wid,20);
     }
-    else {
-      rectMode(CENTER);
+    else if((col > 0 && m[row][col-1].getSubclass().equals("Wall")) &&
+      (col < m[0].length - 1 && m[row][col+1].getSubclass().equals("Wall"))) {
       rect(r,c,20,hei);
     }
+    else {
+      rect(r,c,20,hei);
+      if(( col < m[0].length - 1 && m[row][col+1].getSubclass().equals("Wall")) &&
+      (row < m.length - 1 && m[row+1][col].getSubclass().equals("Wall"))) {
+      }
+    }  
   }
 }
