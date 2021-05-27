@@ -22,7 +22,10 @@ moved those variables to the main file. I found another
 purpose for the Maze class. I had all of the classes
 extend the maze class so that we could use universal methods
 such as display for all of the objects in the game array.
-I also worked on displaying the pellets and walls.
+I also worked on displaying the pellets and walls. I began
+implementing the displaying of different types of walls
+but i realize that it only works for when its at the edge.
+Will fix this tomorrow.
 
 
 Tina Nguyen:
