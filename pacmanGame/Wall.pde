@@ -25,6 +25,10 @@ public class Wall extends Maze {
       rect(r,c,20,hei);
       if(( col < m[0].length - 1 && m[row][col+1].getSubclass().equals("Wall")) &&
       (row < m.length - 1 && m[row+1][col].getSubclass().equals("Wall"))) {
+      rectMode(CORNER);
+      rect(20 + (wid * row),((3 * (hei + (20 * col))) / 2) - 10,40,20);
+      fill(0);
+      rect(20 + (wid * row), hei + 30 * col, 20, (hei/2)-10);
       }
     }  
   }
