@@ -8,6 +8,7 @@ public class Pacman {
   }
   
   void moveUp(){
+    
   }
   
   void moveDown(){
@@ -23,12 +24,21 @@ public class Pacman {
     return "";
   }
   
-  void addPoints() {
+  void addPoints(String pelletType) {
+     if(pelletType == "regular") {
+         points += 10;
+     }
+     if(pelletType == "power") {
+         points += 50;
+     }
+// add fruits later
   }
   
   void loseLives(){
+    lives--;
   }
   
   void display() {
+   
   }
 }
