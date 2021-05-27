@@ -8,7 +8,7 @@ public class Maze {
   }
 
   void display() {
-    ellipse(50,50,20,20);
+    //ellipse(50,50,20,20);
   }
 
   //void release() {

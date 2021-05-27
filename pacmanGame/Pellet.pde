@@ -8,8 +8,8 @@ public class Pellet extends Maze {
   }
   
   void display() {
-    color(#E6A485);
-    ellipse(x,y,30,30);
+    fill(#ECBA96);
+    ellipse(x,y,15,15);
   }
   
   void disappear(){
