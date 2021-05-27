@@ -7,6 +7,9 @@ public class Maze { //This is now used to make sure that we can use an
   void display() {
     //ellipse(50,50,20,20);
   }
+  
+  void display(Maze[][] m, int r, int c) {
+  }
 
   //void release() {
   //  //would release ghosts from their box

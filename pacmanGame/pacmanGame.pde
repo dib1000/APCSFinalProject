@@ -16,7 +16,7 @@ void setup() {
         pelletCount++;
       }
       else {
-        game[i][j] = new Wall(w/2 +(i * w), h/2 + ((j + 1) * h));
+        game[i][j] = new Wall(w/2 +(i * w), h/2 + ((j + 1) * h), w, h);
       }
     }
   }
@@ -25,8 +25,12 @@ void setup() {
 void draw() {
   for(int i = 0; i < game.length; i++) {
     for(int j = 0; j < game[0].length; j++) {
-      game[i][j].display();
-      
+      if((i > 0 && i < 13) && (j > 0 && j < 17)) {
+        game[i][j].display();
+      }
+      else {
+        game[i][j].display(game,i,j);
+      }
     }
   }
 }
