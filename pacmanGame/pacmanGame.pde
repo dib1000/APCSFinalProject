@@ -11,7 +11,12 @@ void setup() {
   float h = (height-100)/20;
   for(int i = 0; i < 14; i++) {
     for(int j = 0; j < 18; j++) {
-      game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
+      if((i > 0 && i < 13) && (j > 0 && j < 17)) {
+        game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
+      }
+      else {
+        game[i][j] = new Wall();
+      }
     }
   }
 }

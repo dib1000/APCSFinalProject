@@ -1,8 +1,5 @@
-public class Maze {
-  int pelletCount;
-  int time; //for fruit
-  int level;
-  Object[][] game;
+public class Maze { //This is now used to make sure that we can use an 
+                    //array with multiple classes.
 
   Maze() {
   }
