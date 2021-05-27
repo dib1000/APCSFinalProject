@@ -30,3 +30,5 @@ Will fix this tomorrow.
 
 Tina Nguyen:
 5/25/2021: Added needed variables and methods for Maze
+
+5/27/2021: Edited some Pacman methods
