@@ -1,9 +1,28 @@
+int pelletCount;
+int time; //for fruit
+int level;
+Maze[][] game;
+
 void setup() {
   size(1000, 1200);
   background(0);
+  game = new Maze[14][18];
+  float w = width/14;
+  float h = height/20;
+  for(int i = 0; i < 14; i++) {
+    for(int j = 0; j < 18; j++) {
+      game[i][j] = new Pellet(w/2 +(i * w), h/2 + (j * h + 1));
+    }
+  }
 }
 
 void draw() {
+  for(int i = 0; i < game.length; i++) {
+    for(int j = 0; j < game[0].length; j++) {
+      game[i][j].display();
+      
+    }
+  }
 }
 
 void keyPressed() {
