@@ -2,10 +2,12 @@ int pelletCount;
 int time; //for fruit
 int level;
 Maze[][] game;
+Pacman man; 
 
 void setup() {
   size(840, 1080);
   background(0);
+  man = new Pacman();
   game = new Maze[14][18];
   float w = width/14;
   float h = (height-100)/20;
@@ -33,18 +35,24 @@ void draw() {
       }
     }
   }
+  man.display();
+  
 }
 
 void keyPressed() {
   //takes user input from the arrow keys to control the PacMan
   if (keyPressed) {
     if (key == UP) {
+      man.moveUp();
     }
     if (key == DOWN) {
+      man.moveDown();
     }
     if (key == RIGHT) {
+      man.moveRight();
     }
     if (key == LEFT) {
+      man.moveLeft();
     }
   }
 }
