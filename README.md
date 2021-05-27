@@ -31,4 +31,7 @@ Will fix this tomorrow.
 Tina Nguyen:
 5/25/2021: Added needed variables and methods for Maze
 
-5/27/2021: Edited some Pacman methods
+5/27/2021: Edited some Pacman methods (lives and points methods)
+5/27/2021: Added x and y variables to the Pacman class to keep track of
+where it is. Also added getXCoord and getYCoord to retrieve the coordinates,
+and also edited the display method for Pacman. 
