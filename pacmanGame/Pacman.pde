@@ -62,6 +62,10 @@ public class Pacman {
     // returns the y coordinate of pacman
     return y;
   }
+  
+  void setXChord(float x) {
+    this.x = x;
+  }
   void display() {
      fill(#FAFF15);
      ellipse(x,y, 40, 40);

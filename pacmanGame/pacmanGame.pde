@@ -42,16 +42,18 @@ void draw() {
 void keyPressed() {
   //takes user input from the arrow keys to control the PacMan
   if (keyPressed) {
-    if (key == UP) {
+    if (keyCode == UP) {
       man.moveUp();
     }
-    if (key == DOWN) {
+    if (keyCode == DOWN) {
       man.moveDown();
     }
-    if (key == RIGHT) {
-      man.moveRight();
+    if (keyCode == LEFT) {
+      man.setXChord(man.getXCoord() - 10);
+      fill(0);
+      ellipse(man.getXCoord() + 10, man.getYCoord(), 40, 40);
     }
-    if (key == LEFT) {
+    if (keyCode == RIGHT) {
       man.moveLeft();
     }
   }
