@@ -41,20 +41,28 @@ void draw() {
 
 void keyPressed() {
   //takes user input from the arrow keys to control the PacMan
+    float w = width/14;
+  float h = (height-100)/20;
   if (keyPressed) {
     if (keyCode == UP) {
-      man.moveUp();
+      man.setYCoord(man.getYCoord() - h);
+      fill(0);
+      ellipse(man.getXCoord(), man.getYCoord() + h, 40, 40);
     }
     if (keyCode == DOWN) {
-      man.moveDown();
+      man.setYCoord(man.getYCoord() + h);
+      fill(0);
+      ellipse(man.getXCoord(), man.getYCoord() - h, 40, 40);
     }
     if (keyCode == LEFT) {
-      man.setXChord(man.getXCoord() - 10);
+      man.setXCoord(man.getXCoord() - w);
       fill(0);
-      ellipse(man.getXCoord() + 10, man.getYCoord(), 40, 40);
+      ellipse(man.getXCoord() + w,man.getYCoord(), 40, 40);
     }
     if (keyCode == RIGHT) {
-      man.moveLeft();
+      man.setXCoord(man.getXCoord() + w);
+      fill(0);
+      ellipse(man.getXCoord() - w, man.getYCoord(), 40, 40);
     }
   }
 }

@@ -6,7 +6,7 @@ public class Pacman {
   Pacman() {
     points = 0;
     lives = 2;
-    x = 690;
+    x = (width/14) * 10.5;
     y = 660;
     // we can change its default position later
   }
@@ -26,12 +26,12 @@ public class Pacman {
     
   }
   
-  void moveLeft(){
+  void moveRight(){
     x += 5;
   }
   
   
-  void moveRight() {
+  void moveLeft() {
     x -= 5;
   }
   
@@ -63,8 +63,12 @@ public class Pacman {
     return y;
   }
   
-  void setXChord(float x) {
+  void setXCoord(float x) {
     this.x = x;
+  }
+  
+  void setYCoord(float y) {
+    this.y = y;
   }
   void display() {
      fill(#FAFF15);
