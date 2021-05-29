@@ -10,73 +10,76 @@ public class Pacman {
     y = ((height-100)/20) * 10.5;
     // we can change its default position later
   }
-  
-  Pacman(float xcoord, float ycoord){
+
+  Pacman(float xcoord, float ycoord) {
     x = xcoord;
     y = ycoord;
   }
-  
-  void moveUp(){
- //put speed in parameters later to increase the speeds?
+
+  void moveUp() {
+    //put speed in parameters later to increase the speeds?
     y += 5;
   }
-  
-  void moveDown(){
+
+  void moveDown() {
     y -= 5;
-    
   }
-  
-  void moveRight(){
+
+  void moveRight() {
     x += 5;
   }
-  
-  
+
+
   void moveLeft() {
     x -= 5;
   }
-  
+
   String withAnything() {
     return "";
   }
-  
+
   void addPoints(String pelletType) {
-     if(pelletType == "regular") {
-         points += 10;
-     }
-     if(pelletType == "power") {
-         points += 50;
-     }
-// add fruits later
+    if (pelletType == "regular") {
+      points += 10;
+    }
+    if (pelletType == "power") {
+      points += 50;
+    }
+    // add fruits later
   }
-  
-  void loseLives(){
+
+  void loseLives() {
     lives--;
   }
-  
-  float getXCoord(){
+
+  float getXCoord() {
     // returns the x coordinate of pacman
     return x;
   }
-  
-  float getYCoord(){
+
+  float getYCoord() {
     // returns the y coordinate of pacman
     return y;
   }
-  
+
   void setXCoord(float x) {
     this.x = x;
   }
-  
+
   void setYCoord(float y) {
     this.y = y;
   }
   void display() {
-     fill(#FAFF15);
-     ellipse(x,y, 40, 40);
-     //just yellow circle for now
-     fill(255);
-     textSize(24);
-     text("POINTS: " + points, 50,40);
-     text("LIVES:", 50, height - 125);
+    fill(#FAFF15);
+    ellipse(x, y, 40, 40);
+    //just yellow circle for now
+    fill(255);
+    textSize(24);
+    text("POINTS: " + points, 50, 40);
+    text("LIVES:", 50, height - 125);
+    for (int i = 0; i < lives; i++) {
+      fill(#FAFF15);
+      ellipse(100 + (50 * (i + 1)), height-135, 40, 40);
+    }
   }
 }
