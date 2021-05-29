@@ -36,6 +36,9 @@ erased that by drawing a black circle at the spots the pacman
 was in previously. I also changed how much the pacman moved
 horizontally and vertically.
 
+5/29/2021: Got rid of the small yellow residue that was left
+from the movement of pacman
+5/29/2021: Displayed points and lives
 
 Tina Nguyen:
 5/25/2021: Added needed variables and methods for Maze
