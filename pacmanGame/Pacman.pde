@@ -73,6 +73,9 @@ public class Pacman {
   void display() {
      fill(#FAFF15);
      ellipse(x,y, 40, 40);
+     fill(255);
+     textSize(24);
+     text("POINTS: " + points, 50,40);
      //just yellow circle for now
   }
 }
