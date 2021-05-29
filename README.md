@@ -27,12 +27,20 @@ implementing the displaying of different types of walls
 but i realize that it only works for when its at the edge.
 Will fix this tomorrow.
 
+5/27/2021: Added the top left corner and modified how to make the walls (made the walls work so that it can work properly no matter where in the array the walls were)
+
+5/28/2021: Modified Tina's code to make Pacman move. I did this
+by making a setXChord/setYChord methods to change the center
+of the circle. This moved the pacman, but it left a trail. I
+erased that by drawing a black circle at the spots the pacman
+was in previously. I also changed how much the pacman moved
+horizontally and vertically.
+
 
 Tina Nguyen:
 5/25/2021: Added needed variables and methods for Maze
-
 5/27/2021: Edited some Pacman methods (lives and points methods)
 5/27/2021: Added x and y variables to the Pacman class to keep track of
 where it is. Also added getXCoord and getYCoord to retrieve the coordinates,
 and also edited the display method for Pacman.
-5/27/2021: Edited keyPressed in pacmanGame and created Pacman object. 
+5/27/2021: Edited keyPressed in pacmanGame and created Pacman object.
