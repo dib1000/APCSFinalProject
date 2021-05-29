@@ -11,9 +11,13 @@ Development Log:
 
 Emma Buller:
 5/25/2021: Created the files in processing
+
 5/25/2021: Created needed variables and methods for Pacman class
+
 5/25/2021: Created needed methods for pellet and wall
+
 5/25/2021: Created needed methods for ghost class
+
 5/25/2021: Edited game and maze methods
 
 5/26/2021: Realized that we didn't need maze class to do
@@ -38,12 +42,17 @@ horizontally and vertically.
 
 5/29/2021: Got rid of the small yellow residue that was left
 from the movement of pacman
+
 5/29/2021: Displayed points and lives
 
 Tina Nguyen:
+
 5/25/2021: Added needed variables and methods for Maze
+
 5/27/2021: Edited some Pacman methods (lives and points methods)
+
 5/27/2021: Added x and y variables to the Pacman class to keep track of
 where it is. Also added getXCoord and getYCoord to retrieve the coordinates,
 and also edited the display method for Pacman.
+
 5/27/2021: Edited keyPressed in pacmanGame and created Pacman object.
