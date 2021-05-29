@@ -7,7 +7,7 @@ public class Pacman {
     points = 0;
     lives = 2;
     x = (width/14) * 10.5;
-    y = 660;
+    y = ((height-100)/20) * 10.5;
     // we can change its default position later
   }
   

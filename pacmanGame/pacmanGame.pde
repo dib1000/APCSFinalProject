@@ -47,22 +47,22 @@ void keyPressed() {
     if (keyCode == UP) {
       man.setYCoord(man.getYCoord() - h);
       fill(0);
-      ellipse(man.getXCoord(), man.getYCoord() + h, 40, 40);
+      ellipse(man.getXCoord(), man.getYCoord() + h, 41, 41);
     }
     if (keyCode == DOWN) {
       man.setYCoord(man.getYCoord() + h);
       fill(0);
-      ellipse(man.getXCoord(), man.getYCoord() - h, 40, 40);
+      ellipse(man.getXCoord(), man.getYCoord() - h, 41, 41);
     }
     if (keyCode == LEFT) {
       man.setXCoord(man.getXCoord() - w);
       fill(0);
-      ellipse(man.getXCoord() + w,man.getYCoord(), 40, 40);
+      ellipse(man.getXCoord() + w,man.getYCoord(), 41, 41);
     }
     if (keyCode == RIGHT) {
       man.setXCoord(man.getXCoord() + w);
       fill(0);
-      ellipse(man.getXCoord() - w, man.getYCoord(), 40, 40);
+      ellipse(man.getXCoord() - w, man.getYCoord(), 41, 41);
     }
   }
 }
