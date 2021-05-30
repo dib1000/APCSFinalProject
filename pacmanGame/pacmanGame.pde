@@ -1,6 +1,7 @@
 int pelletCount;
 int time; //for fruit
 int level;
+int moveTime;
 Maze[][] game;
 Pacman man; 
 Ghost red;
@@ -11,6 +12,7 @@ void setup() {
   man = new Pacman();
   red = new Ghost(man.getXCoord(), man.getYCoord());
   game = new Maze[14][18];
+  moveTime = millis();
   float w = width/14;
   float h = (height-100)/20;
   for(int i = 0; i < 14; i++) {
@@ -39,8 +41,9 @@ void draw() {
   }
   man.display();
   red.display();
-  if(millis() % 50 == 0) {
+  if(millis() - moveTime > 500) {
     red.move();
+    moveTime = millis();
   }
 }
 

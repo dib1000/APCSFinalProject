@@ -45,6 +45,10 @@ from the movement of pacman
 
 5/29/2021: Displayed points and lives
 
+5/29/2021: Displayed ghost
+
+5/30/2021: Got redGhost to move to its target tile in an uniform time;
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
