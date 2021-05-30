@@ -39,9 +39,9 @@ void draw() {
   }
   man.display();
   red.display();
-  //if(millis() % 50 == 0) {
-  //  println("YAH");
-  //}
+  if(millis() % 50 == 0) {
+    red.move();
+  }
 }
 
 void keyPressed() {

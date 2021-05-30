@@ -26,14 +26,32 @@ public class Ghost { //class will code for red ghost
     float right = sq((row + w) - targetRow) + sq(col - targetCol);
     float up = sq(row - targetRow) + sq((col - h) - targetCol);
     float down = sq(row  - targetRow) + sq((col + h) - targetCol);
-    float[] directions = {left,right,up,down};
+    float[] directions = {left, right, up, down};
+    directions = sort(directions);
+    if (directions[0] == left) {
+      row = row - w;
+      fill(0);
+      rect(row + w, col, 41, 41);
+    }
+    else if (directions[0] == right) {
+      row = row + w;
+      fill(0);
+      rect(row - w, col, 41, 41);
+    }
+    else if (directions[0] == up) {
+      col = col - h;
+      fill(0);
+      rect(row, col + h, 41, 41);
+    }
+    else {
+      col = col + h;
+      fill(0);
+      rect(row, col - h, 41, 41);
+    }
   }
 
   void changeTargetTile(Pacman man) {
     targetRow = man.getXCoord();
     targetCol = man.getYCoord();
-    println("ROW: " + targetRow);
-    println("COL: " + targetCol);
-    
   }
 }
