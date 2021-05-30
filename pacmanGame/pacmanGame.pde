@@ -39,6 +39,9 @@ void draw() {
   }
   man.display();
   red.display();
+  //if(millis() % 50 == 0) {
+  //  println("YAH");
+  //}
 }
 
 void keyPressed() {
@@ -48,15 +51,19 @@ void keyPressed() {
   if (keyPressed) {
     if (keyCode == UP) {
       man.moveUp();
+      red.changeTargetTile(man);
     }
     if (keyCode == DOWN) {
       man.moveDown();
+      red.changeTargetTile(man);
     }
     if (keyCode == LEFT) {
       man.moveLeft();
+      red.changeTargetTile(man);
     }
     if (keyCode == RIGHT) {
       man.moveRight();
+      red.changeTargetTile(man);
     }
   }
 }
