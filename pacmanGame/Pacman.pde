@@ -3,6 +3,8 @@ public class Pacman {
   int lives;
   float x;
   float y;
+  float w = width/14;
+  float h = (height-100)/20;
   Pacman() {
     points = 0;
     lives = 2;
@@ -18,20 +20,28 @@ public class Pacman {
 
   void moveUp() {
     //put speed in parameters later to increase the speeds?
-    y += 5;
+    man.setYCoord(man.getYCoord() - h);
+    fill(0);
+    ellipse(man.getXCoord(), man.getYCoord() + h, 41, 41);
   }
 
   void moveDown() {
-    y -= 5;
+    man.setYCoord(man.getYCoord() + h);
+    fill(0);
+    ellipse(man.getXCoord(), man.getYCoord() - h, 41, 41);
   }
 
   void moveRight() {
-    x += 5;
+    man.setXCoord(man.getXCoord() + w);
+    fill(0);
+    ellipse(man.getXCoord() - w, man.getYCoord(), 41, 41);
   }
 
 
   void moveLeft() {
-    x -= 5;
+    man.setXCoord(man.getXCoord() - w);
+    fill(0);
+    ellipse(man.getXCoord() + w, man.getYCoord(), 41, 41);
   }
 
   String withAnything() {

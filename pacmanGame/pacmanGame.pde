@@ -3,11 +3,13 @@ int time; //for fruit
 int level;
 Maze[][] game;
 Pacman man; 
+Ghost red;
 
 void setup() {
   size(840, 1080);
   background(0);
   man = new Pacman();
+  red = new Ghost(man.getXCoord(), man.getYCoord());
   game = new Maze[14][18];
   float w = width/14;
   float h = (height-100)/20;
@@ -36,7 +38,7 @@ void draw() {
     }
   }
   man.display();
-  
+  red.display();
 }
 
 void keyPressed() {
@@ -45,24 +47,16 @@ void keyPressed() {
   float h = (height-100)/20;
   if (keyPressed) {
     if (keyCode == UP) {
-      man.setYCoord(man.getYCoord() - h);
-      fill(0);
-      ellipse(man.getXCoord(), man.getYCoord() + h, 41, 41);
+      man.moveUp();
     }
     if (keyCode == DOWN) {
-      man.setYCoord(man.getYCoord() + h);
-      fill(0);
-      ellipse(man.getXCoord(), man.getYCoord() - h, 41, 41);
+      man.moveDown();
     }
     if (keyCode == LEFT) {
-      man.setXCoord(man.getXCoord() - w);
-      fill(0);
-      ellipse(man.getXCoord() + w,man.getYCoord(), 41, 41);
+      man.moveLeft();
     }
     if (keyCode == RIGHT) {
-      man.setXCoord(man.getXCoord() + w);
-      fill(0);
-      ellipse(man.getXCoord() - w, man.getYCoord(), 41, 41);
+      man.moveRight();
     }
   }
 }
