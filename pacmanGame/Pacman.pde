@@ -5,11 +5,13 @@ public class Pacman {
   float y;
   float w = width/14;
   float h = (height-100)/20;
+  String direction;
   Pacman() {
     points = 0;
     lives = 2;
     x = (width/14) * 10.5;
     y = ((height-100)/20) * 10.5;
+    direction = "left";
     // we can change its default position later
   }
 
@@ -23,18 +25,21 @@ public class Pacman {
     man.setYCoord(man.getYCoord() - h);
     fill(0);
     ellipse(man.getXCoord(), man.getYCoord() + h, 41, 41);
+    direction = "up";
   }
 
   void moveDown() {
     man.setYCoord(man.getYCoord() + h);
     fill(0);
     ellipse(man.getXCoord(), man.getYCoord() - h, 41, 41);
+    direction = "down";
   }
 
   void moveRight() {
     man.setXCoord(man.getXCoord() + w);
     fill(0);
     ellipse(man.getXCoord() - w, man.getYCoord(), 41, 41);
+    direction = "right";
   }
 
 
@@ -42,6 +47,7 @@ public class Pacman {
     man.setXCoord(man.getXCoord() - w);
     fill(0);
     ellipse(man.getXCoord() + w, man.getYCoord(), 41, 41);
+    direction = "left";
   }
 
   String withAnything() {
@@ -91,5 +97,9 @@ public class Pacman {
       fill(#FAFF15);
       ellipse(100 + (50 * (i + 1)), height-135, 40, 40);
     }
+  }
+  
+  String getDirection() {
+    return direction;
   }
 }

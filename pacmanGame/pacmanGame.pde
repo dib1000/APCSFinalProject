@@ -5,16 +5,18 @@ int moveTime;
 Maze[][] game;
 Pacman man; 
 Ghost red;
+Pink pink;
 
 void setup() {
   size(840, 1080);
   background(0);
-  man = new Pacman();
-  red = new Ghost(man.getXCoord(), man.getYCoord());
-  game = new Maze[14][18];
-  moveTime = millis();
   float w = width/14;
   float h = (height-100)/20;
+  man = new Pacman();
+  red = new Ghost(man.getXCoord(), man.getYCoord(),(width/14) * 3.5,((height-100)/20) * 4.5);
+  pink = new Pink(man.getXCoord() - (2 * w), man.getYCoord(), (width/14) * 5.5, ((height-100)/20) * 8.5);
+  game = new Maze[14][18];
+  moveTime = millis();
   for(int i = 0; i < 14; i++) {
     for(int j = 0; j < 18; j++) {
       if((i > 0 && i < 13) && (j > 0 && j < 17)) {
@@ -41,6 +43,7 @@ void draw() {
   }
   man.display();
   red.display();
+  pink.display();
   if(millis() - moveTime > 500) {
     red.move();
     moveTime = millis();

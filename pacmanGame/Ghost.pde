@@ -6,11 +6,11 @@ public class Ghost { //class will code for red ghost
   float row;
   float col;
 
-  Ghost(float x, float y) {
+  Ghost(float x, float y, float r, float c) {
     targetRow = x;
     targetCol = y;
-    row = (width/14) * 3.5;
-    col = ((height-100)/20) * 4.5;
+    row = r;
+    col = c;
   }
 
   void display() {
@@ -32,18 +32,15 @@ public class Ghost { //class will code for red ghost
       row = row - w;
       fill(0);
       rect(row + w, col, 41, 41);
-    }
-    else if (directions[0] == right) {
+    } else if (directions[0] == right) {
       row = row + w;
       fill(0);
       rect(row - w, col, 41, 41);
-    }
-    else if (directions[0] == up) {
+    } else if (directions[0] == up) {
       col = col - h;
       fill(0);
       rect(row, col + h, 41, 41);
-    }
-    else {
+    } else {
       col = col + h;
       fill(0);
       rect(row, col - h, 41, 41);
@@ -53,5 +50,23 @@ public class Ghost { //class will code for red ghost
   void changeTargetTile(Pacman man) {
     targetRow = man.getXCoord();
     targetCol = man.getYCoord();
+  }
+
+  void setTargetRow(float x) {
+    targetRow = x;
+  }
+  void setTargetCol(float y) {
+    targetCol = y;
+  }
+}
+
+class Pink extends Ghost {
+  Pink(float x, float y, float r, float c) {
+    super(x, y, r, c);
+  }
+  void display() {
+    rectMode(CENTER);
+    fill(#FFB9DE);
+    rect(row,col,40,40);
   }
 }
