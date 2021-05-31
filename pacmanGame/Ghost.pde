@@ -82,6 +82,16 @@ class Pink extends Ghost {
       targetRow = man.getXCoord() - (2 * w);
       targetCol = man.getYCoord();
     }
-    println(targetRow + " " + targetCol);
+  }
+}
+class Orange extends Ghost {
+  Orange(float x, float y, float r, float c) {
+    super(x, y, r, c);
+  }
+
+  void display() {
+    rectMode(CENTER);
+    fill(#FDB846);
+    rect(row, col, 40, 40);
   }
 }
