@@ -4,8 +4,7 @@ int level;
 int moveTime;
 Maze[][] game;
 Pacman man; 
-Ghost red;
-Pink pink;
+Ghost[] ghosts;
 
 void setup() {
   size(840, 1080);
@@ -13,9 +12,10 @@ void setup() {
   float w = width/14;
   float h = (height-100)/20;
   man = new Pacman();
-  red = new Ghost(man.getXCoord(), man.getYCoord(),(width/14) * 3.5,((height-100)/20) * 4.5);
-  pink = new Pink(man.getXCoord() - (2 * w), man.getYCoord(), (width/14) * 5.5, ((height-100)/20) * 8.5);
   game = new Maze[14][18];
+  ghosts = new Ghost[2];
+  ghosts[0] = new Ghost(man.getXCoord(), man.getYCoord(),(width/14) * 3.5,((height-100)/20) * 4.5);
+  ghosts[1] = new Pink(man.getXCoord() - (2 * w), man.getYCoord(), (width/14) * 5.5, ((height-100)/20) * 8.5);
   moveTime = millis();
   for(int i = 0; i < 14; i++) {
     for(int j = 0; j < 18; j++) {
@@ -42,10 +42,11 @@ void draw() {
     }
   }
   man.display();
-  red.display();
-  pink.display();
+  for(int i = 0; i < ghosts.length; i++) {
+    ghosts[i].display();
+  }
   if(millis() - moveTime > 500) {
-    red.move();
+    ghosts[0].move();
     moveTime = millis();
   }
 }
@@ -57,19 +58,23 @@ void keyPressed() {
   if (keyPressed) {
     if (keyCode == UP) {
       man.moveUp();
-      red.changeTargetTile(man);
+      ghosts[0].changeTargetTile(man);
+      println(man.getDirection());
     }
     if (keyCode == DOWN) {
       man.moveDown();
-      red.changeTargetTile(man);
+      ghosts[0].changeTargetTile(man);
+      println(man.getDirection());
     }
     if (keyCode == LEFT) {
       man.moveLeft();
-      red.changeTargetTile(man);
+      ghosts[0].changeTargetTile(man);
+      println(man.getDirection());
     }
     if (keyCode == RIGHT) {
       man.moveRight();
-      red.changeTargetTile(man);
+      ghosts[0].changeTargetTile(man);
+      println(man.getDirection());
     }
   }
 }
