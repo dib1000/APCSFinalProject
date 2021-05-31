@@ -47,6 +47,9 @@ void draw() {
   if (millis() - moveTime > 500) {
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].move();
+      if(i==2) {
+        ghosts[i].changeTargetTile(man);
+      }
     }
     moveTime = millis();
   }

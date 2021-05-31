@@ -94,4 +94,18 @@ class Orange extends Ghost {
     fill(#FDB846);
     rect(row, col, 40, 40);
   }
+
+  void changeTargetTile(Pacman man) {
+    float w = width/14;
+    float h = (height-100)/20;
+    float distance = sqrt(sq(row - man.getXCoord()) + sq(col - man.getYCoord()));
+    if (distance > (49 * 4)) {
+      targetRow = man.getXCoord();
+      targetCol = man.getYCoord();
+    } 
+    else {
+      targetRow = w * 2.5;
+      targetCol = h * 17.5;
+    }
+  }
 }
