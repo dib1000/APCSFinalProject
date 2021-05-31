@@ -51,13 +51,6 @@ public class Ghost { //class will code for red ghost
     targetRow = man.getXCoord();
     targetCol = man.getYCoord();
   }
-
-  void setTargetRow(float x) {
-    targetRow = x;
-  }
-  void setTargetCol(float y) {
-    targetCol = y;
-  }
 }
 
 class Pink extends Ghost {
@@ -67,6 +60,28 @@ class Pink extends Ghost {
   void display() {
     rectMode(CENTER);
     fill(#FFB9DE);
-    rect(row,col,40,40);
+    rect(row, col, 40, 40);
+  }
+
+  void changeTargetTile(Pacman man) {
+    float w = width/14;
+    float h = (height-100)/20;
+    if (man.getDirection().equals("up")) {
+      targetRow = man.getXCoord();
+      targetCol = man.getYCoord() - (2 * h);
+    }
+    if (man.getDirection().equals("down")) {
+      targetRow = man.getXCoord();
+      targetCol = man.getYCoord() + (2 * h);
+    }
+    if (man.getDirection().equals("right")) {
+      targetRow = man.getXCoord() + (2 * w);
+      targetCol = man.getYCoord();
+    }
+    if (man.getDirection().equals("left")) {
+      targetRow = man.getXCoord() - (2 * w);
+      targetCol = man.getYCoord();
+    }
+    println(targetRow + " " + targetCol);
   }
 }
