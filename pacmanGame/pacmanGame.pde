@@ -44,15 +44,15 @@ void draw() {
     ghosts[i].display();
   }
   if (millis() - moveTime > 500) {
-    ghosts[0].move();
+    for (int i = 0; i < ghosts.length; i++) {
+      ghosts[i].move();
+    }
     moveTime = millis();
   }
 }
 
 void keyPressed() {
   //takes user input from the arrow keys to control the PacMan
-  float w = width/14;
-  float h = (height-100)/20;
   if (keyPressed) {
     if (keyCode == UP) {
       man.moveUp();
