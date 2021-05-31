@@ -49,6 +49,8 @@ from the movement of pacman
 
 5/30/2021: Got redGhost to move to its target tile in an uniform time;
 
+5/30/2021: Made pink ghost and orange ghost subclasses
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
