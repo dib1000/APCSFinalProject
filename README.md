@@ -51,6 +51,8 @@ from the movement of pacman
 
 5/30/2021: Made pink ghost and orange ghost subclasses
 
+6/1/2021 (early morning): Added blue ghost subclass
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
