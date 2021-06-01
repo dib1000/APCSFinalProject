@@ -38,7 +38,7 @@ void draw() {
     rect(0, 0, width * 3, height * 3);
     textSize(64);
     fill(255);
-    text("GAME OVER", width/2, height/2);
+    text("GAME OVER", width/2 - 175, height/2 - 50);
   } else {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
