@@ -15,7 +15,7 @@ void setup() {
   man = new Pacman();
   game = new Maze[14][18];
   ghosts = new Ghost[3];
-  ghosts[0] = new Ghost(man.getXCoord(), man.getYCoord(), (width/14) * 3.5, ((height-100)/20) * 7.5);
+  ghosts[0] = new Ghost(man.getXCoord(), man.getYCoord(), (width/14) * 12.5, ((height-100)/20) * 12.5);
   ghosts[1] = new Pink(man.getXCoord() - (2 * w), man.getYCoord(), (width/14) * 5.5, ((height-100)/20) * 8.5);
   ghosts[2] = new Orange(w * 2.5, h * 17.5, w * 8.5, h * 8.5);
   blue = new Blue(man.getXCoord(), man.getYCoord(), w * 8.5, h * 2.5);
