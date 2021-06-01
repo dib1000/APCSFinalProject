@@ -22,32 +22,40 @@ public class Pacman {
 
   void moveUp() {
     //put speed in parameters later to increase the speeds?
+    if (y > 122.5){
     man.setYCoord(man.getYCoord() - h);
     fill(0);
     ellipse(man.getXCoord(), man.getYCoord() + h, 41, 41);
     direction = "up";
+    }
   }
 
   void moveDown() {
+    if (y < 857.5){
     man.setYCoord(man.getYCoord() + h);
     fill(0);
     ellipse(man.getXCoord(), man.getYCoord() - h, 41, 41);
     direction = "down";
+    }
   }
 
   void moveRight() {
+    if (x < width - (2*w)){
     man.setXCoord(man.getXCoord() + w);
     fill(0);
     ellipse(man.getXCoord() - w, man.getYCoord(), 41, 41);
     direction = "right";
+    }
   }
 
 
   void moveLeft() {
+    if (x > 2*w){
     man.setXCoord(man.getXCoord() - w);
     fill(0);
     ellipse(man.getXCoord() + w, man.getYCoord(), 41, 41);
     direction = "left";
+    }
   }
 
   String withAnything() {
@@ -104,6 +112,8 @@ public class Pacman {
       fill(#FAFF15);
       ellipse(100 + (50 * (i + 1)), height-135, 40, 40);
     }
+    println(y);
+    
   }
   
   String getDirection() {
