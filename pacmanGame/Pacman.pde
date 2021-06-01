@@ -77,7 +77,14 @@ public class Pacman {
     // returns the y coordinate of pacman
     return y;
   }
-
+  
+  int getPoint(){
+    return points;
+  }
+  
+  int getLives(){
+    return lives;
+  }
   void setXCoord(float x) {
     this.x = x;
   }
@@ -92,7 +99,7 @@ public class Pacman {
     fill(255);
     textSize(24);
     text("POINTS: " + points, 50, 40);
-    text("LIVES:", 50, height - 125);
+    text("LIVES:" + lives, width - 200, 40);
     for (int i = 0; i < lives; i++) {
       fill(#FAFF15);
       ellipse(100 + (50 * (i + 1)), height-135, 40, 40);
