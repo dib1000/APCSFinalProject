@@ -148,9 +148,9 @@ class Blue extends Ghost {
       targetRow = red.getRow() + abs(manX - red.getRow()) * 2;
     }
     if (red.getCol() > manY) {
-      targetCol = red.getCol() - abs(manY - red.getCol()) * 2;
+      targetCol = red.getCol() + abs(manY - red.getCol()) * 2;
     } else {
-      targetCol = abs(manY - red.getCol()) * 2 + red.getCol();
+      targetCol = red.getCol() - abs(manY - red.getCol()) * 2;
     }
     if (targetRow >= width) {
       targetRow = w * 12.5;
