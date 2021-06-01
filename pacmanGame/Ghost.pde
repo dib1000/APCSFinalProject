@@ -64,6 +64,14 @@ public class Ghost { //class will code for red ghost
   float getRow() {
     return row;
   }
+  
+  void setCol(float c) {
+    col = c;
+  }
+  
+  void setRow(float r) {
+    row = r;
+  }
 }
 
 class Pink extends Ghost {
