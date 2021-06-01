@@ -53,6 +53,8 @@ from the movement of pacman
 
 6/1/2021 (early morning): Added blue ghost subclass
 
+6/1/2021: Made the game restart once pacman loses a life
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
