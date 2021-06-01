@@ -33,33 +33,41 @@ void setup() {
 }
 
 void draw() {
-  for (int i = 0; i < game.length; i++) {
-    for (int j = 0; j < game[0].length; j++) {
-      if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
-        game[i][j].display();
-      } else {
-        game[i][j].display(game, i, j);
+  if (man.getLives() < 0) {
+    fill(0);
+    rect(0, 0, width * 3, height * 3);
+    textSize(64);
+    fill(255);
+    text("GAME OVER", width/2, height/2);
+  } else {
+    for (int i = 0; i < game.length; i++) {
+      for (int j = 0; j < game[0].length; j++) {
+        if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
+          game[i][j].display();
+        } else {
+          game[i][j].display(game, i, j);
+        }
       }
     }
-  }
-  man.display();
-  for (int i = 0; i < ghosts.length; i++) {
-    ghosts[i].display();
-  }
-  if (millis() - moveTime > 500) {
+    man.display();
     for (int i = 0; i < ghosts.length; i++) {
-      ghosts[i].move();
-      if (i==2) {
-        ghosts[i].changeTargetTile(man);
-      }
-      if (i == 3) {
-        ghosts[i].changeTargetTile(man, ghosts[0]);
-      }
+      ghosts[i].display();
     }
-    moveTime = millis();
-  }
-  if (man.withGhost(ghosts)) {
-    restart();
+    if (millis() - moveTime > 500) {
+      for (int i = 0; i < ghosts.length; i++) {
+        ghosts[i].move();
+        if (i==2) {
+          ghosts[i].changeTargetTile(man);
+        }
+        if (i == 3) {
+          ghosts[i].changeTargetTile(man, ghosts[0]);
+        }
+      }
+      moveTime = millis();
+    }
+    if (man.withGhost(ghosts)) {
+      restart();
+    }
   }
 }
 
