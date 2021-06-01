@@ -28,22 +28,24 @@ public class Ghost { //class will code for red ghost
     float down = sq(row  - targetRow) + sq((col + h) - targetCol);
     float[] directions = {left, right, up, down};
     directions = sort(directions);
-    if (directions[0] == left) {
+    if (directions[0] == left && row > 2*w) {
       row = row - w;
       fill(0);
       rect(row + w, col, 41, 41);
-    } else if (directions[0] == right) {
+    } else if (directions[0] == right && row < width - (2*w)) {
       row = row + w;
       fill(0);
       rect(row - w, col, 41, 41);
-    } else if (directions[0] == up) {
+    } else if (directions[0] == up && col > 122.5) {
       col = col - h;
       fill(0);
       rect(row, col + h, 41, 41);
     } else {
+      if (col < 857.5){
       col = col + h;
       fill(0);
       rect(row, col - h, 41, 41);
+      }
     }
   }
 
