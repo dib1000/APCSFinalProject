@@ -51,6 +51,14 @@ public class Ghost { //class will code for red ghost
     targetRow = man.getXCoord();
     targetCol = man.getYCoord();
   }
+
+  float getCol() {
+    return col;
+  }
+
+  float getRow() {
+    return row;
+  }
 }
 
 class Pink extends Ghost {
@@ -102,8 +110,7 @@ class Orange extends Ghost {
     if (distance > (49 * 4)) {
       targetRow = man.getXCoord();
       targetCol = man.getYCoord();
-    } 
-    else {
+    } else {
       targetRow = w * 2.5;
       targetCol = h * 17.5;
     }
@@ -112,12 +119,42 @@ class Orange extends Ghost {
 
 class Blue extends Ghost {
   Blue(float x, float y, float r, float c) {
-    super(x,y,r,c);
+    super(x, y, r, c);
   }
-  
+
   void display() {
     rectMode(CENTER);
     fill(#00FFFF);
-    rect(row,col,40,40);
+    rect(row, col, 40, 40);
+  }
+
+  void changeTargetTile(Pacman man, Ghost red) {
+    float w = width/14;
+    float h = (height-100)/20;
+    float manX = man.getXCoord();
+    float manY = man.getYCoord();
+    if (man.getDirection().equals("up")) {
+      manY -= h;
+    } else if (man.getDirection().equals("down")) {
+      manY += h;
+    } else if (man.getDirection().equals("left")) {
+      manX -= w;
+    } else {
+      manX += w;
+    }
+    targetRow = abs(red.getRow() - manX) * 2 + red.getRow();
+    targetCol = abs(red.getCol() - manY) * 2 + red.getCol();
+    if (targetRow >= width) {
+      targetRow = w * 12.5;
+    }
+    if (targetRow <= 0) {
+      targetRow = w * 2.5;
+    }
+    if (targetCol >= height) {
+      targetCol = h * 17.5;
+    }
+    if (targetCol < 0) {
+      targetCol = h * 2.5;
+    }
   }
 }
