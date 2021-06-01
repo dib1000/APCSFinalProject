@@ -14,6 +14,13 @@ public class Pellet extends Maze {
     ellipse(x,y,15,15);
   }
   
+  float getX(){
+    return x;
+  }
+  
+  float getY(){
+    return y; 
+  }
   void disappear(){
   }
 }
