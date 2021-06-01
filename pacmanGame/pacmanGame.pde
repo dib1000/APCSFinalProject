@@ -131,7 +131,7 @@ void restart() {
     if (i == 3) {
       ghosts[i].changeTargetTile(man, ghosts[0]);
     } else {
+      ghosts[i].changeTargetTile(man);
     }
-    ghosts[i].changeTargetTile(man);
   }
 }
