@@ -46,7 +46,7 @@ void draw() {
   for (int i = 0; i < ghosts.length; i++) {
     ghosts[i].display();
   }
-  if (millis() - moveTime > 500) {
+  if (millis() - moveTime > 2000) {
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].move();
       if(i==2) {
@@ -58,7 +58,9 @@ void draw() {
     }
     moveTime = millis();
   }
-  println(man.withGhost(ghosts));
+  if(man.withGhost(ghosts)) {
+    restart();
+  }
 }
 
 void keyPressed() {
@@ -93,4 +95,9 @@ void keyPressed() {
       }
     }
   }
+}
+
+void restart() {
+  man.loseLives();
+  
 }
