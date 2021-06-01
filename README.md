@@ -53,7 +53,9 @@ from the movement of pacman
 
 6/1/2021 (early morning): Added blue ghost subclass
 
-6/1/2021: Made the game restart once pacman loses a life
+6/1/2021: Made the elements restart in their initial positions once pacman touches a ghost
+
+6/1/2021: Game ends once pacman loses all 3 lives
 
 Tina Nguyen:
 
