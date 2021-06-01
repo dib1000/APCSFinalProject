@@ -49,16 +49,16 @@ void draw() {
   if (millis() - moveTime > 500) {
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].move();
-      if(i==2) {
+      if (i==2) {
         ghosts[i].changeTargetTile(man);
       }
-      if(i == 3) {
-        ghosts[i].changeTargetTile(man , ghosts[0]);
+      if (i == 3) {
+        ghosts[i].changeTargetTile(man, ghosts[0]);
       }
     }
     moveTime = millis();
   }
-  if(man.withGhost(ghosts)) {
+  if (man.withGhost(ghosts)) {
     restart();
   }
 }
@@ -100,8 +100,10 @@ void keyPressed() {
 void restart() {
   float w = width/14;
   float h = (height-100)/20;
-  man.loseLives();
   fill(0);
+  text("LIVES:" + man.getLives(), width - 200, 40);
+  rect(width - 200, 40, 200, 200); 
+  man.loseLives();
   ellipse(man.getXCoord(), man.getYCoord(), 41, 41);
   man.setXCoord( w * 10.5);
   man.setYCoord( h * 10.5);
