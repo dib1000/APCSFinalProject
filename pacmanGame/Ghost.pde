@@ -109,3 +109,15 @@ class Orange extends Ghost {
     }
   }
 }
+
+class Blue extends Ghost {
+  Blue(float x, float y, float r, float c) {
+    super(x,y,r,c);
+  }
+  
+  void display() {
+    rectMode(CENTER);
+    fill(#00FFFF);
+    rect(row,col,40,40);
+  }
+}
