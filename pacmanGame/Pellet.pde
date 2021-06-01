@@ -1,12 +1,8 @@
 public class Pellet extends Maze {
-  float x; 
-  float y;
   String s;
   
   Pellet(float x, float y) {
-    super("Pellet");
-    this.x = x;
-    this.y = y;
+    super("Pellet",x,y);
   }
   
   void display() {

@@ -1,10 +1,26 @@
 public class Maze { //This is now used to make sure that we can use an 
   //array with multiple classes.
   String subclass;
+  float x;
+  float y;
   Maze() {
   }
   Maze(String s) {
     subclass = s;
+  }
+
+  float getX() {
+    return x;
+  }
+
+  float getY() {
+    return y;
+  }
+
+  Maze(String s, float x, float y) {
+    subclass = s;
+    this.x = x;
+    this.y = y;
   }
 
   void display() {
@@ -13,7 +29,7 @@ public class Maze { //This is now used to make sure that we can use an
 
   void display(Maze[][] m, int r, int c) {
   }
-  
+
   String getSubclass() {
     return subclass;
   }
