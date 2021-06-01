@@ -47,7 +47,7 @@ from the movement of pacman
 
 5/29/2021: Displayed ghost
 
-5/30/2021: Got redGhost to move to its target tile in an uniform time;
+5/30/2021: Got redGhost to move to its target tile in an uniform time
 
 5/30/2021: Made pink ghost and orange ghost subclasses
 
@@ -64,3 +64,17 @@ where it is. Also added getXCoord and getYCoord to retrieve the coordinates,
 and also edited the display method for Pacman.
 
 5/27/2021: Edited keyPressed in pacmanGame and created Pacman object.
+
+06/01/2021: Added accessor methods for points and lives in Pacman class and
+moved lives to the top of the screen.
+
+06/01/2021: Added boundaries to Pacman so it can't go past the walls and
+stays on the last pellet unless it's told to move another direction
+
+06/01/2021: Added accessor methods for the x and y variables in the Pellet
+class for use in the main pacmanGame file. Will figure out how to make it
+disappear later
+
+06/01/2021: Added boundaries to the ghosts' movement so that it can't go past
+the walls and goes in other directions if movement is not possible in one
+direction
