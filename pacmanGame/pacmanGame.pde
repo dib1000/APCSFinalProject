@@ -107,4 +107,24 @@ void restart() {
   ellipse(man.getXCoord(), man.getYCoord(), 41, 41);
   man.setXCoord( w * 10.5);
   man.setYCoord( h * 10.5);
+  rectMode(CENTER);
+  for(int i = 0; i < ghosts.length; i++) {
+    rect(ghosts[i].getRow(), ghosts[i].getCol(), 41,41);
+  }
+  ghosts[0].setRow(w * 3.5);
+  ghosts[0].setCol(h * 4.5);
+  ghosts[1].setRow(w * 5.5);
+  ghosts[1].setCol(h * 8.5);
+  ghosts[2].setRow(w * 8.5);
+  ghosts[2].setCol(h * 8.5);
+  ghosts[3].setRow(w * 8.5);
+  ghosts[3].setCol(h * 2.5);
+  for(int i = 0; i < ghosts.length; i++) {
+    if(i == 3) {
+      ghosts[i].changeTargetTile(man,ghosts[0]);
+    }
+    else {
+    }
+    ghosts[i].changeTargetTile(man);
+  }
 }
