@@ -46,7 +46,7 @@ void draw() {
   for (int i = 0; i < ghosts.length; i++) {
     ghosts[i].display();
   }
-  if (millis() - moveTime > 2000) {
+  if (millis() - moveTime > 500) {
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].move();
       if(i==2) {
@@ -98,6 +98,11 @@ void keyPressed() {
 }
 
 void restart() {
+  float w = width/14;
+  float h = (height-100)/20;
   man.loseLives();
-  
+  fill(0);
+  ellipse(man.getXCoord(), man.getYCoord(), 41, 41);
+  man.setXCoord( w * 10.5);
+  man.setYCoord( h * 10.5);
 }
