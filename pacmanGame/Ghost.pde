@@ -52,6 +52,9 @@ public class Ghost { //class will code for red ghost
     targetCol = man.getYCoord();
   }
 
+  void changeTargetTile(Pacman man, Ghost ghost) {
+  }
+
   float getCol() {
     return col;
   }
@@ -162,7 +165,7 @@ class Blue extends Ghost {
       targetCol = h * 17.5;
     }
     if (targetCol < 0) {
-      targetCol = h * 2.5;
+      targetCol = h * 4.5;
     }
   }
 }
