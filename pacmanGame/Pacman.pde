@@ -22,39 +22,39 @@ public class Pacman {
 
   void moveUp() {
     //put speed in parameters later to increase the speeds?
-    if (y > 122.5){
-    man.setYCoord(man.getYCoord() - h);
-    fill(0);
-    ellipse(man.getXCoord(), man.getYCoord() + h, 41, 41);
-    direction = "up";
+    if (y > 122.5) {
+      man.setYCoord(man.getYCoord() - h);
+      fill(0);
+      ellipse(man.getXCoord(), man.getYCoord() + h, 41, 41);
+      direction = "up";
     }
   }
 
   void moveDown() {
-    if (y < 857.5){
-    man.setYCoord(man.getYCoord() + h);
-    fill(0);
-    ellipse(man.getXCoord(), man.getYCoord() - h, 41, 41);
-    direction = "down";
+    if (y < 857.5) {
+      man.setYCoord(man.getYCoord() + h);
+      fill(0);
+      ellipse(man.getXCoord(), man.getYCoord() - h, 41, 41);
+      direction = "down";
     }
   }
 
   void moveRight() {
-    if (x < width - (2*w)){
-    man.setXCoord(man.getXCoord() + w);
-    fill(0);
-    ellipse(man.getXCoord() - w, man.getYCoord(), 41, 41);
-    direction = "right";
+    if (x < width - (2*w)) {
+      man.setXCoord(man.getXCoord() + w);
+      fill(0);
+      ellipse(man.getXCoord() - w, man.getYCoord(), 41, 41);
+      direction = "right";
     }
   }
 
 
   void moveLeft() {
-    if (x > 2*w){
-    man.setXCoord(man.getXCoord() - w);
-    fill(0);
-    ellipse(man.getXCoord() + w, man.getYCoord(), 41, 41);
-    direction = "left";
+    if (x > 2*w) {
+      man.setXCoord(man.getXCoord() - w);
+      fill(0);
+      ellipse(man.getXCoord() + w, man.getYCoord(), 41, 41);
+      direction = "left";
     }
   }
 
@@ -85,12 +85,12 @@ public class Pacman {
     // returns the y coordinate of pacman
     return y;
   }
-  
-  int getPoint(){
+
+  int getPoint() {
     return points;
   }
-  
-  int getLives(){
+
+  int getLives() {
     return lives;
   }
   void setXCoord(float x) {
@@ -112,11 +112,18 @@ public class Pacman {
       fill(#FAFF15);
       ellipse(100 + (50 * (i + 1)), height-135, 40, 40);
     }
-    println(y);
-    
   }
-  
+
   String getDirection() {
     return direction;
+  }
+
+  boolean withGhost(Ghost[] ghosts) {
+    for (int i = 0; i < ghosts.length; i++) {
+      if (ghosts[i].getRow() == getXCoord() && ghosts[i].getCol() == getYCoord()) {
+        return true;
+      }
+    }
+    return false;
   }
 }

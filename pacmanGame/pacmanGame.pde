@@ -58,6 +58,7 @@ void draw() {
     }
     moveTime = millis();
   }
+  println(man.withGhost(ghosts));
 }
 
 void keyPressed() {
