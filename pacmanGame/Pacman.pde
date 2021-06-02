@@ -22,12 +22,10 @@ public class Pacman {
 
   void moveUp() {
     //put speed in parameters later to increase the speeds?
-    if (y > 122.5) {
       man.setYCoord(man.getYCoord() - h);
       fill(0);
       ellipse(man.getXCoord(), man.getYCoord() + h, 41, 41);
       direction = "up";
-    }
   }
 
   void moveDown() {

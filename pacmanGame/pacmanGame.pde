@@ -26,7 +26,7 @@ void setup() {
         game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
         pelletCount++;
       } else {
-        game[i][j] = new Wall(w/2 +(i * w), h/2 + ((j + 1) * h), w, h);
+        game[i][j] = new Wall(w/2 +(i * w),  (3 * h)/2 +(j * h), w, h);
       }
     }
   }
@@ -72,32 +72,30 @@ void draw() {
 }
 
 void keyPressed() {
+  float w = width/14;
+  float h = (height-100)/20;
   //takes user input from the arrow keys to control the PacMan
   if (keyPressed) {
-    if (keyCode == UP) {
+    if (keyCode == UP && !(game[int((man.getYCoord() - (3 * h / 2)) / h) - 1 ][int((man.getXCoord() -  w / 2) / w)].getSubclass().equals("Wall"))) {
       man.moveUp();
-      ghosts[0].changeTargetTile(man);
       for (int i = 0; i < ghosts.length; i++) {
         ghosts[i].changeTargetTile(man);
       }
     }
     if (keyCode == DOWN) {
       man.moveDown();
-      ghosts[0].changeTargetTile(man);
       for (int i = 0; i < ghosts.length; i++) {
         ghosts[i].changeTargetTile(man);
       }
     }
     if (keyCode == LEFT) {
       man.moveLeft();
-      ghosts[0].changeTargetTile(man);
       for (int i = 0; i < ghosts.length; i++) {
         ghosts[i].changeTargetTile(man);
       }
     }
     if (keyCode == RIGHT) {
       man.moveRight();
-      ghosts[0].changeTargetTile(man);
       for (int i = 0; i < ghosts.length; i++) {
         ghosts[i].changeTargetTile(man);
       }
