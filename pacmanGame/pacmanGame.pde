@@ -74,27 +74,29 @@ void draw() {
 void keyPressed() {
   float w = width/14;
   float h = (height-100)/20;
+  int y = int((man.getYCoord() - (3 * h / 2)) / h);
+  int x = int((man.getXCoord() -  w / 2) / w);
   //takes user input from the arrow keys to control the PacMan
   if (keyPressed) {
-    if (keyCode == UP && !(game[int((man.getYCoord() - (3 * h / 2)) / h) - 1 ][int((man.getXCoord() -  w / 2) / w)].getSubclass().equals("Wall"))) {
+    if (keyCode == UP && !(game[x][y-1].getSubclass().equals("Wall"))) {
       man.moveUp();
       for (int i = 0; i < ghosts.length; i++) {
         ghosts[i].changeTargetTile(man);
       }
     }
-    if (keyCode == DOWN) {
+    if (keyCode == DOWN && !(game[x][y+1].getSubclass().equals("Wall"))) {
       man.moveDown();
       for (int i = 0; i < ghosts.length; i++) {
         ghosts[i].changeTargetTile(man);
       }
     }
-    if (keyCode == LEFT) {
+    if (keyCode == LEFT && !(game[x-1][y].getSubclass().equals("Wall"))) {
       man.moveLeft();
       for (int i = 0; i < ghosts.length; i++) {
         ghosts[i].changeTargetTile(man);
       }
     }
-    if (keyCode == RIGHT) {
+    if (keyCode == RIGHT && !(game[x+1][y].getSubclass().equals("Wall"))) {
       man.moveRight();
       for (int i = 0; i < ghosts.length; i++) {
         ghosts[i].changeTargetTile(man);

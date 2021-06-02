@@ -38,22 +38,18 @@ public class Pacman {
   }
 
   void moveRight() {
-    if (x < width - (2*w)) {
       man.setXCoord(man.getXCoord() + w);
       fill(0);
       ellipse(man.getXCoord() - w, man.getYCoord(), 41, 41);
       direction = "right";
-    }
   }
 
 
   void moveLeft() {
-    if (x > 2*w) {
       man.setXCoord(man.getXCoord() - w);
       fill(0);
       ellipse(man.getXCoord() + w, man.getYCoord(), 41, 41);
       direction = "left";
-    }
   }
 
   String withAnything() {
