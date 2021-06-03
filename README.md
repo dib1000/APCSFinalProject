@@ -82,3 +82,7 @@ disappear later
 06/01/2021: Added boundaries to the ghosts' movement so that it can't go past
 the walls and goes in other directions if movement is not possible in one
 direction
+
+06/03/2021: Implemented pellets getting eaten and adding to the points; however
+the displaying of the points should be fixed. Pellets disappear after being touched
+by the pacman. 
