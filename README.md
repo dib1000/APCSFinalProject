@@ -93,3 +93,6 @@ things with the code that implemented pellets being eaten, but it's fixed now.
 
 06/03/2021: Added the display of a final score at the end screen. However, the points
 adding up are incorrect. Will work on that.
+
+06/03/2021: Fixed the displaying of points. The points still aren't adding up correctly
+but I plan on using a boolean to make sure that points would add up from empty spots.
