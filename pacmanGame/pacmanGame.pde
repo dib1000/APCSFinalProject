@@ -43,16 +43,17 @@ void draw() {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
-          if (game[i][j].getSubclass().equals("Pellet")) {
              if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord()){
                man.addPoints("regular");
                game[i][j].isEaten(true);
              }
-             else game[i][j].display();
-          } else {
+             else{ 
+               game[i][j].display();
+             }
+        }else {
+          // displays walls
           game[i][j].display(game, i, j);
         }
-      }
     }
     }
     man.display();
