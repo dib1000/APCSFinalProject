@@ -39,6 +39,9 @@ void draw() {
     textSize(64);
     fill(255);
     text("GAME OVER", width/2 - 175, height/2 - 50);
+    textSize(32);
+    fill(255);
+    text("FINAL SCORE: " + man.getPoint(), width/2 - 180, height/2);
   } else {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
