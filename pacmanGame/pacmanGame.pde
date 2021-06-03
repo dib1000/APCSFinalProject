@@ -42,6 +42,16 @@ void draw() {
     textSize(32);
     fill(255);
     text("FINAL SCORE: " + man.getPoint(), width/2 - 180, height/2);
+  }else if (man.getPoint() >= 1920){
+    // minimum amount of points to win is 1920
+      fill(0);
+      rect(0, 0, width * 3, height * 3);
+      textSize(64);
+      fill(255);
+      text("YOU WON", width/2 - 175, height/2 - 50);
+      textSize(32);
+      fill(255);
+      text("FINAL SCORE: " + man.getPoint(), width/2 - 180, height/2);
   } else {
     fill(255);
     textSize(24);

@@ -103,3 +103,6 @@ overadd for pellets that have been eaten already.
 06/03/2021: Instead of displaying the number of lives, the number of lives is represented
 by pacmans (yellow circles for now). I also removed the yellow old pacmans at the bottom
 since we moved lives to the top of the screen.
+
+06/03/2021: Once you collect all the pellets, you win the game and you see a winning screen
+at the end. 
