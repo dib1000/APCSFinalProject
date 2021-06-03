@@ -100,11 +100,11 @@ public class Pacman {
     //just yellow circle for now
     fill(255);
     textSize(24);
-    text("POINTS: " + points, 50, 40);
-    text("LIVES:" + lives, width - 200, 40);
-    for (int i = 0; i < lives; i++) {
+   // text("POINTS: " + points, 50, 40);
+    text("LIVES:", width - 290, 40);
+    for (int i = 0; i <= lives; i++) {
       fill(#FAFF15);
-      ellipse(100 + (50 * (i + 1)), height-135, 40, 40);
+      ellipse(450 + (50 * (i + 1)), 30, 40, 40);
     }
   }
 

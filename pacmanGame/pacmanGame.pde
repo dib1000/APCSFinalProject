@@ -128,8 +128,13 @@ void restart() {
   float w = width/14;
   float h = (height-100)/20;
   fill(0);
-  text("LIVES:" + man.getLives(), width - 200, 40);
-  rect(width - 200, 40, 200, 200); 
+  text("LIVES:", width - 200, 40);
+  for (int i = 0; i <= man.getLives(); i++) {
+      fill(#FAFF15);
+      ellipse(450 + (50 * (i + 1)), 30, 40, 40);
+  }
+  fill(0);
+  rect(450, 40, 600, 85); 
   man.loseLives();
   ellipse(man.getXCoord(), man.getYCoord(), 41, 41);
   man.setXCoord( w * 10.5);
