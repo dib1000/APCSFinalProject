@@ -85,4 +85,8 @@ direction
 
 06/03/2021: Implemented pellets getting eaten and adding to the points; however
 the displaying of the points should be fixed. Pellets disappear after being touched
-by the pacman. 
+by the pacman. There are now variables and functions in the pellet class to indicate
+whether it has been eaten or not and it's connected by the maze class.
+
+06/03/2021: Fixed a mistake where the walls would not show. I had further complicated
+things with the code that implemented pellets being eaten, but it's fixed now.
