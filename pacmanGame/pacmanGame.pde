@@ -43,11 +43,19 @@ void draw() {
     fill(255);
     text("FINAL SCORE: " + man.getPoint(), width/2 - 180, height/2);
   } else {
+    fill(255);
+    textSize(24);
+    text("POINTS: " + man.getPoint(), 50, 40);
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
              if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord()){
                man.addPoints("regular");
+               fill(#050000);
+               rect(55, 39, 500, 50);
+               fill(255);
+               textSize(24);
+               text("POINTS: " + man.getPoint(), 50, 40);
                game[i][j].isEaten(true);
              }
              else{ 
@@ -60,6 +68,7 @@ void draw() {
     }
     }
     man.display();
+ 
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
     }
