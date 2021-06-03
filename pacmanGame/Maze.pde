@@ -25,10 +25,13 @@ public class Maze { //This is now used to make sure that we can use an
     this.y = y;
   }
   
-   void isEaten(boolean ate){
+   void eaten(boolean ate){
       
   }
   
+  boolean isEaten(){
+      return eaten;
+  }
   void display() {
     //ellipse(50,50,20,20);
   }
