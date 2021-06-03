@@ -96,3 +96,6 @@ adding up are incorrect. Will work on that.
 
 06/03/2021: Fixed the displaying of points. The points still aren't adding up correctly
 but I plan on using a boolean to make sure that points would add up from empty spots.
+
+06/03/2021: Fixed the addition of points. Each pellet is worth 10 points and it doesn't  
+overadd for pellets that have been eaten already.
