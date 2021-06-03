@@ -3,6 +3,8 @@ public class Maze { //This is now used to make sure that we can use an
   String subclass;
   float x;
   float y;
+  boolean eaten;
+  
   Maze() {
   }
   Maze(String s) {
@@ -22,7 +24,11 @@ public class Maze { //This is now used to make sure that we can use an
     this.x = x;
     this.y = y;
   }
-
+  
+   void isEaten(boolean ate){
+      
+  }
+  
   void display() {
     //ellipse(50,50,20,20);
   }
