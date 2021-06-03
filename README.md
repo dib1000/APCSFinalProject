@@ -90,3 +90,6 @@ whether it has been eaten or not and it's connected by the maze class.
 
 06/03/2021: Fixed a mistake where the walls would not show. I had further complicated
 things with the code that implemented pellets being eaten, but it's fixed now.
+
+06/03/2021: Added the display of a final score at the end screen. However, the points
+adding up are incorrect. Will work on that.
