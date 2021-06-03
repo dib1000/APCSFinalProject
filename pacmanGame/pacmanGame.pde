@@ -49,14 +49,14 @@ void draw() {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
-             if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord()){
+             if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord() && (!game[i][j].isEaten())){
                man.addPoints("regular");
                fill(#050000);
                rect(55, 39, 500, 50);
                fill(255);
                textSize(24);
                text("POINTS: " + man.getPoint(), 50, 40);
-               game[i][j].isEaten(true);
+               game[i][j].eaten(true);
              }
              else{ 
                game[i][j].display();
