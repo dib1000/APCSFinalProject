@@ -99,3 +99,7 @@ but I plan on using a boolean to make sure that points would add up from empty s
 
 06/03/2021: Fixed the addition of points. Each pellet is worth 10 points and it doesn't  
 overadd for pellets that have been eaten already.
+
+06/03/2021: Instead of displaying the number of lives, the number of lives is represented
+by pacmans (yellow circles for now). I also removed the yellow old pacmans at the bottom
+since we moved lives to the top of the screen.
