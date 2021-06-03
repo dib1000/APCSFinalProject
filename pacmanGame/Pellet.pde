@@ -10,12 +10,15 @@ public class Pellet extends Maze {
     if (!eaten){
     fill(#ECBA96);
     ellipse(x,y,15,15);
-
   }
   }
   
-  void isEaten(boolean ate){
+  void eaten(boolean ate){
      eaten = ate;
+  }
+  
+  boolean isEaten(){
+      return eaten;
   }
   
   float getX(){
