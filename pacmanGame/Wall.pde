@@ -16,21 +16,16 @@ public class Wall extends Maze {
       (col < m[0].length - 1 && m[row][col+1].getSubclass().equals("Wall"))) {
       rect(x, y, 20, hei);
     } else {
-      rect(x, y, 20, hei);
       if (( col < m[0].length - 1 && m[row][col+1].getSubclass().equals("Wall")) &&
         (row < m.length - 1 && m[row+1][col].getSubclass().equals("Wall"))) {
         rectMode(CORNER);
-        rect(20 + (wid * row), ((3 * (hei + (20 * col))) / 2) - 10, 40, 20);
-        fill(0);
-        rect(20 + (wid * row), hei + 30 * col, 20, (hei/2)-10);
+        rect( x - 10, y - 10, 20, 40);
+        rect(x - 10, y - 10, 40 , 20);
       }
 
       if (( col > m[0].length - 1 && m[row][col-1].getSubclass().equals("Wall")) &&
         (row < m.length - 1 && m[row+1][col].getSubclass().equals("Wall"))) {
         rectMode(CORNER);
-        rect(100, ((3 * (hei + (20 * col))) / 2) - 10, 40, 20);
-        fill(0);
-        rect(20 + (wid * row), hei + 30 * col, 20, (hei/2)-10);
       }
     }
   }
