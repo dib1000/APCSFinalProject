@@ -1,6 +1,8 @@
 int pelletCount;
 int time; //for fruit
 int level;
+int numGhosts;
+int ghostTime;
 int moveTime;
 int pauseTime;
 boolean pause;
@@ -16,13 +18,15 @@ void setup() {
   man = new Pacman();
   game = new Maze[14][18];
   ghosts = new Ghost[4];
+  numGhosts = 1;
   ghosts[0] = new Ghost(man.getXCoord(), man.getYCoord(), (width/14) * 3.5, ((height-100)/20) * 4.5);
   ghosts[1] = new Pink(man.getXCoord() - (2 * w), man.getYCoord(), (width/14) * 5.5, ((height-100)/20) * 8.5);
-  ghosts[2] = new Orange(w * 2.5, h * 17.5, w * 8.5, h * 8.5);
-  ghosts[3] = new Blue(man.getXCoord(), man.getYCoord(), w * 8.5, h * 2.5);
-  ghosts[3].changeTargetTile(man, ghosts[0]);
+  ghosts[3] = new Orange(w * 2.5, h * 17.5, w * 8.5, h * 8.5);
+  ghosts[2] = new Blue(man.getXCoord(), man.getYCoord(), w * 8.5, h * 2.5);
+  ghosts[2].changeTargetTile(man, ghosts[0]);
   moveTime = millis();
   pauseTime = millis();
+  ghostTime = millis();
   for (int i = 0; i < 14; i++) {
     for (int j = 0; j < 18; j++) {
       if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
@@ -59,7 +63,7 @@ void draw() {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
-            game[i][j].display();
+          game[i][j].display();
         } else {
           // displays walls
           game[i][j].display(game, i, j);
@@ -96,20 +100,26 @@ void draw() {
       ghosts[i].display();
     }
     if (millis() - moveTime > 300) {
-      for (int i = 0; i < ghosts.length; i++) {
-        ghosts[i].move();
-        if (i==2) {
-          ghosts[i].changeTargetTile(man);
+      int g = 0;
+      while (g < numGhosts) {
+        ghosts[g].move();
+        if (g == 2) {
+          ghosts[g].changeTargetTile(man, ghosts[0]);
         }
-        if (i == 3) {
-          ghosts[i].changeTargetTile(man, ghosts[0]);
+        if (g == 3) {
+          ghosts[g].changeTargetTile(man);
         }
+        g++;
       }
       moveTime = millis();
     }
-    if (man.withGhost(ghosts)) {
-      restart();
-    }
+  }
+  if (man.withGhost(ghosts)) {
+    restart();
+  }
+  if (millis() - ghostTime > 3000 && numGhosts < 4) {
+    numGhosts+= 1;
+    ghostTime = millis();
   }
 }
 
@@ -123,25 +133,41 @@ void keyPressed() {
     if (keyCode == UP && !(game[x][y-1].getSubclass().equals("Wall"))) {
       man.moveUp();
       for (int i = 0; i < ghosts.length; i++) {
-        ghosts[i].changeTargetTile(man);
+        if (i == 2) {
+          ghosts[i].changeTargetTile(man, ghosts[0]);
+        } else {
+          ghosts[i].changeTargetTile(man);
+        }
       }
     }
     if (keyCode == DOWN && !(game[x][y+1].getSubclass().equals("Wall"))) {
       man.moveDown();
       for (int i = 0; i < ghosts.length; i++) {
-        ghosts[i].changeTargetTile(man);
+        if (i == 2) {
+          ghosts[i].changeTargetTile(man, ghosts[0]);
+        } else {
+          ghosts[i].changeTargetTile(man);
+        }
       }
     }
     if (keyCode == LEFT && !(game[x-1][y].getSubclass().equals("Wall"))) {
       man.moveLeft();
       for (int i = 0; i < ghosts.length; i++) {
-        ghosts[i].changeTargetTile(man);
+        if (i == 2) {
+          ghosts[i].changeTargetTile(man, ghosts[0]);
+        } else {
+          ghosts[i].changeTargetTile(man);
+        }
       }
     }
     if (keyCode == RIGHT && !(game[x+1][y].getSubclass().equals("Wall"))) {
       man.moveRight();
       for (int i = 0; i < ghosts.length; i++) {
-        ghosts[i].changeTargetTile(man);
+        if (i == 2) {
+          ghosts[i].changeTargetTile(man, ghosts[0]);
+        } else {
+          ghosts[i].changeTargetTile(man);
+        }
       }
     }
   }
@@ -175,7 +201,7 @@ void restart() {
   ghosts[3].setRow(w * 8.5);
   ghosts[3].setCol(h * 2.5);
   for (int i = 0; i < ghosts.length; i++) {
-    if (i == 3) {
+    if (i == 2) {
       ghosts[i].changeTargetTile(man, ghosts[0]);
     } else {
       ghosts[i].changeTargetTile(man);
