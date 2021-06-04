@@ -57,6 +57,14 @@ from the movement of pacman
 
 6/1/2021: Game ends once pacman loses all 3 lives
 
+6/2/2021: Rewrote the code for pacman not going through walls (it works so that pacman won't go through any walls, not just the ones in the corner)
+
+6/3/2021: Added displaying of walls that are corners
+
+6/3/2021: Added the staggered start times for the movement of the ghosts. I also fixed the blue ghost change target tile to actually work in the pacman game (before it just used the inherited changetargettile from red)
+
+6/4/2021: Added different font 
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
@@ -105,4 +113,4 @@ by pacmans (yellow circles for now). I also removed the yellow old pacmans at th
 since we moved lives to the top of the screen.
 
 06/03/2021: Once you collect all the pellets, you win the game and you see a winning screen
-at the end. 
+at the end.

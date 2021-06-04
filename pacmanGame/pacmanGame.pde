@@ -55,13 +55,13 @@ void draw() {
     // minimum amount of points to win is 1920
     fill(0);
     rect(0, 0, width * 3, height * 3);
-    textSize(64);
+    textFont(gameFont);
     fill(255);
-    text("YOU WON", width/2 - 175, height/2 - 50);
+    text("YOU WON", width/2 - 150, height/2 - 50);
     textSize(32);
     fill(255);
-    text("FINAL SCORE: " + man.getPoint(), width/2 - 180, height/2);
-  } else if (millis() - pauseTime < 1000) {
+    text("FINAL SCORE: " + man.getPoint(), width/2 - 230, height/2);
+  } else if (millis() - pauseTime < 300) {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
@@ -74,7 +74,8 @@ void draw() {
     }
   } else {
     fill(255);
-    textSize(24);
+    textFont(gameFont);
+    textSize(20);
     text("POINTS: " + man.getPoint(), 50, 40);
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
@@ -84,7 +85,7 @@ void draw() {
             fill(#050000);
             rect(55, 39, 500, 50);
             fill(255);
-            textSize(24);
+            textSize(20);
             text("POINTS: " + man.getPoint(), 50, 40);
             game[i][j].eaten(true);
           } else { 
