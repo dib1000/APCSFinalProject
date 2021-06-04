@@ -63,7 +63,9 @@ from the movement of pacman
 
 6/3/2021: Added the staggered start times for the movement of the ghosts. I also fixed the blue ghost change target tile to actually work in the pacman game (before it just used the inherited changetargettile from red)
 
-6/4/2021: Added different font 
+6/4/2021: Added different font
+
+6/4/2021: Started adding blueghost mode and power pellets. So far, ghosts turn blue for a set amount of time after the power pellet has been eaten.
 
 Tina Nguyen:
 
