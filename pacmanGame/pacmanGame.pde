@@ -117,7 +117,7 @@ void draw() {
   if (man.withGhost(ghosts)) {
     restart();
   }
-  if (millis() - ghostTime > 3000 && numGhosts < 4) {
+  if (millis() - ghostTime > 1750 && numGhosts < 4) {
     numGhosts+= 1;
     ghostTime = millis();
   }
@@ -207,5 +207,7 @@ void restart() {
       ghosts[i].changeTargetTile(man);
     }
   }
+  numGhosts = 1;
   pauseTime = millis();
+  ghostTime = millis();
 }
