@@ -5,6 +5,7 @@ int numGhosts;
 int ghostTime;
 int moveTime;
 int pauseTime;
+PFont gameFont;
 boolean pause;
 Maze[][] game;
 Pacman man; 
@@ -13,6 +14,7 @@ Ghost[] ghosts;
 void setup() {
   size(686, 1080);
   background(0);
+  gameFont = createFont("Early GameBoy.ttf",48);
   float w = width/14;
   float h = (height-100)/20;
   man = new Pacman();
@@ -43,12 +45,12 @@ void draw() {
   if (man.getLives() < 0) {
     fill(0);
     rect(0, 0, width * 3, height * 3);
-    textSize(64);
+    textFont(gameFont);
     fill(255);
-    text("GAME OVER", width/2 - 175, height/2 - 50);
+    text("GAME OVER", width/2 - 200, height/2 - 50);
     textSize(32);
     fill(255);
-    text("FINAL SCORE: " + man.getPoint(), width/2 - 180, height/2);
+    text("FINAL SCORE: " + man.getPoint(), width/2 - 230, height/2);
   } else if (man.getPoint() >= 1920) {
     // minimum amount of points to win is 1920
     fill(0);
@@ -196,10 +198,10 @@ void restart() {
   ghosts[0].setCol(h * 4.5);
   ghosts[1].setRow(w * 5.5);
   ghosts[1].setCol(h * 8.5);
-  ghosts[2].setRow(w * 8.5);
-  ghosts[2].setCol(h * 8.5);
   ghosts[3].setRow(w * 8.5);
-  ghosts[3].setCol(h * 2.5);
+  ghosts[3].setCol(h * 8.5);
+  ghosts[2].setRow(w * 8.5);
+  ghosts[2].setCol(h * 2.5);
   for (int i = 0; i < ghosts.length; i++) {
     if (i == 2) {
       ghosts[i].changeTargetTile(man, ghosts[0]);
