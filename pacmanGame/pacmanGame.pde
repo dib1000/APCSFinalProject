@@ -14,7 +14,7 @@ Ghost[] ghosts;
 void setup() {
   size(686, 1080);
   background(0);
-  gameFont = createFont("Early GameBoy.ttf",48);
+  gameFont = createFont("Early GameBoy.ttf", 48);
   float w = width/14;
   float h = (height-100)/20;
   man = new Pacman();
@@ -32,7 +32,11 @@ void setup() {
   for (int i = 0; i < 14; i++) {
     for (int j = 0; j < 18; j++) {
       if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
-        game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
+        if (i == j && i % 4 == 0) {
+          game[i][j] = new powerPellet(w/2 +(i * w), h/2 + ((j + 1) * h));
+        } else {
+          game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
+        }
         pelletCount++;
       } else {
         game[i][j] = new Wall(w/2 +(i * w), (3 * h)/2 +(j * h), w, h);
@@ -81,7 +85,11 @@ void draw() {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
           if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord() && (!game[i][j].isEaten())) {
-            man.addPoints("regular");
+            if (i == j && i % 4 ==0) {
+              man.addPoints("power");
+            } else {
+              man.addPoints("regular");
+            }
             fill(#050000);
             rect(55, 39, 500, 50);
             fill(255);
