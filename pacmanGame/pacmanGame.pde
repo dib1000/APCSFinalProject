@@ -88,7 +88,7 @@ void draw() {
           if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord() && (!game[i][j].isEaten())) {
             if (i == j && i % 4 == 0) {
               man.addPoints("power");
-              for(int b = 0; b < ghosts.length; b++) {
+              for (int b = 0; b < ghosts.length; b++) {
                 ghosts[b].turnBlue();
               }
               blueTime = millis();
@@ -111,36 +111,36 @@ void draw() {
       }
     }
     man.display();
-    if(ghosts[0].getBlue() && millis() - ghostTime > 3200) {
-      for(int f = 0; f < ghosts.length; f++) {
-        ghosts[f].turnBlue();
+    if (ghosts[0].getBlue() && millis() - blueTime > 5000) {
+      for (int f = 0; f < ghosts.length; f++) {
+        ghosts[f].turnBack();
       }
     }
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
     }
-    if (millis() - moveTime > 300) {
-      int g = 0;
-      while (g < numGhosts) {
-        ghosts[g].move();
-        if (g == 2) {
-          ghosts[g].changeTargetTile(man, ghosts[0]);
-        }
-        if (g == 3) {
-          ghosts[g].changeTargetTile(man);
-        }
-        g++;
+  }
+  if (millis() - moveTime > 300) {
+    int g = 0;
+    while (g < numGhosts) {
+      ghosts[g].move();
+      if (g == 2) {
+        ghosts[g].changeTargetTile(man, ghosts[0]);
       }
-      moveTime = millis();
+      if (g == 3) {
+        ghosts[g].changeTargetTile(man);
+      }
+      g++;
     }
+    moveTime = millis();
   }
-  if (man.withGhost(ghosts)) {
-    restart();
-  }
-  if (millis() - ghostTime > 1750 && numGhosts < 4) {
-    numGhosts+= 1;
-    ghostTime = millis();
-  }
+if (man.withGhost(ghosts)) {
+  restart();
+}
+if (millis() - ghostTime > 1750 && numGhosts < 4) {
+  numGhosts+= 1;
+  ghostTime = millis();
+}
 }
 
 void keyPressed() {
@@ -211,6 +211,11 @@ void restart() {
   rectMode(CENTER);
   for (int i = 0; i < ghosts.length; i++) {
     rect(ghosts[i].getRow(), ghosts[i].getCol(), 41, 41);
+  }
+  if (ghosts[0].getBlue()) {
+    for (int g = 0; g < ghosts.length; g++) {
+      ghosts[g].turnBack();
+    }
   }
   ghosts[0].setRow(w * 3.5);
   ghosts[0].setCol(h * 4.5);

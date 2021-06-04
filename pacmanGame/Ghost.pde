@@ -78,9 +78,11 @@ public class Ghost { //class will code for red ghost
   }
 
   void turnBlue() {
-    blueghost = !(blueghost);
+    blueghost = true;
   }
-  
+  void turnBack() {
+    blueghost = false;
+  }
   boolean getBlue() {
     return blueghost;
   }
