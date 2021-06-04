@@ -80,6 +80,10 @@ public class Ghost { //class will code for red ghost
   void turnBlue() {
     blueghost = !(blueghost);
   }
+  
+  boolean getBlue() {
+    return blueghost;
+  }
 }
 
 class Pink extends Ghost {
