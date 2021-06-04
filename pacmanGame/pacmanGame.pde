@@ -2,6 +2,8 @@ int pelletCount;
 int time; //for fruit
 int level;
 int moveTime;
+int pauseTime;
+boolean pause;
 Maze[][] game;
 Pacman man; 
 Ghost[] ghosts;
@@ -20,13 +22,14 @@ void setup() {
   ghosts[3] = new Blue(man.getXCoord(), man.getYCoord(), w * 8.5, h * 2.5);
   ghosts[3].changeTargetTile(man, ghosts[0]);
   moveTime = millis();
+  pauseTime = millis();
   for (int i = 0; i < 14; i++) {
     for (int j = 0; j < 18; j++) {
       if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
         game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
         pelletCount++;
       } else {
-        game[i][j] = new Wall(w/2 +(i * w),  (3 * h)/2 +(j * h), w, h);
+        game[i][j] = new Wall(w/2 +(i * w), (3 * h)/2 +(j * h), w, h);
       }
     }
   }
@@ -42,16 +45,27 @@ void draw() {
     textSize(32);
     fill(255);
     text("FINAL SCORE: " + man.getPoint(), width/2 - 180, height/2);
-  }else if (man.getPoint() >= 1920){
+  } else if (man.getPoint() >= 1920) {
     // minimum amount of points to win is 1920
-      fill(0);
-      rect(0, 0, width * 3, height * 3);
-      textSize(64);
-      fill(255);
-      text("YOU WON", width/2 - 175, height/2 - 50);
-      textSize(32);
-      fill(255);
-      text("FINAL SCORE: " + man.getPoint(), width/2 - 180, height/2);
+    fill(0);
+    rect(0, 0, width * 3, height * 3);
+    textSize(64);
+    fill(255);
+    text("YOU WON", width/2 - 175, height/2 - 50);
+    textSize(32);
+    fill(255);
+    text("FINAL SCORE: " + man.getPoint(), width/2 - 180, height/2);
+  } else if (millis() - pauseTime < 1000) {
+    for (int i = 0; i < game.length; i++) {
+      for (int j = 0; j < game[0].length; j++) {
+        if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
+            game[i][j].display();
+        } else {
+          // displays walls
+          game[i][j].display(game, i, j);
+        }
+      }
+    }
   } else {
     fill(255);
     textSize(24);
@@ -59,30 +73,29 @@ void draw() {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
-             if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord() && (!game[i][j].isEaten())){
-               man.addPoints("regular");
-               fill(#050000);
-               rect(55, 39, 500, 50);
-               fill(255);
-               textSize(24);
-               text("POINTS: " + man.getPoint(), 50, 40);
-               game[i][j].eaten(true);
-             }
-             else{ 
-               game[i][j].display();
-             }
-        }else {
+          if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord() && (!game[i][j].isEaten())) {
+            man.addPoints("regular");
+            fill(#050000);
+            rect(55, 39, 500, 50);
+            fill(255);
+            textSize(24);
+            text("POINTS: " + man.getPoint(), 50, 40);
+            game[i][j].eaten(true);
+          } else { 
+            game[i][j].display();
+          }
+        } else {
           // displays walls
           game[i][j].display(game, i, j);
         }
-    }
+      }
     }
     man.display();
- 
+
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
     }
-    if (millis() - moveTime > 500) {
+    if (millis() - moveTime > 300) {
       for (int i = 0; i < ghosts.length; i++) {
         ghosts[i].move();
         if (i==2) {
@@ -140,8 +153,8 @@ void restart() {
   fill(0);
   text("LIVES:", width - 200, 40);
   for (int i = 0; i <= man.getLives(); i++) {
-      fill(#FAFF15);
-      ellipse(450 + (50 * (i + 1)), 30, 40, 40);
+    fill(#FAFF15);
+    ellipse(450 + (50 * (i + 1)), 30, 40, 40);
   }
   fill(0);
   rect(450, 40, 600, 85); 
