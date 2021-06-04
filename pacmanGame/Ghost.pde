@@ -15,7 +15,11 @@ public class Ghost { //class will code for red ghost
 
   void display() {
     rectMode(CENTER);
-    fill(255, 0, 0);
+    if (blueghost) {
+      fill(#2020f7);
+    } else {
+      fill(255, 0, 0);
+    }
     rect(row, col, 40, 40);
   }
 
@@ -41,10 +45,10 @@ public class Ghost { //class will code for red ghost
       fill(0);
       rect(row, col + h, 41, 41);
     } else {
-      if (col < 857.5){
-      col = col + h;
-      fill(0);
-      rect(row, col - h, 41, 41);
+      if (col < 857.5) {
+        col = col + h;
+        fill(0);
+        rect(row, col - h, 41, 41);
       }
     }
   }
@@ -64,13 +68,17 @@ public class Ghost { //class will code for red ghost
   float getRow() {
     return row;
   }
-  
+
   void setCol(float c) {
     col = c;
   }
-  
+
   void setRow(float r) {
     row = r;
+  }
+
+  void turnBlue() {
+    blueghost = !(blueghost);
   }
 }
 
@@ -80,7 +88,11 @@ class Pink extends Ghost {
   }
   void display() {
     rectMode(CENTER);
-    fill(#FFB9DE);
+    if (blueghost) {
+      fill(#2020f7);
+    } else {
+      fill(#FFB9DE);
+    }
     rect(row, col, 40, 40);
   }
 
@@ -112,7 +124,11 @@ class Orange extends Ghost {
 
   void display() {
     rectMode(CENTER);
-    fill(#FDB846);
+    if (blueghost) {
+      fill(#2020f7);
+    } else {
+      fill(#FDB846);
+    }
     rect(row, col, 40, 40);
   }
 
@@ -137,7 +153,11 @@ class Blue extends Ghost {
 
   void display() {
     rectMode(CENTER);
-    fill(#00FFFF);
+    if (blueghost) {
+      fill(#2020f7);
+    } else {
+      fill(#00FFFF);
+    }
     rect(row, col, 40, 40);
   }
 

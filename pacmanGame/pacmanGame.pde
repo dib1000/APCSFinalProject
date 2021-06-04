@@ -85,8 +85,11 @@ void draw() {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
           if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord() && (!game[i][j].isEaten())) {
-            if (i == j && i % 4 ==0) {
+            if (i == j && i % 4 == 0) {
               man.addPoints("power");
+              for(int b = 0; b < ghosts.length; b++) {
+                ghosts[b].turnBlue();
+              }
             } else {
               man.addPoints("regular");
             }
