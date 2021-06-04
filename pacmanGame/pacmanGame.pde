@@ -181,4 +181,5 @@ void restart() {
       ghosts[i].changeTargetTile(man);
     }
   }
+  pauseTime = millis();
 }
