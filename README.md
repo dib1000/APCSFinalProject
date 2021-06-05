@@ -116,3 +116,8 @@ since we moved lives to the top of the screen.
 
 06/03/2021: Once you collect all the pellets, you win the game and you see a winning screen
 at the end.
+
+06/05/2021: Added a mouth to the pacmans representing the lives
+
+06/05/2021: Added a mouth to the moving pacman. The mouth faces the direction it's
+going in. No animation yet.

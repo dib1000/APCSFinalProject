@@ -97,7 +97,19 @@ public class Pacman {
   void display() {
     fill(#FAFF15);
     ellipse(x, y, 40, 40);
-    //just yellow circle for now
+    fill(#050000);
+    if (getDirection().equals("right")){
+      triangle(x, y, x + 30, y - 20, x + 30, y + 20);
+    }
+    if (getDirection().equals("left")){
+      triangle(x, y, x - 30, y - 20, x - 30, y + 20);  
+    }
+    if (getDirection().equals("down")){
+       triangle(x, y, x - 30, y + 40, x + 30, y + 40); 
+    }
+    if (getDirection().equals("up")){
+       triangle(x, y, x - 30, y - 40, x + 30, y - 40); 
+    }
     fill(255);
     textSize(20);
    // text("POINTS: " + points, 50, 40);
