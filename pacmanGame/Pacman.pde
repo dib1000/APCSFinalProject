@@ -105,6 +105,8 @@ public class Pacman {
     for (int i = 0; i <= lives; i++) {
       fill(#FAFF15);
       ellipse(450 + (50 * (i + 1)), 30, 40, 40);
+      fill(#050000);
+      triangle(450 + (50 * (i+1)), 30, 450 + (50 * (i+1)) + 20, 25, 450 + (50 * (i+1)) + 30, 43);
     }
   }
 
