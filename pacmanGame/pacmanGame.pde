@@ -56,7 +56,7 @@ void draw() {
     textSize(32);
     fill(255);
     text("FINAL SCORE: " + man.getPoint(), width/2 - 230, height/2);
-  } else if (man.getPoint() >= 1920) {
+  } else if (pelletCount <= 0) {
     // minimum amount of points to win is 1920
     fill(0);
     rect(0, 0, width * 3, height * 3);
@@ -66,7 +66,7 @@ void draw() {
     textSize(32);
     fill(255);
     text("FINAL SCORE: " + man.getPoint(), width/2 - 230, height/2);
-  } else if (millis() - pauseTime < 300) {
+  } else if (millis() - pauseTime < 450) {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
@@ -91,9 +91,11 @@ void draw() {
               for (int b = 0; b < ghosts.length; b++) {
                 ghosts[b].turnBlue();
               }
+              pelletCount--;
               blueTime = millis();
             } else {
               man.addPoints("regular");
+              pelletCount--;
             }
             fill(#050000);
             rect(55, 39, 500, 50);
@@ -111,7 +113,7 @@ void draw() {
       }
     }
     man.display();
-    if (ghosts[0].getBlue() && millis() - blueTime > 5000) {
+    if (ghosts[0].getBlue() && millis() - blueTime > 7000) {
       for (int f = 0; f < ghosts.length; f++) {
         ghosts[f].turnBack();
       }
@@ -135,12 +137,14 @@ void draw() {
     moveTime = millis();
   }
 if (man.withGhost(ghosts)) {
-  restart();
+  if(!(ghosts[0].getBlue())) {
+    restart();
+  }
 }
 if (millis() - ghostTime > 1750 && numGhosts < 4) {
   numGhosts+= 1;
   ghostTime = millis();
-}
+  }
 }
 
 void keyPressed() {

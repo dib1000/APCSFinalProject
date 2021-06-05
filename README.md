@@ -67,6 +67,10 @@ from the movement of pacman
 
 6/4/2021: Started adding blueghost mode and power pellets. So far, ghosts turn blue for a set amount of time after the power pellet has been eaten.
 
+6/5/2021: Adjusted the way the program tells you that the game is ending. (pelletCount variable)
+
+6/5/2021: Made it so that pacman doesn't die when it touches a blue ghost.
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
