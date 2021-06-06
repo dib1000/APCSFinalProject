@@ -38,20 +38,24 @@ public class Ghost { //class will code for red ghost
     float down = sq(row  - targetRow) + sq((col + h) - targetCol);
     float[] directions = {left, right, up, down};
     directions = sort(directions);
-    if (directions[0] == left && row > 2*w) {
+    int go = 0;
+    if(blueghost) {
+      go = int(random(4));
+    }
+    if (directions[go] == left && row > 2*w) {
       row = row - w;
       fill(0);
       rect(row + w, col, 41, 41);
-    } else if (directions[0] == right && row < width - (2*w)) {
+    } else if (directions[go] == right && row < width - (2*w)) {
       row = row + w;
       fill(0);
       rect(row - w, col, 41, 41);
-    } else if (directions[0] == up && col > 122.5) {
+    } else if (directions[go] == up && col > 122.5) {
       col = col - h;
       fill(0);
       rect(row, col + h, 41, 41);
     } else {
-      if (col < 857.5) {
+      if (col < 857.5 && directions[go] == down) {
         col = col + h;
         fill(0);
         rect(row, col - h, 41, 41);

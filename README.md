@@ -73,6 +73,8 @@ from the movement of pacman
 
 6/6/2021: Ghosts flash blue and white before blueghost mode ends
 
+6/6/2021: Ghosts go into random directions during blueghost mode
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
