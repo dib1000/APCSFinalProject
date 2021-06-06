@@ -22,10 +22,10 @@ public class Pacman {
 
   void moveUp() {
     //put speed in parameters later to increase the speeds?
-      man.setYCoord(man.getYCoord() - h);
-      fill(0);
-      ellipse(man.getXCoord(), man.getYCoord() + h, 41, 41);
-      direction = "up";
+    man.setYCoord(man.getYCoord() - h);
+    fill(0);
+    ellipse(man.getXCoord(), man.getYCoord() + h, 41, 41);
+    direction = "up";
   }
 
   void moveDown() {
@@ -38,18 +38,18 @@ public class Pacman {
   }
 
   void moveRight() {
-      man.setXCoord(man.getXCoord() + w);
-      fill(0);
-      ellipse(man.getXCoord() - w, man.getYCoord(), 41, 41);
-      direction = "right";
+    man.setXCoord(man.getXCoord() + w);
+    fill(0);
+    ellipse(man.getXCoord() - w, man.getYCoord(), 41, 41);
+    direction = "right";
   }
 
 
   void moveLeft() {
-      man.setXCoord(man.getXCoord() - w);
-      fill(0);
-      ellipse(man.getXCoord() + w, man.getYCoord(), 41, 41);
-      direction = "left";
+    man.setXCoord(man.getXCoord() - w);
+    fill(0);
+    ellipse(man.getXCoord() + w, man.getYCoord(), 41, 41);
+    direction = "left";
   }
 
   String withAnything() {
@@ -98,21 +98,21 @@ public class Pacman {
     fill(#FAFF15);
     ellipse(x, y, 40, 40);
     fill(#050000);
-    if (getDirection().equals("right")){
+    if (getDirection().equals("right")) {
       triangle(x, y, x + 30, y - 20, x + 30, y + 20);
     }
-    if (getDirection().equals("left")){
-      triangle(x, y, x - 30, y - 20, x - 30, y + 20);  
+    if (getDirection().equals("left")) {
+      triangle(x, y, x - 30, y - 20, x - 30, y + 20);
     }
-    if (getDirection().equals("down")){
-       triangle(x, y, x - 30, y + 40, x + 30, y + 40); 
+    if (getDirection().equals("down")) {
+      triangle(x, y, x - 30, y + 40, x + 30, y + 40);
     }
-    if (getDirection().equals("up")){
-       triangle(x, y, x - 30, y - 40, x + 30, y - 40); 
+    if (getDirection().equals("up")) {
+      triangle(x, y, x - 30, y - 40, x + 30, y - 40);
     }
     fill(255);
     textSize(20);
-   // text("POINTS: " + points, 50, 40);
+    // text("POINTS: " + points, 50, 40);
     text("LIVES:", width - 330, 40);
     for (int i = 0; i <= lives; i++) {
       fill(#FAFF15);
@@ -133,5 +133,13 @@ public class Pacman {
       }
     }
     return false;
+  }
+
+  void eatGhosts(Ghost[] ghosts) {
+    for (int i = 0; i < ghosts.length; i++) {
+      if (ghosts[i].getRow() == getXCoord() && ghosts[i].getCol() == getYCoord()) {
+        ghosts[i].eaten();
+      }
+    }
   }
 }

@@ -17,16 +17,22 @@ public class Ghost { //class will code for red ghost
 
   void display() {
     rectMode(CENTER);
-    if (blueghost) {
-      if (flash) {
-        fill(255);
-      } else {
-        fill(#2020f7);
-      }
+    if (eaten) {
+      fill(255);
+      ellipse(row - 10, col - 10, 7.5, 7.5);
+      ellipse(row + 10, col - 10, 7.5, 7.5);
     } else {
-      fill(255, 0, 0);
+      if (blueghost) {
+        if (flash) {
+          fill(255);
+        } else {
+          fill(#2020f7);
+        }
+      } else {
+        fill(255, 0, 0);
+      }
+      rect(row, col, 40, 40);
     }
-    rect(row, col, 40, 40);
   }
 
   void move() {
@@ -39,7 +45,7 @@ public class Ghost { //class will code for red ghost
     float[] directions = {left, right, up, down};
     directions = sort(directions);
     int go = 0;
-    if(blueghost) {
+    if (blueghost) {
       go = int(random(4));
     }
     if (directions[go] == left && row > 2*w) {
@@ -89,10 +95,12 @@ public class Ghost { //class will code for red ghost
 
   void turnBlue() {
     blueghost = true;
+    flash = false;
   }
   void turnBack() {
     blueghost = false;
     flash = false;
+    eaten = false;
   }
   boolean getBlue() {
     return blueghost;
@@ -100,6 +108,14 @@ public class Ghost { //class will code for red ghost
 
   void flash() {
     flash = !flash;
+  }
+
+  void eaten() {
+    eaten = true;
+  }
+
+  void food() {
+    eaten = false;
   }
 }
 
@@ -109,16 +125,22 @@ class Pink extends Ghost {
   }
   void display() {
     rectMode(CENTER);
-    if (blueghost) {
-      if (flash) {
-        fill(255);
-      } else {
-        fill(#2020f7);
-      }
+    if (eaten) {
+      fill(255);
+      ellipse(row - 10, col - 10, 7.5, 7.5);
+      ellipse(row + 10, col - 10, 7.5, 7.5);
     } else {
-      fill(#FFB9DE);
+      if (blueghost) {
+        if (flash) {
+          fill(255);
+        } else {
+          fill(#2020f7);
+        }
+      } else {
+        fill(#FFB9DE);
+      }
+      rect(row, col, 40, 40);
     }
-    rect(row, col, 40, 40);
   }
 
   void changeTargetTile(Pacman man) {
@@ -149,16 +171,22 @@ class Orange extends Ghost {
 
   void display() {
     rectMode(CENTER);
-    if (blueghost) {
-      if (flash) {
-        fill(255);
-      } else {
-        fill(#2020f7);
-      }
+    if (eaten) {
+      fill(255);
+      ellipse(row - 10, col - 10, 7.5, 7.5);
+      ellipse(row + 10, col - 10, 7.5, 7.5);
     } else {
-      fill(#FDB846);
+      if (blueghost) {
+        if (flash) {
+          fill(255);
+        } else {
+          fill(#2020f7);
+        }
+      } else {
+        fill(#FDB846);
+      }
+      rect(row, col, 40, 40);
     }
-    rect(row, col, 40, 40);
   }
 
   void changeTargetTile(Pacman man) {
@@ -182,16 +210,22 @@ class Blue extends Ghost {
 
   void display() {
     rectMode(CENTER);
-    if (blueghost) {
-      if (flash) {
-        fill(255);
-      } else {
-        fill(#2020f7);
-      }
+    if (eaten) {
+      fill(255);
+      ellipse(row - 10, col - 10, 7.5, 7.5);
+      ellipse(row + 10, col - 10, 7.5, 7.5);
     } else {
-      fill(#00FFFF);
+      if (blueghost) {
+        if (flash) {
+          fill(255);
+        } else {
+          fill(#2020f7);
+        }
+      } else {
+        fill(#00FFFF);
+      }
+      rect(row, col, 40, 40);
     }
-    rect(row, col, 40, 40);
   }
 
   void changeTargetTile(Pacman man, Ghost red) {

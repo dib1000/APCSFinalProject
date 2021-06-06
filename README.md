@@ -75,6 +75,8 @@ from the movement of pacman
 
 6/6/2021: Ghosts go into random directions during blueghost mode
 
+6/6/2021: Started adding eaten mode. Made the displaying of eaten mode and the transformation from pacman eating a ghost in blueghost mode
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
