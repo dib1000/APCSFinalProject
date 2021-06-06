@@ -6,6 +6,7 @@ int ghostTime;
 int moveTime;
 int pauseTime;
 int blueTime;
+int flashTime;
 PFont gameFont;
 boolean pause;
 Maze[][] game;
@@ -30,6 +31,7 @@ void setup() {
   moveTime = millis();
   pauseTime = millis();
   ghostTime = millis();
+  flashTime = millis();
   for (int i = 0; i < 14; i++) {
     for (int j = 0; j < 18; j++) {
       if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
@@ -118,10 +120,11 @@ void draw() {
         ghosts[f].turnBack();
       }
     }
-    else if (ghosts[0].getBlue() && millis() - blueTime > 5000) {
+    else if (ghosts[0].getBlue() && millis() - blueTime > 5000 && millis() - flashTime > 200) {
       for(int l = 0; l < ghosts.length; l++) {
         ghosts[l].flash();
       }
+      flashTime = millis();
     }
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
