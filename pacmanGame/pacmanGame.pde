@@ -118,6 +118,11 @@ void draw() {
         ghosts[f].turnBack();
       }
     }
+    else if (ghosts[0].getBlue() && millis() - blueTime > 5000) {
+      for(int l = 0; l < ghosts.length; l++) {
+        ghosts[l].flash();
+      }
+    }
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
     }

@@ -71,6 +71,8 @@ from the movement of pacman
 
 6/5/2021: Made it so that pacman doesn't die when it touches a blue ghost.
 
+6/6/2021: Ghosts flash blue and white before blueghost mode ends
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze

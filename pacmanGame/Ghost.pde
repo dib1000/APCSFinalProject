@@ -1,10 +1,12 @@
 public class Ghost { //class will code for red ghost
   boolean blueghost = false;
   boolean eaten = false;
+  boolean flash = false;
   float targetRow;
   float targetCol;
   float row;
   float col;
+
 
   Ghost(float x, float y, float r, float c) {
     targetRow = x;
@@ -16,7 +18,11 @@ public class Ghost { //class will code for red ghost
   void display() {
     rectMode(CENTER);
     if (blueghost) {
-      fill(#2020f7);
+      if (flash) {
+        fill(255);
+      } else {
+        fill(#2020f7);
+      }
     } else {
       fill(255, 0, 0);
     }
@@ -82,9 +88,14 @@ public class Ghost { //class will code for red ghost
   }
   void turnBack() {
     blueghost = false;
+    flash = false;
   }
   boolean getBlue() {
     return blueghost;
+  }
+
+  void flash() {
+    flash = !flash;
   }
 }
 
@@ -95,7 +106,11 @@ class Pink extends Ghost {
   void display() {
     rectMode(CENTER);
     if (blueghost) {
-      fill(#2020f7);
+      if (flash) {
+        fill(255);
+      } else {
+        fill(#2020f7);
+      }
     } else {
       fill(#FFB9DE);
     }
@@ -131,7 +146,11 @@ class Orange extends Ghost {
   void display() {
     rectMode(CENTER);
     if (blueghost) {
-      fill(#2020f7);
+      if (flash) {
+        fill(255);
+      } else {
+        fill(#2020f7);
+      }
     } else {
       fill(#FDB846);
     }
@@ -160,7 +179,11 @@ class Blue extends Ghost {
   void display() {
     rectMode(CENTER);
     if (blueghost) {
-      fill(#2020f7);
+      if (flash) {
+        fill(255);
+      } else {
+        fill(#2020f7);
+      }
     } else {
       fill(#00FFFF);
     }
