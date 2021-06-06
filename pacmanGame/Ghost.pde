@@ -18,6 +18,8 @@ public class Ghost { //class will code for red ghost
   void display() {
     rectMode(CENTER);
     if (eaten) {
+      fill(0);
+      rect(row, col, 41, 41);
       fill(255);
       ellipse(row - 10, col - 10, 7.5, 7.5);
       ellipse(row + 10, col - 10, 7.5, 7.5);
@@ -126,6 +128,8 @@ class Pink extends Ghost {
   void display() {
     rectMode(CENTER);
     if (eaten) {
+      fill(0);
+      rect(row, col, 41, 41);
       fill(255);
       ellipse(row - 10, col - 10, 7.5, 7.5);
       ellipse(row + 10, col - 10, 7.5, 7.5);
@@ -172,6 +176,8 @@ class Orange extends Ghost {
   void display() {
     rectMode(CENTER);
     if (eaten) {
+      fill(0);
+      rect(row, col, 41, 41);
       fill(255);
       ellipse(row - 10, col - 10, 7.5, 7.5);
       ellipse(row + 10, col - 10, 7.5, 7.5);
@@ -211,6 +217,8 @@ class Blue extends Ghost {
   void display() {
     rectMode(CENTER);
     if (eaten) {
+      fill(0);
+      rect(row, col, 41, 41);
       fill(255);
       ellipse(row - 10, col - 10, 7.5, 7.5);
       ellipse(row + 10, col - 10, 7.5, 7.5);
