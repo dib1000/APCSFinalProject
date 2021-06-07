@@ -156,23 +156,32 @@ class Pink extends Ghost {
   }
 
   void changeTargetTile(Pacman man) {
-    float w = width/14;
-    float h = (height-100)/20;
-    if (man.getDirection().equals("up")) {
-      targetRow = man.getXCoord();
-      targetCol = man.getYCoord() - (2 * h);
-    }
-    if (man.getDirection().equals("down")) {
-      targetRow = man.getXCoord();
-      targetCol = man.getYCoord() + (2 * h);
-    }
-    if (man.getDirection().equals("right")) {
-      targetRow = man.getXCoord() + (2 * w);
-      targetCol = man.getYCoord();
-    }
-    if (man.getDirection().equals("left")) {
-      targetRow = man.getXCoord() - (2 * w);
-      targetCol = man.getYCoord();
+    if (eaten) {
+      targetRow = width/14 * 5.5;
+      targetCol = (height - 100) /20 * 8.5;
+      if (eaten && targetRow == row && targetCol == col) {
+        eaten = false;
+        blueghost = false;
+      }
+    } else {
+      float w = width/14;
+      float h = (height-100)/20;
+      if (man.getDirection().equals("up")) {
+        targetRow = man.getXCoord();
+        targetCol = man.getYCoord() - (2 * h);
+      }
+      if (man.getDirection().equals("down")) {
+        targetRow = man.getXCoord();
+        targetCol = man.getYCoord() + (2 * h);
+      }
+      if (man.getDirection().equals("right")) {
+        targetRow = man.getXCoord() + (2 * w);
+        targetCol = man.getYCoord();
+      }
+      if (man.getDirection().equals("left")) {
+        targetRow = man.getXCoord() - (2 * w);
+        targetCol = man.getYCoord();
+      }
     }
   }
 }
@@ -204,15 +213,24 @@ class Orange extends Ghost {
   }
 
   void changeTargetTile(Pacman man) {
-    float w = width/14;
-    float h = (height-100)/20;
-    float distance = sqrt(sq(row - man.getXCoord()) + sq(col - man.getYCoord()));
-    if (distance > (49 * 4)) {
-      targetRow = man.getXCoord();
-      targetCol = man.getYCoord();
+    if (eaten) {
+      targetRow = width/14 * 8.5;
+      targetCol = (height - 100) /20 * 8.5;
+      if (eaten && targetRow == row && targetCol == col) {
+        eaten = false;
+        blueghost = false;
+      }
     } else {
-      targetRow = w * 2.5;
-      targetCol = h * 17.5;
+      float w = width/14;
+      float h = (height-100)/20;
+      float distance = sqrt(sq(row - man.getXCoord()) + sq(col - man.getYCoord()));
+      if (distance > (49 * 4)) {
+        targetRow = man.getXCoord();
+        targetCol = man.getYCoord();
+      } else {
+        targetRow = w * 2.5;
+        targetCol = h * 17.5;
+      }
     }
   }
 }
@@ -245,40 +263,49 @@ class Blue extends Ghost {
   }
 
   void changeTargetTile(Pacman man, Ghost red) {
-    float w = width/14;
-    float h = (height-100)/20;
-    float manX = man.getXCoord();
-    float manY = man.getYCoord();
-    if (man.getDirection().equals("up")) {
-      manY -= h;
-    } else if (man.getDirection().equals("down")) {
-      manY += h;
-    } else if (man.getDirection().equals("left")) {
-      manX -= w;
+    if (eaten) {
+      targetRow = width/14 * 8.5;
+      targetCol = (height - 100) /20 * 2.5;
+      if (eaten && targetRow == row && targetCol == col) {
+        eaten = false;
+        blueghost = false;
+      }
     } else {
-      manX += w;
-    }
-    if (red.getRow() > manX) {
-      targetRow = red.getRow() - abs(manX - red.getRow()) * 2;
-    } else {
-      targetRow = red.getRow() + abs(manX - red.getRow()) * 2;
-    }
-    if (red.getCol() > manY) {
-      targetCol = red.getCol() + abs(manY - red.getCol()) * 2;
-    } else {
-      targetCol = red.getCol() - abs(manY - red.getCol()) * 2;
-    }
-    if (targetRow >= width) {
-      targetRow = w * 12.5;
-    }
-    if (targetRow <= 0) {
-      targetRow = w * 2.5;
-    }
-    if (targetCol >= height) {
-      targetCol = h * 17.5;
-    }
-    if (targetCol < 0) {
-      targetCol = h * 4.5;
+      float w = width/14;
+      float h = (height-100)/20;
+      float manX = man.getXCoord();
+      float manY = man.getYCoord();
+      if (man.getDirection().equals("up")) {
+        manY -= h;
+      } else if (man.getDirection().equals("down")) {
+        manY += h;
+      } else if (man.getDirection().equals("left")) {
+        manX -= w;
+      } else {
+        manX += w;
+      }
+      if (red.getRow() > manX) {
+        targetRow = red.getRow() - abs(manX - red.getRow()) * 2;
+      } else {
+        targetRow = red.getRow() + abs(manX - red.getRow()) * 2;
+      }
+      if (red.getCol() > manY) {
+        targetCol = red.getCol() + abs(manY - red.getCol()) * 2;
+      } else {
+        targetCol = red.getCol() - abs(manY - red.getCol()) * 2;
+      }
+      if (targetRow >= width) {
+        targetRow = w * 12.5;
+      }
+      if (targetRow <= 0) {
+        targetRow = w * 2.5;
+      }
+      if (targetCol >= height) {
+        targetCol = h * 17.5;
+      }
+      if (targetCol < 0) {
+        targetCol = h * 4.5;
+      }
     }
   }
 }
