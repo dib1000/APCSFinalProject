@@ -92,6 +92,7 @@ void draw() {
           if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord() && (!game[i][j].isEaten())) {
             if (i == j && i % 4 == 0) {
               man.addPoints("power");
+              eatenGhosts = 200;
               for (int b = 0; b < ghosts.length; b++) {
                 ghosts[b].turnBlue();
               }
@@ -153,6 +154,9 @@ void draw() {
       } else if (ghosts[c].getBlue() && !ghosts[c].getEaten()) {
         ghosts[c].eaten();
         man.addPoints(eatenGhosts);
+        if (eatenGhosts < 1600) {
+          eatenGhosts += eatenGhosts;
+        }
       }
     }
   }
