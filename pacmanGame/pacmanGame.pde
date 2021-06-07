@@ -2,6 +2,7 @@ int pelletCount;
 int time; //for fruit
 int level;
 int numGhosts;
+int eatenGhosts;
 int ghostTime;
 int moveTime;
 int pauseTime;
@@ -23,6 +24,7 @@ void setup() {
   game = new Maze[14][18];
   ghosts = new Ghost[4];
   numGhosts = 1;
+  eatenGhosts = 200;
   ghosts[0] = new Ghost(man.getXCoord(), man.getYCoord(), (width/14) * 3.5, ((height-100)/20) * 4.5);
   ghosts[1] = new Pink(man.getXCoord() - (2 * w), man.getYCoord(), (width/14) * 5.5, ((height-100)/20) * 8.5);
   ghosts[3] = new Orange(w * 2.5, h * 17.5, w * 8.5, h * 8.5);
@@ -115,9 +117,10 @@ void draw() {
       }
     }
     man.display();
-    if (ghosts[0].getBlue() && millis() - blueTime > 20000) {
+    if (ghosts[0].getBlue() && millis() - blueTime > 7000) {
       for (int f = 0; f < ghosts.length; f++) {
         ghosts[f].turnBack();
+        eatenGhosts = 200;
       }
     } else if (ghosts[0].getBlue() && millis() - blueTime > 7000 && millis() - flashTime > 200) {
       for (int l = 0; l < ghosts.length; l++) {
@@ -147,8 +150,9 @@ void draw() {
     if (man.getXCoord() == ghosts[c].getRow() && man.getYCoord() == ghosts[c].getCol()) {
       if (!(ghosts[c].getBlue()) && !(ghosts[c].getEaten())) {
         restart();
-      } else if (ghosts[c].getBlue()) {
+      } else if (ghosts[c].getBlue() && !ghosts[c].getEaten()) {
         ghosts[c].eaten();
+        man.addPoints(eatenGhosts);
       }
     }
   }

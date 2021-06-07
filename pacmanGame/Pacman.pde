@@ -66,6 +66,10 @@ public class Pacman {
     // add fruits later
   }
 
+  void addPoints(int p) {
+    points += p;
+  }
+
   void loseLives() {
     lives--;
   }
