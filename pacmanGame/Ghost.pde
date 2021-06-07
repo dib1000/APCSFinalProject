@@ -47,7 +47,7 @@ public class Ghost { //class will code for red ghost
     float[] directions = {left, right, up, down};
     directions = sort(directions);
     int go = 0;
-    if (blueghost) {
+    if (blueghost && !(eaten)) {
       go = int(random(4));
     }
     if (directions[go] == left && row > 2*w) {
@@ -72,8 +72,17 @@ public class Ghost { //class will code for red ghost
   }
 
   void changeTargetTile(Pacman man) {
-    targetRow = man.getXCoord();
-    targetCol = man.getYCoord();
+    if (eaten) {
+      targetRow = width/14 * 3.5;
+      targetCol = (height - 100) /20 * 4.5;
+      if (eaten && targetRow == row && targetCol == col) {
+        eaten = false;
+        blueghost = false;
+      }
+    } else {
+      targetRow = man.getXCoord();
+      targetCol = man.getYCoord();
+    }
   }
 
   void changeTargetTile(Pacman man, Ghost ghost) {
@@ -102,7 +111,6 @@ public class Ghost { //class will code for red ghost
   void turnBack() {
     blueghost = false;
     flash = false;
-    eaten = false;
   }
   boolean getBlue() {
     return blueghost;
@@ -116,8 +124,8 @@ public class Ghost { //class will code for red ghost
     eaten = true;
   }
 
-  void food() {
-    eaten = false;
+  boolean getEaten() {
+    return eaten;
   }
 }
 

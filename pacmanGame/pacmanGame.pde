@@ -115,12 +115,12 @@ void draw() {
       }
     }
     man.display();
-    if (ghosts[0].getBlue() && millis() - blueTime > 7000) {
+    if (ghosts[0].getBlue() && millis() - blueTime > 20000) {
       for (int f = 0; f < ghosts.length; f++) {
         ghosts[f].turnBack();
       }
     }
-    else if (ghosts[0].getBlue() && millis() - blueTime > 5000 && millis() - flashTime > 200) {
+    else if (ghosts[0].getBlue() && millis() - blueTime > 7000 && millis() - flashTime > 200) {
       for(int l = 0; l < ghosts.length; l++) {
         ghosts[l].flash();
       }
