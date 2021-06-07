@@ -144,14 +144,16 @@ void draw() {
     }
     moveTime = millis();
   }
-if (man.withGhost(ghosts)) {
-  if(!(ghosts[0].getBlue())) {
-    restart();
+  for(int c = 0; c < ghosts.length; c++) {
+    if(man.getXCoord() == ghosts[c].getRow() && man.getYCoord() == ghosts[c].getCol()) {
+      if(!(ghosts[c].getBlue()) && !(ghosts[c].getEaten())) {
+        restart();
+      }
+      else if (ghosts[c].getBlue()) {
+        ghosts[c].eaten();
+      }
+    }
   }
-  else {
-    man.eatGhosts(ghosts);
-  }
-}
 if (millis() - ghostTime > 1750 && numGhosts < 4) {
   numGhosts+= 1;
   ghostTime = millis();
