@@ -33,12 +33,7 @@ Will fix this tomorrow.
 
 5/27/2021: Added the top left corner and modified how to make the walls (made the walls work so that it can work properly no matter where in the array the walls were)
 
-5/28/2021: Modified Tina's code to make Pacman move. I did this
-by making a setXChord/setYChord methods to change the center
-of the circle. This moved the pacman, but it left a trail. I
-erased that by drawing a black circle at the spots the pacman
-was in previously. I also changed how much the pacman moved
-horizontally and vertically.
+5/28/2021: Modified Tina's code to make Pacman move. I did this by making a setXChord/setYChord methods to change the center of the circle. This moved the pacman, but it left a trail. I erased that by drawing a black circle at the spots the pacman was in previously. I also changed how much the pacman moved horizontally and vertically.
 
 5/29/2021: Got rid of the small yellow residue that was left
 from the movement of pacman
@@ -80,6 +75,10 @@ from the movement of pacman
 6/6/2021: Changed changeTargetTile of ghosts once they go into eat mode (they go to their starting tile)
 
 6/6/2021: Changed the code for when to restart/eat a ghost to apply for individual ghosts and not the ghost array
+
+6/7/2021: Eating points acquires points. These points increase with the number of ghosts eaten after the eating of a power pellet
+
+6/7/2021: Ghosts move a bit faster once they have been eaten.
 
 Tina Nguyen:
 

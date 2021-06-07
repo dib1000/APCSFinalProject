@@ -8,6 +8,7 @@ int moveTime;
 int pauseTime;
 int blueTime;
 int flashTime;
+int eatenTime;
 PFont gameFont;
 boolean pause;
 Maze[][] game;
@@ -133,10 +134,22 @@ void draw() {
       ghosts[i].display();
     }
   }
+  if(millis() - eatenTime > 200) {
+    int e = 0;
+    while(e < numGhosts) {
+      if(ghosts[e].getEaten()) {
+        ghosts[e].move();
+      }
+      e++;
+      eatenTime = millis();
+    }
+  }
   if (millis() - moveTime > 400) {
     int g = 0;
     while (g < numGhosts) {
-      ghosts[g].move();
+      if(!(ghosts[g].getEaten())) {
+        ghosts[g].move();
+      }
       if (g == 2) {
         ghosts[g].changeTargetTile(man, ghosts[0]);
       }
@@ -157,6 +170,7 @@ void draw() {
         if (eatenGhosts < 1600) {
           eatenGhosts += eatenGhosts;
         }
+        eatenTime = millis();
       }
     }
   }
