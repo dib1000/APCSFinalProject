@@ -119,9 +119,8 @@ void draw() {
       for (int f = 0; f < ghosts.length; f++) {
         ghosts[f].turnBack();
       }
-    }
-    else if (ghosts[0].getBlue() && millis() - blueTime > 7000 && millis() - flashTime > 200) {
-      for(int l = 0; l < ghosts.length; l++) {
+    } else if (ghosts[0].getBlue() && millis() - blueTime > 7000 && millis() - flashTime > 200) {
+      for (int l = 0; l < ghosts.length; l++) {
         ghosts[l].flash();
       }
       flashTime = millis();
@@ -144,19 +143,18 @@ void draw() {
     }
     moveTime = millis();
   }
-  for(int c = 0; c < ghosts.length; c++) {
-    if(man.getXCoord() == ghosts[c].getRow() && man.getYCoord() == ghosts[c].getCol()) {
-      if(!(ghosts[c].getBlue()) && !(ghosts[c].getEaten())) {
+  for (int c = 0; c < ghosts.length; c++) {
+    if (man.getXCoord() == ghosts[c].getRow() && man.getYCoord() == ghosts[c].getCol()) {
+      if (!(ghosts[c].getBlue()) && !(ghosts[c].getEaten())) {
         restart();
-      }
-      else if (ghosts[c].getBlue()) {
+      } else if (ghosts[c].getBlue()) {
         ghosts[c].eaten();
       }
     }
   }
-if (millis() - ghostTime > 1750 && numGhosts < 4) {
-  numGhosts+= 1;
-  ghostTime = millis();
+  if (millis() - ghostTime > 1750 && numGhosts < 4) {
+    numGhosts+= 1;
+    ghostTime = millis();
   }
 }
 
@@ -229,10 +227,9 @@ void restart() {
   for (int i = 0; i < ghosts.length; i++) {
     rect(ghosts[i].getRow(), ghosts[i].getCol(), 41, 41);
   }
-  if (ghosts[0].getBlue()) {
-    for (int g = 0; g < ghosts.length; g++) {
-      ghosts[g].turnBack();
-    }
+  for (int g = 0; g < ghosts.length; g++) {
+    ghosts[g].turnBack();
+    ghosts[g].food();
   }
   ghosts[0].setRow(w * 3.5);
   ghosts[0].setCol(h * 4.5);

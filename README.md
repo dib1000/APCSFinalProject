@@ -77,6 +77,10 @@ from the movement of pacman
 
 6/6/2021: Started adding eaten mode. Made the displaying of eaten mode and the transformation from pacman eating a ghost in blueghost mode
 
+6/6/2021: Changed changeTargetTile of ghosts once they go into eat mode (they go to their starting tile)
+
+6/6/2021: Changed the code for when to restart/eat a ghost to apply for individual ghosts and not the ghost array
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze

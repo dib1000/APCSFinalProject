@@ -123,6 +123,10 @@ public class Ghost { //class will code for red ghost
   void eaten() {
     eaten = true;
   }
+  
+  void food() {
+    eaten = false;
+  }
 
   boolean getEaten() {
     return eaten;
