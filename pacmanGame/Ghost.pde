@@ -181,11 +181,10 @@ class Pink extends Ghost {
     } else if (scatter) {
       targetRow = width/14 * 1.5;
       targetCol = (height - 100) / 20 * 2.5;
-      if(targetRow == row && targetCol == col) {
+      if (targetRow == row && targetCol == col) {
         scatter = false;
       }
-    }
-    else {
+    } else {
       float w = width/14;
       float h = (height-100)/20;
       if (man.getDirection().equals("up")) {
@@ -210,6 +209,7 @@ class Pink extends Ghost {
 class Orange extends Ghost {
   Orange(float x, float y, float r, float c) {
     super(x, y, r, c);
+    scatter = true;
   }
 
   void display() {
@@ -250,7 +250,7 @@ class Orange extends Ghost {
         targetRow = man.getXCoord();
         targetCol = man.getYCoord();
       } else {
-        targetRow = w * 2.5;
+        targetRow = w * 1.5;
         targetCol = h * 17.5;
       }
     }
@@ -260,6 +260,7 @@ class Orange extends Ghost {
 class Blue extends Ghost {
   Blue(float x, float y, float r, float c) {
     super(x, y, r, c);
+    scatter = true;
   }
 
   void display() {
@@ -291,6 +292,13 @@ class Blue extends Ghost {
       if (eaten && targetRow == row && targetCol == col) {
         eaten = false;
         blueghost = false;
+        scatter = true;
+      }
+    } else if (scatter) {
+      targetRow = width/14 * 12.5;
+      targetCol = (height - 100) / 20 * 17.5;
+      if (targetRow == row && targetCol == col) {
+        scatter = false;
       }
     } else {
       float w = width/14;
