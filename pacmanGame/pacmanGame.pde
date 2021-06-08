@@ -252,6 +252,7 @@ void restart() {
   for (int g = 0; g < ghosts.length; g++) {
     ghosts[g].turnBack();
     ghosts[g].food();
+    ghosts[g].SCATTER();
   }
   ghosts[0].setRow(w * 3.5);
   ghosts[0].setCol(h * 4.5);

@@ -80,6 +80,8 @@ from the movement of pacman
 
 6/7/2021: Ghosts move a bit faster once they have been eaten.
 
+6/7/2021: Added new way of movement for ghosts. Scatter mode: The ghosts go to a corner and then they chase pacman
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze

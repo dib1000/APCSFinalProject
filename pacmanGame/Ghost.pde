@@ -140,6 +140,10 @@ public class Ghost { //class will code for red ghost
   boolean getEaten() {
     return eaten;
   }
+  
+  void SCATTER() {
+    scatter = true;
+  }
 }
 
 class Pink extends Ghost {
