@@ -145,6 +145,7 @@ public class Ghost { //class will code for red ghost
 class Pink extends Ghost {
   Pink(float x, float y, float r, float c) {
     super(x, y, r, c);
+    scatter = true;
   }
   void display() {
     rectMode(CENTER);
@@ -175,8 +176,16 @@ class Pink extends Ghost {
       if (eaten && targetRow == row && targetCol == col) {
         eaten = false;
         blueghost = false;
+        scatter = true;
       }
-    } else {
+    } else if (scatter) {
+      targetRow = width/14 * 1.5;
+      targetCol = (height - 100) / 20 * 2.5;
+      if(targetRow == row && targetCol == col) {
+        scatter = false;
+      }
+    }
+    else {
       float w = width/14;
       float h = (height-100)/20;
       if (man.getDirection().equals("up")) {
@@ -311,13 +320,13 @@ class Blue extends Ghost {
         targetRow = w * 12.5;
       }
       if (targetRow <= 0) {
-        targetRow = w * 2.5;
+        targetRow = w * 1.5;
       }
       if (targetCol >= height) {
         targetCol = h * 17.5;
       }
       if (targetCol < 0) {
-        targetCol = h * 4.5;
+        targetCol = h * 2.5;
       }
     }
   }
