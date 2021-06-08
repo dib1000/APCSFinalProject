@@ -241,6 +241,13 @@ class Orange extends Ghost {
       if (eaten && targetRow == row && targetCol == col) {
         eaten = false;
         blueghost = false;
+        scatter = true;
+      }
+    } else if (scatter) {
+      targetRow = width/14 * 1.5;
+      targetCol = (height - 100) / 20 * 17.5;
+      if (targetRow == row && targetCol == col) {
+        scatter = false;
       }
     } else {
       float w = width/14;

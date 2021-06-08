@@ -124,7 +124,7 @@ void draw() {
         ghosts[f].turnBack();
         eatenGhosts = 200;
       }
-    } else if (ghosts[0].getBlue() && millis() - blueTime > 7000 && millis() - flashTime > 200) {
+    } else if (ghosts[0].getBlue() && millis() - blueTime > 5000 && millis() - flashTime > 200) {
       for (int l = 0; l < ghosts.length; l++) {
         ghosts[l].flash();
       }
