@@ -26,7 +26,7 @@ void setup() {
   ghosts = new Ghost[4];
   numGhosts = 1;
   eatenGhosts = 200;
-  ghosts[0] = new Ghost(man.getXCoord(), man.getYCoord(), (width/14) * 3.5, ((height-100)/20) * 4.5);
+  ghosts[0] = new Ghost(man.getXCoord(), man.getYCoord(), (width/14) * 4.5, ((height-100)/20) * 4.5);
   ghosts[1] = new Pink(man.getXCoord() - (2 * w), man.getYCoord(), (width/14) * 5.5, ((height-100)/20) * 8.5);
   ghosts[3] = new Orange(w * 2.5, h * 17.5, w * 8.5, h * 8.5);
   ghosts[2] = new Blue(man.getXCoord(), man.getYCoord(), w * 8.5, h * 2.5);
@@ -153,7 +153,7 @@ void draw() {
       if (g == 2) {
         ghosts[g].changeTargetTile(man, ghosts[0]);
       }
-      if (g == 3) {
+      else {
         ghosts[g].changeTargetTile(man);
       }
       g++;

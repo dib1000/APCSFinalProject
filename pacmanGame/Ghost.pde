@@ -2,6 +2,7 @@ public class Ghost { //class will code for red ghost
   boolean blueghost = false;
   boolean eaten = false;
   boolean flash = false;
+  boolean scatter;
   float targetRow;
   float targetCol;
   float row;
@@ -13,6 +14,7 @@ public class Ghost { //class will code for red ghost
     targetCol = y;
     row = r;
     col = c;
+    scatter = true;
   }
 
   void display() {
@@ -79,6 +81,12 @@ public class Ghost { //class will code for red ghost
         eaten = false;
         blueghost = false;
       }
+    } else if (scatter) {
+      targetRow = width/14 * 12.5;
+      targetCol = (height-100) / 20 * 2.5;
+      if (targetRow == row && targetCol == col) {
+        scatter = false;
+      }
     } else {
       targetRow = man.getXCoord();
       targetCol = man.getYCoord();
@@ -123,7 +131,7 @@ public class Ghost { //class will code for red ghost
   void eaten() {
     eaten = true;
   }
-  
+
   void food() {
     eaten = false;
   }
