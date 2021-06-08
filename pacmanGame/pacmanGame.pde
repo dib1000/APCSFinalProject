@@ -254,14 +254,14 @@ void restart() {
     ghosts[g].food();
     ghosts[g].SCATTER();
   }
-  ghosts[0].setRow(w * 3.5);
-  ghosts[0].setCol(h * 4.5);
-  ghosts[1].setRow(w * 5.5);
-  ghosts[1].setCol(h * 8.5);
+  ghosts[0].setRow(w * 6.5);
+  ghosts[0].setCol(h * 8.5);
+  ghosts[1].setRow(w * 7.5);
+  ghosts[1].setCol(h * 10.5);
   ghosts[3].setRow(w * 8.5);
-  ghosts[3].setCol(h * 8.5);
-  ghosts[2].setRow(w * 8.5);
-  ghosts[2].setCol(h * 2.5);
+  ghosts[3].setCol(h * 10.5);
+  ghosts[2].setRow(w * 6.5);
+  ghosts[2].setCol(h * 10.5);
   for (int i = 0; i < ghosts.length; i++) {
     if (i == 2) {
       ghosts[i].changeTargetTile(man, ghosts[0]);
