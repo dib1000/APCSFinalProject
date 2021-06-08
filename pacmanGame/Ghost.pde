@@ -80,6 +80,7 @@ public class Ghost { //class will code for red ghost
       if (eaten && targetRow == row && targetCol == col) {
         eaten = false;
         blueghost = false;
+        scatter = true;
       }
     } else if (scatter) {
       targetRow = width/14 * 12.5;
