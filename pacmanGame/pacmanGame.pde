@@ -204,7 +204,10 @@ void draw() {
     int g = 0;
     while (g < numGhosts) {
       if (!(ghosts[g].getEaten())) {
-        if (g != 0 || (g == 0 && pelletCount > 20) || ghosts[g].getBlue()) {
+        if (ghosts[g].getRow() == 7.5 * width/14 && (ghosts[g].getCol() == 11.5 * (height-100) / 20 || ghosts[g].getCol() == 10.5 * (height-100) / 20 )) {
+          ghosts[g].moveUp();
+        }
+        else if (g != 0 || (g == 0 && pelletCount > 20) || ghosts[g].getBlue()) {
           ghosts[g].move(game);
         }
       }
@@ -298,7 +301,7 @@ void restart() {
   }
   fill(0);
   rect(450, 40, 600, 85); 
-  if(pelletCount > 0) {
+  if (pelletCount > 0) {
     man.loseLives();
   }
   ellipse(man.getXCoord(), man.getYCoord(), 41, 41);
