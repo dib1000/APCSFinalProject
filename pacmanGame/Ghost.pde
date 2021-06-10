@@ -39,9 +39,11 @@ public class Ghost { //class will code for red ghost
     }
   }
 
-  void move() {
+  void move(Maze[][] maze) {
     float w = width/14;
     float h = (height-100)/20;
+    int x = int((getRow() -  w / 2) / w);
+    int y = int((getCol() - (3 * h / 2)) / h);
     float left = sq((row - w) - targetRow) + sq(col - targetCol);
     float right = sq((row + w) - targetRow) + sq(col - targetCol);
     float up = sq(row - targetRow) + sq((col - h) - targetCol);
@@ -52,20 +54,20 @@ public class Ghost { //class will code for red ghost
     if (blueghost && !(eaten)) {
       go = int(random(4));
     }
-    if (directions[go] == left && row > 2*w) {
+    if (directions[go] == left && !(maze[x-1][y].getSubclass().equals("Wall"))) {
       row = row - w;
       fill(0);
       rect(row + w, col, 41, 41);
-    } else if (directions[go] == right && row < width - (2*w)) {
+    } else if (directions[go] == right && !(maze[x+1][y].getSubclass().equals("Wall"))) {
       row = row + w;
       fill(0);
       rect(row - w, col, 41, 41);
-    } else if (directions[go] == up && col > 122.5) {
+    } else if (directions[go] == up && !(maze[x][y-1].getSubclass().equals("Wall"))) {
       col = col - h;
       fill(0);
       rect(row, col + h, 41, 41);
     } else {
-      if (col < 857.5 && directions[go] == down) {
+      if (!(maze[x][y+1].getSubclass().equals("Wall")) && directions[go] == down) {
         col = col + h;
         fill(0);
         rect(row, col - h, 41, 41);

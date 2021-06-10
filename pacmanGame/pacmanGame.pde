@@ -180,14 +180,14 @@ void draw() {
     int e = 0;
     while (e < numGhosts) {
       if (ghosts[e].getEaten()) {
-        ghosts[e].move();
+        ghosts[e].move(game);
       }
       e++;
       eatenTime = millis();
     }
   }
   if (pelletCount <= 20 && millis() - redTime > redFast && !(ghosts[0].getEaten()) && !(ghosts[0].getBlue())) {
-    ghosts[0].move();
+    ghosts[0].move(game);
     redTime = millis();
   }
   if (millis() - moveTime > moveWhen) {
@@ -195,7 +195,7 @@ void draw() {
     while (g < numGhosts) {
       if (!(ghosts[g].getEaten())) {
         if (g != 0 || (g == 0 && pelletCount > 20) || ghosts[g].getBlue()) {
-          ghosts[g].move();
+          ghosts[g].move(game);
         }
       }
       if (g == 2) {
