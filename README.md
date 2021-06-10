@@ -82,6 +82,12 @@ from the movement of pacman
 
 6/7/2021: Added new way of movement for ghosts. Scatter mode: The ghosts go to a corner and then they chase pacman
 
+6/8/2021: Moved the ghosts positions to where they should be in the final
+
+6/9/2021: Added 2 more levels with increasing difficulty from faster ghosts/blueghost times
+
+6/9/2021: Red ghost increases in speed when there are not a lot of pellets left in the maze
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
