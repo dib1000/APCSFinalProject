@@ -73,6 +73,10 @@ public class Pacman {
   void loseLives() {
     lives--;
   }
+  
+  void addLives() {
+    lives++;
+  }
 
   float getXCoord() {
     // returns the x coordinate of pacman

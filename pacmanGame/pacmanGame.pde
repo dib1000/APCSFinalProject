@@ -298,7 +298,9 @@ void restart() {
   }
   fill(0);
   rect(450, 40, 600, 85); 
-  man.loseLives();
+  if(pelletCount > 0) {
+    man.loseLives();
+  }
   ellipse(man.getXCoord(), man.getYCoord(), 41, 41);
   man.setXCoord( w * 10.5);
   man.setYCoord( h * 10.5);
