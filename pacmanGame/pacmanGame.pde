@@ -5,12 +5,14 @@ int numGhosts;
 int eatenGhosts;
 int ghostTime;
 int moveTime;
+int redTime;
 int pauseTime;
 int blueTime;
 int flashTime;
 int eatenTime;
 int moveWhen;
 int backWhen;
+int redFast;
 PFont gameFont;
 boolean pause;
 Maze[][] game;
@@ -128,6 +130,9 @@ void draw() {
               man.addPoints("regular");
               pelletCount--;
             }
+            if(pelletCount == 20) {
+               redTime = millis();
+            }
             fill(#050000);
             rect(55, 39, 500, 50);
             fill(255);
@@ -144,7 +149,7 @@ void draw() {
       }
     }
     man.display();
-        for (int i = 0; i < ghosts.length; i++) {
+    for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
     }
     if (millis() - blueTime > backWhen) {
@@ -154,7 +159,7 @@ void draw() {
       }
     } else if (millis() - blueTime > backWhen-2000 && millis() - flashTime > 200) {
       for (int l = 0; l < ghosts.length; l++) {
-        if(ghosts[l].getBlue() && !(ghosts[l].getEaten())) {
+        if (ghosts[l].getBlue() && !(ghosts[l].getEaten())) {
           ghosts[l].flash();
         }
       }
@@ -171,11 +176,17 @@ void draw() {
       eatenTime = millis();
     }
   }
+  if(pelletCount <= 20 && millis() - redTime > moveWhen/2 && !(ghosts[0].getEaten()) && !(ghosts[0].getBlue())) {
+      ghosts[0].move();
+    redTime = millis();
+  }
   if (millis() - moveTime > moveWhen) {
     int g = 0;
     while (g < numGhosts) {
       if (!(ghosts[g].getEaten())) {
-        ghosts[g].move();
+        if(g != 0 || (g == 0 && pelletCount > 20) || ghosts[g].getBlue()) {
+          ghosts[g].move();
+        }
       }
       if (g == 2) {
         ghosts[g].changeTargetTile(man, ghosts[0]);
