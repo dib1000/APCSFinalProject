@@ -46,13 +46,14 @@ void setup() {
   flashTime = millis();
   for (int i = 0; i < 14; i++) {
     for (int j = 0; j < 18; j++) {
-      if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
-        if (i == j && i % 4 == 0) {
-          game[i][j] = new powerPellet(w/2 +(i * w), h/2 + ((j + 1) * h));
-        } else {
-          game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
-        }
-        pelletCount++;
+      if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==9 || j==11) && (i>4 && i<10)) && !(j==10 && (i==5 || i==9))) {
+          if (i == j && i % 4 == 0) {
+            game[i][j] = new powerPellet(w/2 +(i * w), h/2 + ((j + 1) * h));
+          } else {
+            game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
+          }
+          pelletCount++;
+        
       } else {
         game[i][j] = new Wall(w/2 +(i * w), (3 * h)/2 +(j * h), w, h);
       }
@@ -103,7 +104,7 @@ void draw() {
   } else if (millis() - pauseTime < 700) {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
-        if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
+        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==9 || j==11) && (i>4 && i<10)) && !(j==10 && (i==5 || i==9))) {
           game[i][j].display();
         } else {
           game[i][j].display(game, i, j);
@@ -121,7 +122,7 @@ void draw() {
     text("POINTS: " + man.getPoint(), 50, 40);
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
-        if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
+        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==9 || j==11) && (i>4 || i<10)) && !(j==10 && (i==5 || i==9))) {
           if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord() && (!game[i][j].isEaten())) {
             if (i == j && i % 4 == 0) {
               man.addPoints("power");
