@@ -141,14 +141,16 @@ void draw() {
         for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
     }
-    if (ghosts[0].getBlue() && millis() - blueTime > 7000) {
+    if (millis() - blueTime > 7000) {
       for (int f = 0; f < ghosts.length; f++) {
         ghosts[f].turnBack();
         eatenGhosts = 200;
       }
-    } else if (ghosts[0].getBlue() && millis() - blueTime > 5000 && millis() - flashTime > 200) {
+    } else if (millis() - blueTime > 5000 && millis() - flashTime > 200) {
       for (int l = 0; l < ghosts.length; l++) {
-        ghosts[l].flash();
+        if(ghosts[l].getBlue() && !(ghosts[l].getEaten())) {
+          ghosts[l].flash();
+        }
       }
       flashTime = millis();
     }
