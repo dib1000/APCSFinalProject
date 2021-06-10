@@ -131,6 +131,12 @@ void draw() {
               pelletCount--;
             }
             if(pelletCount == 20) {
+              if(pelletCount <= 10) {
+                redFast = moveWhen - 100;
+              }
+              else {
+                redFast = moveWhen - 50;
+              }
                redTime = millis();
             }
             fill(#050000);
@@ -176,7 +182,7 @@ void draw() {
       eatenTime = millis();
     }
   }
-  if(pelletCount <= 20 && millis() - redTime > moveWhen/2 && !(ghosts[0].getEaten()) && !(ghosts[0].getBlue())) {
+  if(pelletCount <= 20 && millis() - redTime > redFast && !(ghosts[0].getEaten()) && !(ghosts[0].getBlue())) {
       ghosts[0].move();
     redTime = millis();
   }
