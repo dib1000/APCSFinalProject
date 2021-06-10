@@ -190,7 +190,12 @@ void draw() {
     int e = 0;
     while (e < numGhosts) {
       if (ghosts[e].getEaten()) {
-        ghosts[e].move(game);
+        if (e > 0 && ghosts[e].getRow() == 7.5 * width/14 && (ghosts[e].getCol() == 9.5 * (height-100) / 20 || ghosts[e].getCol() == 10.5 * (height-100) / 20 )) {
+          ghosts[e].moveDown();
+        }
+        else {
+          ghosts[e].move(game);
+        }
       }
       e++;
       eatenTime = millis();

@@ -95,6 +95,13 @@ public class Ghost { //class will code for red ghost
     fill(0);
     rect(row, col + h, 41, 41);
   }
+  
+    void moveDown() {
+    float h = (height-100)/20;
+    col = col + h;
+    fill(0);
+    rect(row, col - h, 41, 41);
+  }
 
   void changeTargetTile(Pacman man) {
     if (eaten) {
