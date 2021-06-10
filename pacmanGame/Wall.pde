@@ -11,7 +11,10 @@ public class Wall extends Maze {
   void display(Maze[][] m, int row, int col) {
     if (flash) {
       fill(255);
-    } else {
+    } else if (col == 9 && row == 7) {
+      fill(#f498b0);
+    }
+    else {
       fill(#1818BF);
     }
     rectMode(CENTER);
