@@ -26,6 +26,7 @@ void setup() {
   ghosts = new Ghost[4];
   numGhosts = 1;
   eatenGhosts = 200;
+  level = 0;
   ghosts[0] = new Ghost(man.getXCoord(), man.getYCoord(), (width/14) * 6.5, ((height-100)/20) * 8.5);
   ghosts[1] = new Pink(man.getXCoord() - (2 * w), man.getYCoord(), (width/14) * 7.5, ((height-100)/20) * 10.5);
   ghosts[3] = new Orange(w * 2.5, h * 17.5, w * 6.5, h * 10.5);
@@ -61,8 +62,7 @@ void draw() {
     textSize(32);
     fill(255);
     text("FINAL SCORE: " + man.getPoint(), width/2 - 230, height/2);
-  } else if (pelletCount <= 0) {
-    // minimum amount of points to win is 1920
+  } else if (level == 2) {
     fill(0);
     rect(0, 0, width * 3, height * 3);
     textFont(gameFont);
@@ -71,6 +71,25 @@ void draw() {
     textSize(32);
     fill(255);
     text("FINAL SCORE: " + man.getPoint(), width/2 - 230, height/2);
+  } else if (pelletCount <= 0) {
+    restart();
+    float w = width/14;
+    float h = (height-100)/20;
+    level++;
+    for (int i = 0; i < 14; i++) {
+      for (int j = 0; j < 18; j++) {
+        if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
+          if (i == j && i % 4 == 0) {
+            game[i][j] = new powerPellet(w/2 +(i * w), h/2 + ((j + 1) * h));
+          } else {
+            game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
+          }
+          pelletCount++;
+        } else {
+          game[i][j] = new Wall(w/2 +(i * w), (3 * h)/2 +(j * h), w, h);
+        }
+      }
+    }
   } else if (millis() - pauseTime < 450) {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
@@ -119,6 +138,9 @@ void draw() {
       }
     }
     man.display();
+        for (int i = 0; i < ghosts.length; i++) {
+      ghosts[i].display();
+    }
     if (ghosts[0].getBlue() && millis() - blueTime > 7000) {
       for (int f = 0; f < ghosts.length; f++) {
         ghosts[f].turnBack();
@@ -130,14 +152,11 @@ void draw() {
       }
       flashTime = millis();
     }
-    for (int i = 0; i < ghosts.length; i++) {
-      ghosts[i].display();
-    }
   }
-  if(millis() - eatenTime > 200) {
+  if (millis() - eatenTime > 200) {
     int e = 0;
-    while(e < numGhosts) {
-      if(ghosts[e].getEaten()) {
+    while (e < numGhosts) {
+      if (ghosts[e].getEaten()) {
         ghosts[e].move();
       }
       e++;
@@ -147,13 +166,12 @@ void draw() {
   if (millis() - moveTime > 400) {
     int g = 0;
     while (g < numGhosts) {
-      if(!(ghosts[g].getEaten())) {
+      if (!(ghosts[g].getEaten())) {
         ghosts[g].move();
       }
       if (g == 2) {
         ghosts[g].changeTargetTile(man, ghosts[0]);
-      }
-      else {
+      } else {
         ghosts[g].changeTargetTile(man);
       }
       g++;
