@@ -42,7 +42,12 @@ public class Maze { //This is now used to make sure that we can use an
   String getSubclass() {
     return subclass;
   }
+  
+  void flashing() {
+  }
 
+  void setBack() {
+  }
   //void release() {
   //  //would release ghosts from their box
   //}

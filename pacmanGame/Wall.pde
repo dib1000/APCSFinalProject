@@ -1,13 +1,19 @@
 public class Wall extends Maze {
   float wid;
   float hei;
+  boolean flash;
   Wall(float x, float y, float w, float h) {
     super("Wall", x, y);
     wid = w;
     hei = h;
+    flash = false;
   }
   void display(Maze[][] m, int row, int col) {
-    fill(#1818BF);
+    if (flash) {
+      fill(255);
+    } else {
+      fill(#1818BF);
+    }
     rectMode(CENTER);
     if ((row > 0 && m[row-1][col].getSubclass().equals("Wall")) &&
       (row < m.length - 1 && m[row+1][col].getSubclass().equals("Wall"))) {
@@ -37,5 +43,12 @@ public class Wall extends Maze {
         rect(x-30, y-10, 40, 20);
       }
     }
+  }
+  void flashing() {
+    flash = !flash;
+  }
+
+  void setBack() {
+    flash = false;
   }
 }

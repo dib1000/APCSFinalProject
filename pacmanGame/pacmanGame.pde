@@ -98,14 +98,16 @@ void draw() {
         }
       }
     }
-  } else if (millis() - pauseTime < 450) {
+  } else if (millis() - pauseTime < 700) {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
           game[i][j].display();
         } else {
-          // displays walls
           game[i][j].display(game, i, j);
+          if (millis() - flashTime > 150) {
+            game[i][j].flashing();
+          }
         }
       }
     }
@@ -130,14 +132,13 @@ void draw() {
               man.addPoints("regular");
               pelletCount--;
             }
-            if(pelletCount == 20) {
-              if(pelletCount <= 10) {
+            if (pelletCount == 20) {
+              if (pelletCount <= 10) {
                 redFast = moveWhen - 100;
-              }
-              else {
+              } else {
                 redFast = moveWhen - 50;
               }
-               redTime = millis();
+              redTime = millis();
             }
             fill(#050000);
             rect(55, 39, 500, 50);
@@ -149,7 +150,7 @@ void draw() {
             game[i][j].display();
           }
         } else {
-          // displays walls
+          game[i][j].setBack();
           game[i][j].display(game, i, j);
         }
       }
@@ -182,15 +183,15 @@ void draw() {
       eatenTime = millis();
     }
   }
-  if(pelletCount <= 20 && millis() - redTime > redFast && !(ghosts[0].getEaten()) && !(ghosts[0].getBlue())) {
-      ghosts[0].move();
+  if (pelletCount <= 20 && millis() - redTime > redFast && !(ghosts[0].getEaten()) && !(ghosts[0].getBlue())) {
+    ghosts[0].move();
     redTime = millis();
   }
   if (millis() - moveTime > moveWhen) {
     int g = 0;
     while (g < numGhosts) {
       if (!(ghosts[g].getEaten())) {
-        if(g != 0 || (g == 0 && pelletCount > 20) || ghosts[g].getBlue()) {
+        if (g != 0 || (g == 0 && pelletCount > 20) || ghosts[g].getBlue()) {
           ghosts[g].move();
         }
       }
@@ -315,4 +316,5 @@ void restart() {
   numGhosts = 1;
   pauseTime = millis();
   ghostTime = millis();
+  flashTime = millis();
 }
