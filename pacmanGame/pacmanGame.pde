@@ -13,6 +13,7 @@ int eatenTime;
 int moveWhen;
 int backWhen;
 int redFast;
+int wallFlash;
 PFont gameFont;
 boolean pause;
 Maze[][] game;
@@ -37,6 +38,7 @@ void setup() {
   ghosts[2] = new Blue(man.getXCoord(), man.getYCoord(), w * 8.5, h * 10.5);
   ghosts[2].changeTargetTile(man, ghosts[0]);
   moveWhen = 400;
+  wallFlash = 50;
   backWhen = 7000;
   moveTime = millis();
   pauseTime = millis();
@@ -105,12 +107,13 @@ void draw() {
           game[i][j].display();
         } else {
           game[i][j].display(game, i, j);
-          if (millis() - flashTime > 150) {
+          if (millis() - flashTime > wallFlash) {
             game[i][j].flashing();
           }
         }
       }
     }
+    wallFlash += 10;
   } else {
     fill(255);
     textFont(gameFont);
@@ -314,6 +317,7 @@ void restart() {
     }
   }
   numGhosts = 1;
+  wallFlash = 50;
   pauseTime = millis();
   ghostTime = millis();
   flashTime = millis();

@@ -88,6 +88,7 @@ from the movement of pacman
 
 6/9/2021: Red ghost increases in speed when there are not a lot of pellets left in the maze
 
+6/9/2021: Made the walls flash before a round of the game starts.
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
