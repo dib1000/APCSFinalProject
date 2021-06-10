@@ -9,6 +9,8 @@ int pauseTime;
 int blueTime;
 int flashTime;
 int eatenTime;
+int moveWhen;
+int backWhen;
 PFont gameFont;
 boolean pause;
 Maze[][] game;
@@ -32,6 +34,8 @@ void setup() {
   ghosts[3] = new Orange(w * 2.5, h * 17.5, w * 6.5, h * 10.5);
   ghosts[2] = new Blue(man.getXCoord(), man.getYCoord(), w * 8.5, h * 10.5);
   ghosts[2].changeTargetTile(man, ghosts[0]);
+  moveWhen = 400;
+  backWhen = 7000;
   moveTime = millis();
   pauseTime = millis();
   ghostTime = millis();
@@ -62,7 +66,7 @@ void draw() {
     textSize(32);
     fill(255);
     text("FINAL SCORE: " + man.getPoint(), width/2 - 230, height/2);
-  } else if (level == 2) {
+  } else if (level == 3) {
     fill(0);
     rect(0, 0, width * 3, height * 3);
     textFont(gameFont);
@@ -76,6 +80,8 @@ void draw() {
     float w = width/14;
     float h = (height-100)/20;
     level++;
+    moveWhen -= 50;
+    backWhen -= 1000;
     for (int i = 0; i < 14; i++) {
       for (int j = 0; j < 18; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17)) {
@@ -141,12 +147,12 @@ void draw() {
         for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
     }
-    if (millis() - blueTime > 7000) {
+    if (millis() - blueTime > backWhen) {
       for (int f = 0; f < ghosts.length; f++) {
         ghosts[f].turnBack();
         eatenGhosts = 200;
       }
-    } else if (millis() - blueTime > 5000 && millis() - flashTime > 200) {
+    } else if (millis() - blueTime > backWhen-2000 && millis() - flashTime > 200) {
       for (int l = 0; l < ghosts.length; l++) {
         if(ghosts[l].getBlue() && !(ghosts[l].getEaten())) {
           ghosts[l].flash();
@@ -155,7 +161,7 @@ void draw() {
       flashTime = millis();
     }
   }
-  if (millis() - eatenTime > 200) {
+  if (millis() - eatenTime > moveWhen/2) {
     int e = 0;
     while (e < numGhosts) {
       if (ghosts[e].getEaten()) {
@@ -165,7 +171,7 @@ void draw() {
       eatenTime = millis();
     }
   }
-  if (millis() - moveTime > 400) {
+  if (millis() - moveTime > moveWhen) {
     int g = 0;
     while (g < numGhosts) {
       if (!(ghosts[g].getEaten())) {
