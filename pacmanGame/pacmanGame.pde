@@ -46,7 +46,8 @@ void setup() {
   flashTime = millis();
   for (int i = 0; i < 14; i++) {
     for (int j = 0; j < 18; j++) {
-      if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))) {
+      if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))
+           && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))) {
         if ((i == 1 || i == 12) && (j == 3 || j==14)) {
           game[i][j] = new powerPellet(w/2 +(i * w), h/2 + ((j + 1) * h));
           pelletCount++;
@@ -93,7 +94,8 @@ void draw() {
     backWhen -= 1000;
     for (int i = 0; i < 14; i++) {
       for (int j = 0; j < 18; j++) {
-        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))) {
+        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))
+        && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))) {
           if ((i == 1 || i == 12) && (j == 3 || j==14)) {
             game[i][j] = new powerPellet(w/2 +(i * w), h/2 + ((j + 1) * h));
             pelletCount++;
@@ -113,7 +115,8 @@ void draw() {
   } else if (millis() - pauseTime < 700) {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
-        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))) {
+        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))
+        && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))) {
           game[i][j].display();
         } else {
           game[i][j].display(game, i, j);
@@ -131,7 +134,8 @@ void draw() {
     text("POINTS: " + man.getPoint(), 50, 40);
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
-        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))) {
+        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))
+        && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))) {
           if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord() && (!game[i][j].isEaten())) {
             if ((i == 1 || i == 12) && (j == 3 || j==14)) {
               man.addPoints("power");
