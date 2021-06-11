@@ -48,7 +48,7 @@ public class Ghost { //class will code for red ghost
     float startCol = col;
     int x = int((getRow() -  w / 2) / w);
     int y = int((getCol() - (3 * h / 2)) / h);
-    if (eaten && (y == 10 || (targetCol==9.5 && y==6)) && (x>4 && x<10)) {
+    if (eaten && (y == 10 || (targetCol==(height - 100) /20 * 9.5 && y==6)) && (x>4 && x<10)) {
       if (x > 4 && x < 8) {
         if (y == 10) {
           row = row - w;
