@@ -28,6 +28,7 @@ PShape orangeGhost;
 PShape cyanGhost;
 PShape blueGhost;
 PShape cherries;
+PShape flashGhost;
 
 void setup() {
   size(686, 1080);
@@ -45,6 +46,7 @@ void setup() {
   orangeGhost = loadShape("oranga.svg");
   cyanGhost = loadShape("cyann.svg");
   blueGhost = loadShape("bluey.svg");
+  flashGhost = loadShape("redeye.svg");
   cherries = loadShape("cherry.svg");
 
   numGhosts = 1;
@@ -184,7 +186,7 @@ void draw() {
               }
               redTime = millis();
             }
-            if (pelletCount == 150) {
+            if (pelletCount == 50) {
               fruitTime = millis();
               eaten = false;
             }
@@ -310,7 +312,12 @@ void draw() {
           shape(cyanGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 45, 45);
         }
       } else {
-        shape(blueGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 36, 36);
+        if(ghosts[i].getFlash()) {
+          shape(flashGhost, ghosts[i].getRow()-20, ghosts[i].getCol() - 20, 36,36);
+        }
+        else {
+          shape(blueGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 36, 36);
+        }
       }
     }
     if (millis() - blueTime > backWhen) {
@@ -475,6 +482,8 @@ void restart() {
   numGhosts = 1;
   wallFlash = 50;
   eaten = true;
+  fill(0);
+  ellipse(367.5, 563.5, 45, 45);
   pauseTime = millis();
   ghostTime = millis();
   flashTime = millis();

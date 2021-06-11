@@ -206,6 +206,10 @@ public class Ghost { //class will code for red ghost
   void SCATTER() {
     scatter = true;
   }
+  
+  boolean getFlash() {
+    return flash;
+  }
 }
 
 class Pink extends Ghost {
