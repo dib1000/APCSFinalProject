@@ -32,10 +32,10 @@ void setup() {
   numGhosts = 1;
   eatenGhosts = 200;
   level = 0;
-  ghosts[0] = new Ghost(man.getXCoord(), man.getYCoord(), (width/14) * 6.5, ((height-100)/20) * 8.5);
-  ghosts[1] = new Pink(man.getXCoord() - (2 * w), man.getYCoord(), (width/14) * 7.5, ((height-100)/20) * 11.5);
-  ghosts[3] = new Orange(w * 2.5, h * 17.5, w * 6.5, h * 11.5);
-  ghosts[2] = new Blue(man.getXCoord(), man.getYCoord(), w * 8.5, h * 11.5);
+  ghosts[0] = new Ghost(man.getXCoord(), man.getYCoord(), (width/14) * 6.5, ((height-100)/20) * 6.5);
+  ghosts[1] = new Pink(man.getXCoord() - (2 * w), man.getYCoord(), (width/14) * 7.5, ((height-100)/20) * 9.5);
+  ghosts[3] = new Orange(w * 2.5, h * 17.5, w * 6.5, h * 9.5);
+  ghosts[2] = new Blue(man.getXCoord(), man.getYCoord(), w * 8.5, h * 9.5);
   ghosts[2].changeTargetTile(man, ghosts[0]);
   moveWhen = 400;
   wallFlash = 50;
@@ -46,7 +46,7 @@ void setup() {
   flashTime = millis();
   for (int i = 0; i < 14; i++) {
     for (int j = 0; j < 18; j++) {
-      if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==9 || j==11) && (i>4 && i<10)) && !(j==10 && (i==5 || i==9))) {
+      if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))) {
         if ((i == 1 || i == 12) && (j == 3 || j==14)) {
           game[i][j] = new powerPellet(w/2 +(i * w), h/2 + ((j + 1) * h));
           pelletCount++;
@@ -93,14 +93,14 @@ void draw() {
     backWhen -= 1000;
     for (int i = 0; i < 14; i++) {
       for (int j = 0; j < 18; j++) {
-        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==9 || j==11) && (i>4 && i<10)) && !(j==10 && (i==5 || i==9))) {
+        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))) {
           if ((i == 1 || i == 12) && (j == 3 || j==14)) {
             game[i][j] = new powerPellet(w/2 +(i * w), h/2 + ((j + 1) * h));
             pelletCount++;
           } else {
             game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
             pelletCount++;
-            if (j == 10 && i > 5 && i < 9) {
+            if (j == 8 && i > 5 && i < 9) {
               game[i][j].eaten(true);
               pelletCount--;
             }
@@ -113,7 +113,7 @@ void draw() {
   } else if (millis() - pauseTime < 700) {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
-        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==9 || j==11) && (i>4 && i<10)) && !(j==10 && (i==5 || i==9))) {
+        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))) {
           game[i][j].display();
         } else {
           game[i][j].display(game, i, j);
@@ -131,7 +131,7 @@ void draw() {
     text("POINTS: " + man.getPoint(), 50, 40);
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
-        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==9 || j==11) && (i>4 && i<10)) && !(j==10 && (i==5 || i==9))) {
+        if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))) {
           if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord() && (!game[i][j].isEaten())) {
             if ((i == 1 || i == 12) && (j == 3 || j==14)) {
               man.addPoints("power");
@@ -190,7 +190,7 @@ void draw() {
     int e = 0;
     while (e < numGhosts) {
       if (ghosts[e].getEaten()) {
-        if (e > 0 && ghosts[e].getRow() == 7.5 * width/14 && (ghosts[e].getCol() == 9.5 * (height-100) / 20 || ghosts[e].getCol() == 10.5 * (height-100) / 20 )) {
+        if (e > 0 && ghosts[e].getRow() == 7.5 * width/14 && (ghosts[e].getCol() == 7.5 * (height-100) / 20 || ghosts[e].getCol() == 8.5 * (height-100) / 20 )) {
           ghosts[e].moveDown();
         }
         else {
@@ -209,7 +209,7 @@ void draw() {
     int g = 0;
     while (g < numGhosts) {
       if (!(ghosts[g].getEaten())) {
-        if (ghosts[g].getRow() == 7.5 * width/14 && (ghosts[g].getCol() == 11.5 * (height-100) / 20 || ghosts[g].getCol() == 10.5 * (height-100) / 20 )) {
+        if (ghosts[g].getRow() == 7.5 * width/14 && (ghosts[g].getCol() == 9.5 * (height-100) / 20 || ghosts[g].getCol() == 8.5 * (height-100) / 20 )) {
           ghosts[g].moveUp();
         }
         else if (g != 0 || (g == 0 && pelletCount > 20) || ghosts[g].getBlue()) {
@@ -322,13 +322,13 @@ void restart() {
     ghosts[g].SCATTER();
   }
   ghosts[0].setRow(w * 6.5);
-  ghosts[0].setCol(h * 8.5);
+  ghosts[0].setCol(h * 6.5);
   ghosts[1].setRow(w * 7.5);
-  ghosts[1].setCol(h * 11.5);
+  ghosts[1].setCol(h * 9.5);
   ghosts[3].setRow(w * 8.5);
-  ghosts[3].setCol(h * 11.5);
+  ghosts[3].setCol(h * 9.5);
   ghosts[2].setRow(w * 6.5);
-  ghosts[2].setCol(h * 11.5);
+  ghosts[2].setCol(h * 9.5);
   for (int i = 0; i < ghosts.length; i++) {
     if (i == 2) {
       ghosts[i].changeTargetTile(man, ghosts[0]);

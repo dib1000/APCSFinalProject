@@ -11,7 +11,7 @@ public class Wall extends Maze {
   void display(Maze[][] m, int row, int col) {
     if (flash) {
       fill(255);
-    } else if (col == 9 && row == 7) {
+    } else if (col == 7 && row == 7) {
       fill(#f498b0);
     } else {
       fill(#1818BF);
@@ -19,7 +19,7 @@ public class Wall extends Maze {
     rectMode(CENTER);
     if ((row > 0 && m[row-1][col].getSubclass().equals("Wall")) &&
       (row < m.length - 1 && m[row+1][col].getSubclass().equals("Wall"))) {
-      if (col == 9 && row == 7) {
+      if (col == 7 && row == 7) {
         rect(x, y, wid, 10);
       } else {
         rect(x, y, wid, 20);
