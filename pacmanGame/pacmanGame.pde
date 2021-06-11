@@ -405,4 +405,5 @@ void restart() {
   pauseTime = millis();
   ghostTime = millis();
   flashTime = millis();
+  pacTime = millis();
 }
