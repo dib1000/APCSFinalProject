@@ -74,7 +74,7 @@ public class Ghost { //class will code for red ghost
       col = col - h;
       fill(0);
       rect(row, col + h, 41, 41);
-    } else if (eaten && (x == 1 && y == 13) || (x == 12 && y ==13)) {
+    } else if (eaten && ((x == 1 && y == 13) || (x == 12 && y ==13))) {
       col = col - h;
       fill(0);
       rect(row, col + h, 41, 41);
@@ -311,7 +311,7 @@ class Orange extends Ghost {
       }
     } else if (scatter) {
       targetRow = width/14 * 1.5;
-      targetCol = (height - 100) / 20 * 17.5;
+      targetCol = (height - 100) / 20 * 16.5;
       if (targetRow == row && targetCol == col) {
         scatter = false;
       }

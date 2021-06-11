@@ -189,6 +189,13 @@ void draw() {
     int y = int((man.getYCoord() - (3 * h / 2)) / h);
     if (keyCode == RIGHT && millis() - pacTime > 200 && !(game[x+1][y].getSubclass().equals("Wall"))) {
       man.moveRight();
+      for (int g = 0; g < ghosts.length; g++) {
+        if (g == 2) {
+          ghosts[g].changeTargetTile(man, ghosts[0]);
+        } else {
+          ghosts[g].changeTargetTile(man);
+        }
+      }
       fill(#FAFF15);
       ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
       fill(0);
@@ -201,6 +208,13 @@ void draw() {
     }
     if (keyCode == LEFT && millis() - pacTime > 200 && !(game[x-1][y].getSubclass().equals("Wall"))) {
       man.moveLeft();
+      for (int g = 0; g < ghosts.length; g++) {
+        if (g == 2) {
+          ghosts[g].changeTargetTile(man, ghosts[0]);
+        } else {
+          ghosts[g].changeTargetTile(man);
+        }
+      }
       fill(#FAFF15);
       ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
       fill(0);
@@ -212,10 +226,14 @@ void draw() {
       pacTime = millis();
     }
     if (keyCode == UP && millis() - pacTime > 200 && !(game[x][y-1].getSubclass().equals("Wall"))) {
-
-  }
-    if (keyCode == UP && millis() - pacTime > 250 && !(game[x][y-1].getSubclass().equals("Wall"))) {
       man.moveUp();
+      for (int g = 0; g < ghosts.length; g++) {
+        if (g == 2) {
+          ghosts[g].changeTargetTile(man, ghosts[0]);
+        } else {
+          ghosts[g].changeTargetTile(man);
+        }
+      }
       fill(#FAFF15);
       ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
       fill(0);
@@ -228,6 +246,13 @@ void draw() {
     }
     if (keyCode == DOWN && millis() - pacTime > 200 && !(game[x][y+1].getSubclass().equals("Wall"))) {
       man.moveDown();
+      for (int g = 0; g < ghosts.length; g++) {
+        if (g == 2) {
+          ghosts[g].changeTargetTile(man, ghosts[0]);
+        } else {
+          ghosts[g].changeTargetTile(man);
+        }
+      }
       fill(#FAFF15);
       ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
       fill(0);
