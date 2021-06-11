@@ -69,6 +69,9 @@ public class Pacman {
     if (pelletType == "power") {
       points += 50;
     }
+    if(pelletType == "cherry") {
+      points += 200;
+    }
     // add fruits later
   }
 
