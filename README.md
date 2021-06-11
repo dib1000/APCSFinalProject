@@ -82,6 +82,20 @@ from the movement of pacman
 
 6/7/2021: Added new way of movement for ghosts. Scatter mode: The ghosts go to a corner and then they chase pacman
 
+6/9/2021: More than 1 level and ghosts/blueghosts move faster/last for less time as levels increase
+
+6/9/2021: Red ghosts move faster once a certain amount of pellets are eaten
+
+6/10/2021: Added the ghost box where 3 ghosts start. It has a thin pink wall as its entrance. Ghosts can go in/out of the ghost box based on certain conditions
+
+6/11/2021: Added some more wall segments through the Maze
+
+6/11/2021: Fixed some issues with eaten Ghosts and walls
+
+6/11/2021: Made fruits display and disappear once pacman eats them
+
+6/11/2021: Added sprites for flashing and eaten ghosts
+
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
