@@ -121,8 +121,8 @@ public class Ghost { //class will code for red ghost
 
   void changeTargetTile(Pacman man) {
     if (eaten) {
-      targetRow = width/14 * 7.5;
-      targetCol = (height - 100) /20 * 8.5;
+      targetRow = width/14 * 6.5;
+      targetCol = (height - 100) /20 * 6.5;
       if (eaten && targetRow == row && targetCol == col) {
         eaten = false;
         blueghost = false;
@@ -222,8 +222,8 @@ class Pink extends Ghost {
   void changeTargetTile(Pacman man) {
     if (eaten) {
       targetRow = width/14 * 7.5;
-      targetCol = (height - 100) /20 * 10.5;
-      if (eaten && (eaten && (targetRow == row || targetRow == row + width/14 || targetRow == row - width/14)) && targetCol == col) {
+      targetCol = (height - 100) /20 * 9.5;
+      if (eaten && (targetRow == row) && targetCol == col) {
         eaten = false;
         blueghost = false;
         scatter = true;
@@ -286,9 +286,9 @@ class Orange extends Ghost {
 
   void changeTargetTile(Pacman man) {
     if (eaten) {
-      targetRow = width/14 * 7.5;
-      targetCol = (height - 100) /20 * 10.5;
-      if (eaten && (targetRow == row || targetRow == row + width/14 || targetRow == row - width/14) && targetCol == col) {
+      targetRow = width/14 * 6.5;
+      targetCol = (height - 100) /20 * 9.5;
+      if (eaten && (targetRow == row) && targetCol == col) {
         eaten = false;
         blueghost = false;
         scatter = true;
@@ -344,9 +344,9 @@ class Blue extends Ghost {
 
   void changeTargetTile(Pacman man, Ghost red) {
     if (eaten) {
-      targetRow = width/14 * 7.5;
-      targetCol = (height - 100) /20 * 10.5;
-      if (eaten && (targetRow == row || targetRow == row + width/14 || targetRow == row - width/14) && targetCol == col) {
+      targetRow = width/14 * 8.5;
+      targetCol = (height - 100) /20 * 9.5;
+      if (eaten && (targetRow == row) && targetCol == col) {
         eaten = false;
         blueghost = false;
         scatter = true;
