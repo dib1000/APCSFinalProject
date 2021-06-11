@@ -21,7 +21,9 @@ Maze[][] game;
 Pacman man; 
 Ghost[] ghosts;
 PShape redGhost;
-
+PShape pinkGhost;
+PShape orangeGhost;
+PShape cyanGhost;
 
 void setup() {
   size(686, 1080);
@@ -32,7 +34,12 @@ void setup() {
   man = new Pacman();
   game = new Maze[14][18];
   ghosts = new Ghost[4];
+  
+  // loading in ghost graphics
   redGhost = loadShape("redd.svg");
+  pinkGhost = loadShape("pinkk.svg");
+  orangeGhost = loadShape("oranga.svg");
+  cyanGhost = loadShape("cyann.svg");
   
   numGhosts = 1;
   eatenGhosts = 200;
@@ -269,10 +276,19 @@ void draw() {
     }
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
-      
       if (i == 0){
-      shape(redGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 40, 40);
+        shape(redGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 40, 40);
       }
+      if (i == 1){
+        shape(pinkGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 45, 45);
+      }
+      if (i == 3){
+         shape(orangeGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 45, 45);
+      }
+      if (i == 2){
+         shape(cyanGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 45, 45);
+      }
+      
     }
     if (millis() - blueTime > backWhen) {
       for (int f = 0; f < ghosts.length; f++) {
