@@ -48,7 +48,7 @@ public class Ghost { //class will code for red ghost
     float startCol = col;
     int x = int((getRow() -  w / 2) / w);
     int y = int((getCol() - (3 * h / 2)) / h);
-    if (eaten && (y == 10 || y==6) && (x>4 && x<10)) {
+    if (eaten && (y == 10 || (targetCol==9.5 && y==6)) && (x>4 && x<10)) {
       if (x > 4 && x < 8) {
         if (y == 10) {
           row = row - w;
@@ -134,8 +134,8 @@ public class Ghost { //class will code for red ghost
   void changeTargetTile(Pacman man) {
     if (eaten) {
       targetRow = width/14 * 6.5;
-      targetCol = (height - 100) /20 * 6.5;
-      if (eaten && targetRow == row && targetCol == col) {
+      targetCol = (height - 100)/20 * 6.5;
+      if (eaten && (targetRow == row || targetRow == row - width/14 || targetRow == row + width/14) && targetCol == col) {
         eaten = false;
         blueghost = false;
         scatter = true;
