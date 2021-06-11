@@ -2,6 +2,7 @@ int pelletCount;
 int fruitTime; //for fruit
 int level;
 int numGhosts;
+boolean eaten;
 int eatenGhosts;
 int pacTime;
 int ghostTime;
@@ -185,6 +186,7 @@ void draw() {
             }
             if (pelletCount == 150) {
               fruitTime = millis();
+              eaten = false;
             }
             fill(#050000);
             rect(55, 39, 500, 50);
@@ -202,11 +204,15 @@ void draw() {
       }
     }
     man.display();
-    if (pelletCount <= 150 && millis() - fruitTime < 2000) {
+    if (pelletCount <= 150 && millis() - fruitTime < 4000 &&!(eaten)) {
+      if (man.getXCoord() == 367.5 && man.getYCoord() == 563.5) {
+        man.addPoints("cherry");
+        eaten = true;
+      }
       shape(cherries, 367.5 - 20, 563.5 - 20, 40, 40);
     } else {
       fill(0);
-      ellipse(367.5,563.5,42,42);
+      ellipse(367.5, 563.5, 45, 45);
     }
     float w = width/14;
     float h = (height-100)/20;
