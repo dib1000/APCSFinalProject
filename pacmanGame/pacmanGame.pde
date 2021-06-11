@@ -181,18 +181,51 @@ void draw() {
     int y = int((man.getYCoord() - (3 * h / 2)) / h);
     if (keyCode == RIGHT && millis() - pacTime > 250 && !(game[x+1][y].getSubclass().equals("Wall"))) {
       man.moveRight();
+      fill(#FAFF15);
+      ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
+      fill(0);
+      triangle(man.getXCoord(), man.getYCoord(), man.getXCoord() + 30, man.getYCoord() - 50, man.getXCoord() + 30, man.getYCoord() + 50);
+      fill(#FAFF15);
+      ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
+      fill(0);
+      triangle(man.getXCoord(), man.getYCoord(), man.getXCoord() + 30, man.getYCoord() - 5, man.getXCoord() + 30, man.getYCoord() + 5);
       pacTime = millis();
     }
     if (keyCode == LEFT && millis() - pacTime > 250 && !(game[x-1][y].getSubclass().equals("Wall"))) {
       man.moveLeft();
+      fill(#FAFF15);
+      ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
+      fill(0);
+      triangle(man.getXCoord(), man.getYCoord(), man.getXCoord() - 30, man.getYCoord() - 50, man.getXCoord() - 30, man.getYCoord() + 50);
+      fill(#FAFF15);
+      ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
+      fill(0);
+      triangle(man.getXCoord(), man.getYCoord(), man.getXCoord() - 30, man.getYCoord() - 5, man.getXCoord() - 30, man.getYCoord() + 5);
       pacTime = millis();
-    }
+
+  }
     if (keyCode == UP && millis() - pacTime > 250 && !(game[x][y-1].getSubclass().equals("Wall"))) {
       man.moveUp();
+      fill(#FAFF15);
+      ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
+      fill(0);
+      triangle(man.getXCoord(), man.getYCoord(), man.getXCoord() - 30, man.getYCoord() - 50, man.getXCoord() + 30, man.getYCoord() - 50);
+      fill(#FAFF15);
+      ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
+      fill(0);
+      triangle(man.getXCoord(), man.getYCoord(), man.getXCoord() - 30, man.getYCoord() - 5, man.getXCoord() + 30, man.getYCoord() - 5);
       pacTime = millis();
     }
     if (keyCode == DOWN && millis() - pacTime > 250 && !(game[x][y+1].getSubclass().equals("Wall"))) {
       man.moveDown();
+      fill(#FAFF15);
+      ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
+      fill(0);
+      triangle(man.getXCoord(), man.getYCoord(), man.getXCoord() - 30, man.getYCoord() + 50, man.getXCoord() + 30, man.getYCoord() + 50);
+      fill(#FAFF15);
+      ellipse(man.getXCoord(), man.getYCoord(), 40, 40);
+      fill(0);
+      triangle(man.getXCoord(), man.getYCoord(), man.getXCoord() - 30, man.getYCoord() + 5, man.getXCoord() + 30, man.getYCoord() + 5);
       pacTime = millis();
     }
     for (int i = 0; i < ghosts.length; i++) {
