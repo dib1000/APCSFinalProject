@@ -74,6 +74,10 @@ public class Ghost { //class will code for red ghost
       col = col - h;
       fill(0);
       rect(row, col + h, 41, 41);
+    } else if (eaten && (x == 1 && y == 13) || (x == 12 && y ==13)) {
+      col = col - h;
+      fill(0);
+      rect(row, col + h, 41, 41);
     } else {
       float left = sq((row - w) - targetRow) + sq(col - targetCol);
       float right = sq((row + w) - targetRow) + sq(col - targetCol);
