@@ -20,6 +20,8 @@ boolean pause;
 Maze[][] game;
 Pacman man; 
 Ghost[] ghosts;
+PShape redGhost;
+
 
 void setup() {
   size(686, 1080);
@@ -30,6 +32,8 @@ void setup() {
   man = new Pacman();
   game = new Maze[14][18];
   ghosts = new Ghost[4];
+  redGhost = loadShape("redd.svg");
+  
   numGhosts = 1;
   eatenGhosts = 200;
   level = 0;
@@ -71,7 +75,7 @@ void setup() {
 }
 
 void draw() {
-  if (man.getLives() < 0) {
+   if (man.getLives() < 0) {
     fill(0);
     rect(0, 0, width * 3, height * 3);
     textFont(gameFont);
@@ -265,6 +269,10 @@ void draw() {
     }
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
+      
+      if (i == 0){
+      shape(redGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 40, 40);
+      }
     }
     if (millis() - blueTime > backWhen) {
       for (int f = 0; f < ghosts.length; f++) {
