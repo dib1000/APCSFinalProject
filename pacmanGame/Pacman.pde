@@ -109,6 +109,7 @@ public class Pacman {
     this.y = y;
   }
   void display() {
+  // println(x + ", " + y);
     fill(#FAFF15);
     ellipse(x, y, 40, 40);
     fill(#050000);

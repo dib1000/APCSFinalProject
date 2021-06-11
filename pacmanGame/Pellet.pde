@@ -35,6 +35,7 @@ public class Pellet extends Maze {
   void disappear() {
   }
 }
+
 class powerPellet extends Pellet {
   powerPellet(float x, float y) {
     super("power", x, y);
@@ -47,3 +48,18 @@ class powerPellet extends Pellet {
     }
   }
 }
+
+class Fruit extends Pellet {
+   Fruit(float x, float y){
+      super("fruit", x, y);
+      }
+      
+   void display() {
+    if (!eaten) {
+      fill(#ECBA96);
+      ellipse(x, y, 10, 10);
+   }
+   }
+   }
+  
+  

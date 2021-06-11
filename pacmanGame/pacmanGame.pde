@@ -24,6 +24,8 @@ PShape redGhost;
 PShape pinkGhost;
 PShape orangeGhost;
 PShape cyanGhost;
+PShape blueGhost;
+PShape cherries;
 
 void setup() {
   size(686, 1080);
@@ -40,6 +42,8 @@ void setup() {
   pinkGhost = loadShape("pinkk.svg");
   orangeGhost = loadShape("oranga.svg");
   cyanGhost = loadShape("cyann.svg");
+  blueGhost = loadShape("bluey.svg");
+  cherries = loadShape("cherry.svg");
   
   numGhosts = 1;
   eatenGhosts = 200;
@@ -77,6 +81,7 @@ void setup() {
       } else {
         game[i][j] = new Wall(w/2 +(i * w), (3 * h)/2 +(j * h), w, h);
       }
+      
     }
   }
 }
@@ -127,7 +132,12 @@ void draw() {
         } else {
           game[i][j] = new Wall(w/2 +(i * w), (3 * h)/2 +(j * h), w, h);
         }
+       if (man.getPoint() >= 1500 && game[i][j].getX() == 367.5 && game[i][j].getY() == 563.5){
+           game[i][j] = new Fruit(367.5, 563.5);
+           shape(cherries, 367.5, 563.5);
       }
+      }
+
     }
   } else if (millis() - pauseTime < 700) {
     for (int i = 0; i < game.length; i++) {
@@ -276,6 +286,7 @@ void draw() {
     }
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
+      if (ghosts[i].getBlue() == false){
       if (i == 0){
         shape(redGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 40, 40);
       }
@@ -283,12 +294,15 @@ void draw() {
         shape(pinkGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 45, 45);
       }
       if (i == 3){
-         shape(orangeGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 45, 45);
+        shape(orangeGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 45, 45);
       }
       if (i == 2){
-         shape(cyanGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 45, 45);
+        shape(cyanGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 45, 45);
       }
-      
+      }
+      else {
+        shape(blueGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 36, 36);
+      }
     }
     if (millis() - blueTime > backWhen) {
       for (int f = 0; f < ghosts.length; f++) {
@@ -299,6 +313,7 @@ void draw() {
       for (int l = 0; l < ghosts.length; l++) {
         if (ghosts[l].getBlue() && !(ghosts[l].getEaten())) {
           ghosts[l].flash();
+          
         }
       }
       flashTime = millis();

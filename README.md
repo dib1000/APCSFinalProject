@@ -5,8 +5,6 @@ Group Members: Emma Buller, Tina Nguyen
 
 Brief Project Description: We will be implementing Pac-man in Processing. The game will be controlled by user input through the arrow keys. The objective will be the same (capturing all the pellets) and there will be obstacles (the colorful ghosts) following it around.
 
-Notes: java.util.Random was used
-
 Google Doc: https://docs.google.com/document/d/1WgVaVSX-P7kjcDoPgB-GkoTZ6AfqmNU8nm1lXzTBwvI/edit?usp=sharing
 
 Development Log:
@@ -84,16 +82,6 @@ from the movement of pacman
 
 6/7/2021: Added new way of movement for ghosts. Scatter mode: The ghosts go to a corner and then they chase pacman
 
-6/9/2021: More than 1 level and ghosts/blueghosts move faster/last for less time as levels increase
-
-6/9/2021: Red ghosts move faster once a certain amount of pellets are eaten
-
-6/10/2021: Added the ghost box where 3 ghosts start. It has a thin pink wall as its entrance. Ghosts can go in/out of the ghost box based on certain conditions
-
-6/11/2021: Added some more wall segments through the Maze
-
-6/11/2021: Fixed some issues with eaten Ghosts and walls
-
 Tina Nguyen:
 
 5/25/2021: Added needed variables and methods for Maze
@@ -155,3 +143,7 @@ going in. No animation yet.
 06/11/2021: Added staggered movement for pacman
 
 06/11/2021: Implemented animation for pacman  (not that smooth, might go back to this)
+
+06/11/2021: Added images to represent ghosts
+
+06/11/2021: Added graphics to represent ghost mode in Ghosts

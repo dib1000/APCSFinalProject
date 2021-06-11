@@ -30,12 +30,12 @@ public class Ghost { //class will code for red ghost
     } else {
       if (blueghost) {
         if (flash) {
-          fill(255);
+         // fill(255);
         } else {
-          fill(#2020f7);
+          //fill(#2020f7);
         }
       } else {
-        fill(255, 0, 0);
+        //fill(255, 0, 0);
       }
       rect(row, col, 10, 10);
     }
@@ -222,15 +222,15 @@ class Pink extends Ghost {
       ellipse(row - 10, col - 10, 7.5, 7.5);
       ellipse(row + 10, col - 10, 7.5, 7.5);
     } else {
-      if (blueghost) {
-        if (flash) {
-          fill(255);
-        } else {
-          fill(#2020f7);
-        }
-      } else {
-        fill(#FFB9DE);
-      }
+      //if (blueghost) {
+      //  if (flash) {
+      //    fill(255);
+      //  } else {
+      //    fill(#2020f7);
+      //  }
+      //} else {
+      //  fill(#FFB9DE);
+      //}
       rect(row, col, 10, 10);
     }
   }
@@ -287,15 +287,15 @@ class Orange extends Ghost {
       ellipse(row - 10, col - 10, 7.5, 7.5);
       ellipse(row + 10, col - 10, 7.5, 7.5);
     } else {
-      if (blueghost) {
-        if (flash) {
-          fill(255);
-        } else {
-          fill(#2020f7);
-        }
-      } else {
-        fill(#FDB846);
-      }
+      //if (blueghost) {
+      //  if (flash) {
+      //    fill(255);
+      //  } else {
+      //    fill(#2020f7);
+      //  }
+      //} else {
+      //  fill(#FDB846);
+      //}
       rect(row, col, 10, 10);
     }
   }
@@ -345,15 +345,15 @@ class Blue extends Ghost {
       ellipse(row - 10, col - 10, 7.5, 7.5);
       ellipse(row + 10, col - 10, 7.5, 7.5);
     } else {
-      if (blueghost) {
-        if (flash) {
-          fill(255);
-        } else {
-          fill(#2020f7);
-        }
-      } else {
-        fill(#00FFFF);
-      }
+      //if (blueghost) {
+      //  if (flash) {
+      //    fill(255);
+      //  } else {
+      //    fill(#2020f7);
+      //  }
+      //} else {
+      //  fill(#00FFFF);
+      //}
       rect(row, col, 10, 10);
     }
   }
