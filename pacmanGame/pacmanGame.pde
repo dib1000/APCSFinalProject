@@ -29,6 +29,7 @@ PShape cyanGhost;
 PShape blueGhost;
 PShape cherries;
 PShape flashGhost;
+PShape eatenGhost;
 
 void setup() {
   size(686, 1080);
@@ -47,6 +48,7 @@ void setup() {
   cyanGhost = loadShape("cyann.svg");
   blueGhost = loadShape("bluey.svg");
   flashGhost = loadShape("redeye.svg");
+  eatenGhost = loadShape("eyes.svg");
   cherries = loadShape("cherry.svg");
 
   numGhosts = 1;
@@ -314,6 +316,9 @@ void draw() {
       } else {
         if(ghosts[i].getFlash()) {
           shape(flashGhost, ghosts[i].getRow()-20, ghosts[i].getCol() - 20, 36,36);
+        }
+        else if (ghosts[i].getEaten()) {
+          shape(eatenGhost, ghosts[i].getRow()-20, ghosts[i].getCol() - 20, 36,36);
         }
         else {
           shape(blueGhost, ghosts[i].getRow()-20, ghosts[i].getCol()-20, 36, 36);
