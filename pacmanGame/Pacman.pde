@@ -22,7 +22,6 @@ public class Pacman {
 
   void moveUp() {
     //put speed in parameters later to increase the speeds?
-    println(y);
     if (y > 73.5){
     man.setYCoord(man.getYCoord() - h);
     fill(0);

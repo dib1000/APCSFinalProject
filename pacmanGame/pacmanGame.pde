@@ -3,6 +3,7 @@ int time; //for fruit
 int level;
 int numGhosts;
 int eatenGhosts;
+int pacTime;
 int ghostTime;
 int moveTime;
 int redTime;
@@ -44,6 +45,7 @@ void setup() {
   pauseTime = millis();
   ghostTime = millis();
   flashTime = millis();
+  pacTime = millis();
   for (int i = 0; i < 14; i++) {
     for (int j = 0; j < 18; j++) {
       if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))
@@ -173,21 +175,21 @@ void draw() {
       }
     }
     man.display();
-     if (keyCode == RIGHT && millis() - ghostTime > 390){
+     if (keyCode == RIGHT && millis() - pacTime > 300){
       man.moveRight();
-      ghostTime = millis();
+      pacTime = millis();
      }
-     if (keyCode == LEFT && millis() - ghostTime > 390){
+     if (keyCode == LEFT && millis() - pacTime > 300){
       man.moveLeft();
-      ghostTime = millis();
+      pacTime = millis();
      }
-    if (keyCode == UP && millis() - ghostTime > 390){
+    if (keyCode == UP && millis() - pacTime > 300){
       man.moveUp();
-      ghostTime = millis();
+      pacTime = millis();
      }
-     if (keyCode == DOWN && millis() - ghostTime > 390){
+     if (keyCode == DOWN && millis() - pacTime > 300){
       man.moveDown();
-      ghostTime = millis();
+      pacTime = millis();
      }
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
