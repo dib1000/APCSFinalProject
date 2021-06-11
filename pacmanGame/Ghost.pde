@@ -48,15 +48,27 @@ public class Ghost { //class will code for red ghost
     float startCol = col;
     int x = int((getRow() -  w / 2) / w);
     int y = int((getCol() - (3 * h / 2)) / h);
-    if (eaten && y == 10 && (x>4 && x<10)) {
+    if (eaten && (y == 10 || y==6) && (x>4 && x<10)) {
       if (x > 4 && x < 8) {
-        row = row - w;
-        fill(0);
-        rect(row + w, col, 41, 41);
+        if (y == 10) {
+          row = row - w;
+          fill(0);
+          rect(row + w, col, 41, 41);
+        } else {
+          row = row + w;
+          fill(0);
+          rect(row - w, col, 41, 41);
+        }
       } else {
-        row = row + w;
-        fill(0);
-        rect(row - w, col, 41, 41);
+        if (y == 10) {
+          row = row + w;
+          fill(0);
+          rect(row - w, col, 41, 41);
+        } else {
+          row = row - w;
+          fill(0);
+          rect(row + w, col, 41, 41);
+        }
       }
     } else if (eaten && (x == 4 || x == 10) && (y < 11 && y > 6)) {
       col = col - h;
@@ -223,7 +235,7 @@ class Pink extends Ghost {
     if (eaten) {
       targetRow = width/14 * 7.5;
       targetCol = (height - 100) /20 * 9.5;
-      if (eaten && (targetRow == row) && targetCol == col) {
+      if (eaten && (targetRow == row || targetRow == row + width/14 || targetRow == row - width/14) && targetCol == col) {
         eaten = false;
         blueghost = false;
         scatter = true;
