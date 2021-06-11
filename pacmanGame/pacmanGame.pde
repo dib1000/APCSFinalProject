@@ -169,6 +169,22 @@ void draw() {
       }
     }
     man.display();
+     if (keyCode == RIGHT && millis() - ghostTime > 390){
+      man.moveRight();
+      ghostTime = millis();
+     }
+     if (keyCode == LEFT && millis() - ghostTime > 390){
+      man.moveLeft();
+      ghostTime = millis();
+     }
+    if (keyCode == UP && millis() - ghostTime > 390){
+      man.moveUp();
+      ghostTime = millis();
+     }
+     if (keyCode == DOWN && millis() - ghostTime > 390){
+      man.moveDown();
+      ghostTime = millis();
+     }
     for (int i = 0; i < ghosts.length; i++) {
       ghosts[i].display();
     }
@@ -253,7 +269,6 @@ void keyPressed() {
   //takes user input from the arrow keys to control the PacMan
   if (keyPressed) {
     if (keyCode == UP && !(game[x][y-1].getSubclass().equals("Wall"))) {
-      man.moveUp();
       for (int i = 0; i < ghosts.length; i++) {
         if (i == 2) {
           ghosts[i].changeTargetTile(man, ghosts[0]);
@@ -263,7 +278,6 @@ void keyPressed() {
       }
     }
     if (keyCode == DOWN && !(game[x][y+1].getSubclass().equals("Wall"))) {
-      man.moveDown();
       for (int i = 0; i < ghosts.length; i++) {
         if (i == 2) {
           ghosts[i].changeTargetTile(man, ghosts[0]);
@@ -273,7 +287,6 @@ void keyPressed() {
       }
     }
     if (keyCode == LEFT && !(game[x-1][y].getSubclass().equals("Wall"))) {
-      man.moveLeft();
       for (int i = 0; i < ghosts.length; i++) {
         if (i == 2) {
           ghosts[i].changeTargetTile(man, ghosts[0]);
@@ -283,7 +296,7 @@ void keyPressed() {
       }
     }
     if (keyCode == RIGHT && !(game[x+1][y].getSubclass().equals("Wall"))) {
-      man.moveRight();
+     // man.moveRight();
       for (int i = 0; i < ghosts.length; i++) {
         if (i == 2) {
           ghosts[i].changeTargetTile(man, ghosts[0]);
