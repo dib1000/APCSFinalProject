@@ -217,7 +217,7 @@ class Pink extends Ghost {
     rectMode(CENTER);
     if (eaten) {
       fill(0);
-      rect(row, col, 41, 41);
+      rect(row, col, 55,55);
       fill(255);
       ellipse(row - 10, col - 10, 7.5, 7.5);
       ellipse(row + 10, col - 10, 7.5, 7.5);
@@ -231,7 +231,7 @@ class Pink extends Ghost {
       } else {
         fill(#FFB9DE);
       }
-      rect(row, col, 40, 40);
+      rect(row, col, 10, 10);
     }
   }
 
@@ -296,7 +296,7 @@ class Orange extends Ghost {
       } else {
         fill(#FDB846);
       }
-      rect(row, col, 40, 40);
+      rect(row, col, 10, 10);
     }
   }
 
@@ -354,7 +354,7 @@ class Blue extends Ghost {
       } else {
         fill(#00FFFF);
       }
-      rect(row, col, 40, 40);
+      rect(row, col, 10, 10);
     }
   }
 
