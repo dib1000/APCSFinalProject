@@ -44,7 +44,7 @@ public class Wall extends Maze {
           rect(x - 10, y - 30, 20, 40);
           rect(x - 10, y - 10, 40, 20);
         } else if (( col < m[0].length && m[row][col-1].getSubclass().equals("Wall")) &&
-          (row < m.length - 1 && m[row-1][col].getSubclass().equals("Wall")))  {
+          (row < m.length && m[row-1][col].getSubclass().equals("Wall")))  {
           rectMode(CORNER);
           rect(x-10, y-30, 20, 40);
           rect(x-30, y-10, 40, 20);
