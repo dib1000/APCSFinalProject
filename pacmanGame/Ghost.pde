@@ -37,7 +37,7 @@ public class Ghost { //class will code for red ghost
       } else {
         fill(255, 0, 0);
       }
-      rect(row, col, 40, 40);
+      rect(row, col, 10, 10);
     }
   }
 
