@@ -474,6 +474,7 @@ void restart() {
   }
   numGhosts = 1;
   wallFlash = 50;
+  eaten = true;
   pauseTime = millis();
   ghostTime = millis();
   flashTime = millis();
