@@ -38,7 +38,7 @@ void setup() {
   ghosts[3] = new Orange(w * 2.5, h * 17.5, w * 6.5, h * 9.5);
   ghosts[2] = new Blue(man.getXCoord(), man.getYCoord(), w * 8.5, h * 9.5);
   ghosts[2].changeTargetTile(man, ghosts[0]);
-  moveWhen = 400;
+  moveWhen = 500;
   wallFlash = 50;
   backWhen = 7000;
   moveTime = millis();
@@ -49,7 +49,8 @@ void setup() {
   for (int i = 0; i < 14; i++) {
     for (int j = 0; j < 18; j++) {
       if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))
-        && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))) {
+        && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))
+        && !((j==12 && (i==2 || i==3)) || (i==3 && (j==13 || j==14)))) {
         if ((i == 1 || i == 12) && (j == 3 || j==14)) {
           game[i][j] = new powerPellet(w/2 +(i * w), h/2 + ((j + 1) * h));
           pelletCount++;
@@ -97,7 +98,8 @@ void draw() {
     for (int i = 0; i < 14; i++) {
       for (int j = 0; j < 18; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))
-          && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))) {
+          && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))
+          && !(((j==12 && (i==2 || i==3)) || (i==3 && (j==13 || j==14))))) {
           if ((i == 1 || i == 12) && (j == 3 || j==14)) {
             game[i][j] = new powerPellet(w/2 +(i * w), h/2 + ((j + 1) * h));
             pelletCount++;
@@ -118,7 +120,8 @@ void draw() {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))
-          && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))) {
+          && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))
+          && !(((j==12 && (i==2 || i==3)) || (i==3 && (j==13 || j==14))))) {
           game[i][j].display();
         } else {
           game[i][j].display(game, i, j);
@@ -137,7 +140,8 @@ void draw() {
     for (int i = 0; i < game.length; i++) {
       for (int j = 0; j < game[0].length; j++) {
         if ((i > 0 && i < 13) && (j > 0 && j < 17) && !((j==7 || j==9) && (i>4 && i<10)) && !(j==8 && (i==5 || i==9))
-          && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))) {
+          && !((j==2 || j == 3) && ((i > 1 && i < 5) || (i > 8 && i < 12)))
+          && !(((j==12 && (i==2 || i==3)) || (i==3 && (j==13 || j==14))))) {
           if (game[i][j].getX()==man.getXCoord() && game[i][j].getY()==man.getYCoord() && (!game[i][j].isEaten())) {
             if ((i == 1 || i == 12) && (j == 3 || j==14)) {
               man.addPoints("power");
@@ -179,19 +183,19 @@ void draw() {
     float h = (height-100)/20;
     int x = int((man.getXCoord() -  w / 2) / w);
     int y = int((man.getYCoord() - (3 * h / 2)) / h);
-    if (keyCode == RIGHT && millis() - pacTime > 250 && !(game[x+1][y].getSubclass().equals("Wall"))) {
+    if (keyCode == RIGHT && millis() - pacTime > 200 && !(game[x+1][y].getSubclass().equals("Wall"))) {
       man.moveRight();
       pacTime = millis();
     }
-    if (keyCode == LEFT && millis() - pacTime > 250 && !(game[x-1][y].getSubclass().equals("Wall"))) {
+    if (keyCode == LEFT && millis() - pacTime > 200 && !(game[x-1][y].getSubclass().equals("Wall"))) {
       man.moveLeft();
       pacTime = millis();
     }
-    if (keyCode == UP && millis() - pacTime > 250 && !(game[x][y-1].getSubclass().equals("Wall"))) {
+    if (keyCode == UP && millis() - pacTime > 200 && !(game[x][y-1].getSubclass().equals("Wall"))) {
       man.moveUp();
       pacTime = millis();
     }
-    if (keyCode == DOWN && millis() - pacTime > 250 && !(game[x][y+1].getSubclass().equals("Wall"))) {
+    if (keyCode == DOWN && millis() - pacTime > 200 && !(game[x][y+1].getSubclass().equals("Wall"))) {
       man.moveDown();
       pacTime = millis();
     }
