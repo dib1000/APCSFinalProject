@@ -53,7 +53,7 @@ void setup() {
         } else {
           game[i][j] = new Pellet(w/2 +(i * w), h/2 + ((j + 1) * h));
           pelletCount++;
-          if (j == 10 && i > 5 && i < 9) {
+          if (j == 8 && i > 5 && i < 9) {
             game[i][j].eaten(true);
             pelletCount--;
           }
