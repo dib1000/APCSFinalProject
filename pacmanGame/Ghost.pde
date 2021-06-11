@@ -48,44 +48,72 @@ public class Ghost { //class will code for red ghost
     float startCol = col;
     int x = int((getRow() -  w / 2) / w);
     int y = int((getCol() - (3 * h / 2)) / h);
-    float left = sq((row - w) - targetRow) + sq(col - targetCol);
-    float right = sq((row + w) - targetRow) + sq(col - targetCol);
-    float up = sq(row - targetRow) + sq((col - h) - targetCol);
-    float down = sq(row  - targetRow) + sq((col + h) - targetCol);
-    float[] directions = {left, right, up, down};
-    Random rng = new Random();
-    if (blueghost && !(eaten)) {
-      for (int a = directions.length; a > 1; a--) {
-        int r = rng.nextInt(a);
-        float storage = directions[r];
-        directions[r] = directions[a-1];
-        directions[a-1] = storage;
-      }
-    } else {
-      directions = sort(directions);
-    }
-    int go = 0;
-    while ((startRow == row && startCol == col) && go < directions.length) {
-      if (directions[go] == left && !(maze[x-1][y].getSubclass().equals("Wall"))) {
-        row = row - w;
-        fill(0);
-        rect(row + w, col, 41, 41);
-      } else if (directions[go] == right && !(maze[x+1][y].getSubclass().equals("Wall"))) {
-        row = row + w;
-        fill(0);
-        rect(row - w, col, 41, 41);
-      } else if (directions[go] == up && !(maze[x][y-1].getSubclass().equals("Wall"))) {
-        col = col - h;
-        fill(0);
-        rect(row, col + h, 41, 41);
-      } else {
-        if (!(maze[x][y+1].getSubclass().equals("Wall")) && directions[go] == down) {
-          col = col + h;
+    if (eaten && (y == 10 || y==6) && (x>4 && x<10)) {
+      if (x > 4 && x < 8) {
+        if (y == 10) {
+          row = row - w;
           fill(0);
-          rect(row, col - h, 41, 41);
+          rect(row + w, col, 41, 41);
+        } else {
+          row = row + w;
+          fill(0);
+          rect(row - w, col, 41, 41);
+        }
+      } else {
+        if (y == 10) {
+          row = row + w;
+          fill(0);
+          rect(row - w, col, 41, 41);
+        } else {
+          row = row - w;
+          fill(0);
+          rect(row + w, col, 41, 41);
         }
       }
-      go++;
+    } else if (eaten && (x == 4 || x == 10) && (y < 11 && y > 6)) {
+      col = col - h;
+      fill(0);
+      rect(row, col + h, 41, 41);
+    } else {
+      float left = sq((row - w) - targetRow) + sq(col - targetCol);
+      float right = sq((row + w) - targetRow) + sq(col - targetCol);
+      float up = sq(row - targetRow) + sq((col - h) - targetCol);
+      float down = sq(row  - targetRow) + sq((col + h) - targetCol);
+      float[] directions = {left, right, up, down};
+      Random rng = new Random();
+      if (blueghost && !(eaten)) {
+        for (int a = directions.length; a > 1; a--) {
+          int r = rng.nextInt(a);
+          float storage = directions[r];
+          directions[r] = directions[a-1];
+          directions[a-1] = storage;
+        }
+      } else {
+        directions = sort(directions);
+      }
+      int go = 0;
+      while ((startRow == row && startCol == col) && go < directions.length) {
+        if (directions[go] == left && !(maze[x-1][y].getSubclass().equals("Wall"))) {
+          row = row - w;
+          fill(0);
+          rect(row + w, col, 41, 41);
+        } else if (directions[go] == right && !(maze[x+1][y].getSubclass().equals("Wall"))) {
+          row = row + w;
+          fill(0);
+          rect(row - w, col, 41, 41);
+        } else if (directions[go] == up && !(maze[x][y-1].getSubclass().equals("Wall"))) {
+          col = col - h;
+          fill(0);
+          rect(row, col + h, 41, 41);
+        } else {
+          if (!(maze[x][y+1].getSubclass().equals("Wall")) && directions[go] == down) {
+            col = col + h;
+            fill(0);
+            rect(row, col - h, 41, 41);
+          }
+        }
+        go++;
+      }
     }
   }
 
@@ -95,8 +123,8 @@ public class Ghost { //class will code for red ghost
     fill(0);
     rect(row, col + h, 41, 41);
   }
-  
-    void moveDown() {
+
+  void moveDown() {
     float h = (height-100)/20;
     col = col + h;
     fill(0);
@@ -105,8 +133,8 @@ public class Ghost { //class will code for red ghost
 
   void changeTargetTile(Pacman man) {
     if (eaten) {
-      targetRow = width/14 * 7.5;
-      targetCol = (height - 100) /20 * 8.5;
+      targetRow = width/14 * 6.5;
+      targetCol = (height - 100) /20 * 6.5;
       if (eaten && targetRow == row && targetCol == col) {
         eaten = false;
         blueghost = false;
@@ -206,8 +234,8 @@ class Pink extends Ghost {
   void changeTargetTile(Pacman man) {
     if (eaten) {
       targetRow = width/14 * 7.5;
-      targetCol = (height - 100) /20 * 10.5;
-      if (eaten && (eaten && (targetRow == row || targetRow == row + width/14 || targetRow == row - width/14)) && targetCol == col) {
+      targetCol = (height - 100) /20 * 9.5;
+      if (eaten && (targetRow == row || targetRow == row + width/14 || targetRow == row - width/14) && targetCol == col) {
         eaten = false;
         blueghost = false;
         scatter = true;
@@ -270,9 +298,9 @@ class Orange extends Ghost {
 
   void changeTargetTile(Pacman man) {
     if (eaten) {
-      targetRow = width/14 * 7.5;
-      targetCol = (height - 100) /20 * 10.5;
-      if (eaten && (targetRow == row || targetRow == row + width/14 || targetRow == row - width/14) && targetCol == col) {
+      targetRow = width/14 * 6.5;
+      targetCol = (height - 100) /20 * 9.5;
+      if (eaten && (targetRow == row) && targetCol == col) {
         eaten = false;
         blueghost = false;
         scatter = true;
@@ -328,9 +356,9 @@ class Blue extends Ghost {
 
   void changeTargetTile(Pacman man, Ghost red) {
     if (eaten) {
-      targetRow = width/14 * 7.5;
-      targetCol = (height - 100) /20 * 10.5;
-      if (eaten && (targetRow == row || targetRow == row + width/14 || targetRow == row - width/14) && targetCol == col) {
+      targetRow = width/14 * 8.5;
+      targetCol = (height - 100) /20 * 9.5;
+      if (eaten && (targetRow == row) && targetCol == col) {
         eaten = false;
         blueghost = false;
         scatter = true;
