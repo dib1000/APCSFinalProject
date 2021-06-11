@@ -362,7 +362,7 @@ class Blue extends Ghost {
     if (eaten) {
       targetRow = width/14 * 8.5;
       targetCol = (height - 100) /20 * 9.5;
-      if (eaten && (targetRow == row) && targetCol == col) {
+      if (eaten && (targetRow == row || targetRow == row- width/14 || targetRow == row - 2 * (width/14)) && targetCol == col) {
         eaten = false;
         blueghost = false;
         scatter = true;
