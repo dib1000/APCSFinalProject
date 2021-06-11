@@ -158,6 +158,10 @@ going in. No animation yet.
 
 06/11/2021: Implemented animation for pacman  (not that smooth, might go back to this)
 
-06/11/2021: Added images to represent ghosts
+06/11/2021: Added images to represent ghosts regularly
 
-06/11/2021: Added graphics to represent ghost mode in Ghosts
+06/11/2021: Changed the original boxes behind the ghosts to not show
+
+06/11/2021: Added graphics to represent ghost mode in Ghosts (only blueGhost)
+
+06/11/2021: Added incomplete setup of cherry graphic 
